@@ -5,6 +5,7 @@ import Faq from '../Faq';
 import RefundPolicy from '../RefundPolicy';
 import Booking from '../booking/Booking';
 import ChooseTheater from '../booking/ChooseTheater';
+import SlotCheck from '../booking/SlotCheck';
 import Gallery from '../gallery/Gallery';
 import Home from './Home';
 
@@ -17,6 +18,7 @@ export default [
   { path: '/contact', element: <Contact /> },
   { path: '/booking', element: <Booking /> },
   { path: '/chooseTheater', element: <ChooseTheater /> },
+  { path: '/checkSlot', element: <SlotCheck /> },
  
 
 ];

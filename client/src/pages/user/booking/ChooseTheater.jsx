@@ -1,13 +1,27 @@
 import React, { useState } from "react";
 import Navbar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
+import { Link } from "react-router-dom";
+
+// import Card from "@mui/material/Card";
+// import CardContent from "@mui/material/CardContent";
+// import CardMedia from "@mui/material/CardMedia";
+// import Typography from "@mui/material/Typography";
+// import { CardActionArea } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  Button,
+  CardActionArea,
+  CardActions,
+} from "@mui/material";
+import PeopleIcon from "@mui/icons-material/People";
 
 const ChooseTheater = () => {
   const [selectedDate, setSelectedDate] = useState("");
@@ -22,12 +36,7 @@ const ChooseTheater = () => {
       image: "/2023-09-26.jpg",
     },
     {
-      title: "Lizard 2",
-      description: "0 slots available on 24/10/2023.",
-      image: "/2023-09-26.jpg",
-    },
-    {
-      title: "Lizard 3",
+      title: "Romantic Theatre",
       description: "0 slots available on 24/10/2023.",
       image: "/2023-09-26.jpg",
     },
@@ -73,9 +82,7 @@ const ChooseTheater = () => {
                   <small className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-3">
                     Choose Us
                   </small>
-                  <h1 className="display-5 mb-5">
-                  Choose Your Theatre
-                  </h1>
+                  <h1 className="display-5 mb-5">Choose Your Theatre</h1>
                 </div>
                 <div className="row g-4 form">
                   <div className="col-lg-4 col-md-6">
@@ -92,43 +99,153 @@ const ChooseTheater = () => {
                   </div>
 
                   <div className="col-12 text-center">
-                    <button
-                    // type="submit"
-                    // className="btn btn-primary px-5 py-3 rounded-pill"
-                    >
-                      {/* Submit Now */}
-                    </button>
-                    <Grid container spacing={2}>
-                      {cardsData.map((card, index) => (
-                        <Grid item xs={12} sm={6} md={4} key={index}>
-                          <Card sx={{ maxWidth: 345 }}>
-                            <CardActionArea>
-                              <CardMedia
-                                component="img"
-                                height="140"
-                                image={card.image}
-                                alt={card.title}
-                              />
-                              <CardContent>
-                                <Typography
+                    <Grid container spacing={2} justifyContent="center">
+                      <Grid item xs={12} sm={6} md={4}>
+                        <Card sx={{ maxWidth: 345 }}>
+                          <Typography variant={"h5"} sx={{ color: "#d4a762" }}>
+                            Standard Theatre
+                          </Typography>
+                          <CardActionArea>
+                            <CardMedia
+                              component="img"
+                              height="140"
+                              image="/2023-09-26.jpg"
+                              alt="green iguana"
+                            />
+                            <CardContent>
+                              {/* <Typography
                                   gutterBottom
                                   variant="h5"
                                   component="div"
                                 >
-                                  {card.title}
-                                </Typography>
-                                <Typography
-                                  sx={{ fontSize: "15px" }}
-                                  variant="h6"
-                                  color="text.secondary"
-                                >
-                                  {card.description}
-                                </Typography>
-                              </CardContent>
-                            </CardActionArea>
-                          </Card>
-                        </Grid>
-                      ))}
+                                  Lizard
+                                </Typography> */}
+                              <Typography
+                                variant="h6"
+                                sx={{ fontSize: "15px" }}
+                                color="text.primary"
+                              >
+                                ₹999 for 4 or less people including taxes (Rs
+                                200 per extra person)
+                              </Typography>{" "}
+                              <Typography
+                                gutterBottom
+                                variant="h6"
+                                sx={{ fontSize: "13px", color: "red" }}
+                                component="div"
+                              >
+                                0 slots available on 25/10/2023.
+                              </Typography>
+                            </CardContent>
+                          </CardActionArea>
+                          <CardActions>
+                            <Grid tem xs={12} sm={6} md={12}>
+                              <BottomNavigation
+                                showLabels
+                                value={0}
+                                style={{ backgroundColor: "transparent" }}
+                              >
+                                <BottomNavigationAction
+                                  // label="Check Slot"
+                                  icon={
+                                    <Button
+                                      variant="contained"
+                                      color="primary" // Set the color you desire
+                                      component={Link}
+                                      to="/checkSlot"
+                                    >
+                                      Check Slot
+                                    </Button>
+                                  }
+                                />
+                              </BottomNavigation>
+
+                              <Typography
+                                sx={{
+                                  fontSize: "13px",
+                                  color: "black",
+                                  fontWeight: "700px",
+                                  paddingLeft: "5px",
+                                }}
+                                variant={"h5"}
+                              >
+                                2 - 6 Peoples
+                              </Typography>
+                              <PeopleIcon sx={{ paddingLeft: "3px" }} />
+                            </Grid>
+                          </CardActions>
+                        </Card>
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={4}>
+                        <Card sx={{ maxWidth: 345 }}>
+                          <Typography variant={"h5"} sx={{ color: "#d4a762" }}>
+                            {" "}
+                            Romantic Theatre
+                          </Typography>
+                          <CardActionArea>
+                            <CardMedia
+                              component="img"
+                              height="140"
+                              image="/2023-09-26.jpg"
+                              alt="green iguana"
+                            />
+                            <CardContent>
+                              <Typography
+                                variant="h6"
+                                sx={{ fontSize: "15px" }}
+                                color="text.primary"
+                              >
+                                ₹1799 for 2 people including taxes (Decorations
+                                included)
+                              </Typography>
+                              <Typography
+                                gutterBottom
+                                variant="h6"
+                                sx={{ fontSize: "13px", color: "red" }}
+                                component="div"
+                              >
+                                0 slots available on 25/10/2023.
+                              </Typography>
+                            </CardContent>
+                          </CardActionArea>
+                          <CardActions>
+                            <Grid item xs={12} sm={6} md={12}>
+                              <BottomNavigation
+                                showLabels
+                                value={0}
+                                style={{ backgroundColor: "transparent" }}
+                              >
+                                <BottomNavigationAction
+                                  // label="Check Slot"
+                                  icon={
+                                    <Button
+                                      variant="contained"
+                                      color="primary" // Set the color you desire
+                                      component={Link}
+                                      to="/checkSlot"
+                                    >
+                                      Check Slot
+                                    </Button>
+                                  }
+                                />
+                              </BottomNavigation>
+                              <Typography
+                                sx={{
+                                  fontSize: "13px",
+                                  color: "black",
+                                  fontWeight: "700px",
+                                  paddingLeft: "5px",
+                                  // color:'blue'
+                                }}
+                                variant={"h5"}
+                              >
+                                2 Peoples only
+                              </Typography>
+                              <PeopleIcon sx={{ paddingLeft: "3px" }} />
+                            </Grid>
+                          </CardActions>
+                        </Card>
+                      </Grid>
                     </Grid>
                   </div>
                 </div>

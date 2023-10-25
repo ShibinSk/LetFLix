@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
+import { Link } from "react-router-dom";
 
 const Booking = () => {
   const [selectedDate, setSelectedDate] = useState("");
@@ -34,7 +35,7 @@ const Booking = () => {
   ];
 
   return (
-    <div>
+    <div >
       BOOKING
       <Navbar />
       <div className="container-fluid bg-light py-6 my-6 mt-0">
@@ -101,6 +102,7 @@ const Booking = () => {
                     <Grid container spacing={2}>
                       {cardsData.map((card, index) => (
                         <Grid item xs={12} sm={6} md={4} key={index}>
+                          <Link to={'/chooseTheater'}>
                           <Card sx={{ maxWidth: 345 }}>
                             <CardActionArea>
                               <CardMedia
@@ -127,6 +129,7 @@ const Booking = () => {
                               </CardContent>
                             </CardActionArea>
                           </Card>
+                          </Link>
                         </Grid>
                       ))}
                     </Grid>

@@ -1,26 +1,31 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+import createError from 'http-errors';
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
+import extendResponse from './middleswares/standardResponse.js'
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+// const adminRouter = require('./routes/adminRoutes');
+// import usersRouter from'./routes/usersRoutes.js';
+
+import { router } from './routes/usersRoutes.js';
 
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
 const PORT = process.env.PORT || 8080;
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(extendResponse);
+
+app.use('/', router);
+// app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -38,4 +43,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 app.listen(PORT, () => console.log(`Server running: http://localhost:${PORT}`));
-module.exports = app;
+
+export { app };
+

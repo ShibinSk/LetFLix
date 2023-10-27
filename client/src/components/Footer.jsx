@@ -7,7 +7,7 @@ function Footer() {
         <div className="row">
           <div className="col-lg-3 col-md-6">
             <div className="footer-item">
-              <h1 className="text-primary">Cater<span className="text-dark">Serv</span></h1>
+              <h1 className="text-primary">Let<span className="text-dark">Flix</span></h1>
               <p className="lh-lg mb-4">There cursus massa at urnaaculis estieSed aliquamellus vitae ultrs condmentum leo massamollis its estiegittis miristum.</p>
               <div className="footer-icon d-flex">
                 <a className="btn btn-primary btn-sm-square me-2 rounded-circle" href=""><i className="fab fa-facebook-f"></i></a>

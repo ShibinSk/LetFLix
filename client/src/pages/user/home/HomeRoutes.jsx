@@ -2,8 +2,10 @@
 import About from '../About';
 import Contact from '../Contact';
 import Faq from '../Faq';
+import Login from '../LoginWithOtp/Login';
 import RefundPolicy from '../RefundPolicy';
 import Booking from '../booking/Booking';
+import BookingDetails from '../booking/BookingDetails';
 import ChooseTheater from '../booking/ChooseTheater';
 import SlotCheck from '../booking/SlotCheck';
 import Gallery from '../gallery/Gallery';
@@ -19,6 +21,8 @@ export default [
   { path: '/booking', element: <Booking /> },
   { path: '/chooseTheater', element: <ChooseTheater /> },
   { path: '/checkSlot', element: <SlotCheck /> },
+  { path: '/login', element: <Login /> },
+  { path: '/bookingDetails', element: <BookingDetails /> },
  
 
 ];

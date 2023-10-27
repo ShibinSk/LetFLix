@@ -12,9 +12,11 @@ const Navbar = () => {
         <div className="container">
           <nav className="navbar navbar-light navbar-expand-lg py-4">
             <a href="index.html" className="navbar-brand">
+              <Link to={'/login'}>
               <h1 style={{color:'red'}}>
                 Let<span className="text-dark">Flix</span>
               </h1>
+              </Link>
             </a>
             <button
               className="navbar-toggler py-2 px-3"

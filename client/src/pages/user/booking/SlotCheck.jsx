@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
-import { Grid, Typography } from "@mui/material";
+import { Grid,  BottomNavigation,
+  BottomNavigationAction, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MobileStepper from "@mui/material/MobileStepper";
@@ -22,6 +23,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { Link } from "react-router-dom";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -205,9 +207,46 @@ const SlotCheck = () => {
               </Grid>
               <Grid item lg></Grid>
             </Grid>
+            <br />
+            <br />
+            <Grid container spacing={2}>
+              <Grid item xs={6} sm={4} style={{display: 'flex'}}>
+                <Box
+                  sx={{
+                    backgroundColor: "green",
+                    width: "23px",
+                    height: "23px",
+                    display: 'inline-block',
+                    marginRight: 1
+                  }}
+                ></Box>
+
+                <span style={{ color: "green" }}>Available</span>
+              </Grid>
+              <Grid item xs={6} sm={4} style={{display: 'flex'}}>
+              <Box
+                  sx={{
+                    backgroundColor: "red",
+                    width: "23px",
+                    height: "23px",
+                    display: 'inline-block',
+                    marginRight: 1
+                  }}
+                ></Box>
+
+                <span style={{ color: "red" }}>Not Available</span>
+              </Grid>
+            </Grid>
+            <br/>
+            <br/>
+            <Link to={'/bookingDetails'}>
+            <Button sx={{width:'100%', height:'10%'}}  variant="contained">Book Now</Button>
+            </Link>
+           
           </Grid>
         </Grid>
       </Box>
+      <Footer/>
     </div>
   );
 };

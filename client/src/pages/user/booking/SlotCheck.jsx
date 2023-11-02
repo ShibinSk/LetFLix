@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
-import { Grid,  BottomNavigation,
-  BottomNavigationAction, Typography } from "@mui/material";
+import {
+  Grid,
+  BottomNavigation,
+  BottomNavigationAction,
+  Typography,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MobileStepper from "@mui/material/MobileStepper";
@@ -24,8 +28,9 @@ import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { Link } from "react-router-dom";
-
+import BookingService from "./BookingService";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+import { useLocation } from 'react-router-dom';
 
 const SlotCheck = () => {
   const images = [
@@ -50,12 +55,17 @@ const SlotCheck = () => {
         "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60",
     },
   ];
+
+
+  
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const [value, setValue] = React.useState(dayjs("2023-010-25"));
+  const [slot, setSlot] = useState("");
   const maxSteps = images.length;
   //   const [value, onChange] = useState(new Date());
-
+  console.log(slot);
+  console.log(value);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -67,6 +77,15 @@ const SlotCheck = () => {
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
+  const handleClick=()=>{
+    console.log('Clicked');
+  }
+
+  useEffect(() => {
+    BookingService.test().then((res) => {
+      console.log(res.data);
+    });
+  }, []);
 
   return (
     <div>
@@ -180,28 +199,48 @@ const SlotCheck = () => {
 
             <Grid container spacing={2}>
               <Grid item xs={6} sm={6} md={4} lg={4}>
-                <Button variant="outlined" fullWidth>
+                <Button
+                  onClick={() => setSlot("1")}
+                  variant="outlined"
+                  fullWidth
+                >
                   11.00 am to 01.30 pm
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
-                <Button variant="outlined" fullWidth>
+                <Button
+                  onClick={() => setSlot("2")}
+                  variant="outlined"
+                  fullWidth
+                >
                   11.00 am to 01.30 pm
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
-                <Button variant="outlined" fullWidth>
+                <Button
+                  onClick={() => setSlot("3")}
+                  variant="outlined"
+                  fullWidth
+                >
                   11.00 am to 01.30 pm
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Grid item lg></Grid>
-                <Button variant="outlined" fullWidth>
+                <Button
+                  onClick={() => setSlot("4")}
+                  variant="outlined"
+                  fullWidth
+                >
                   11.00 am to 01.30 pm
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
-                <Button variant="outlined" fullWidth>
+                <Button
+                  onClick={() => setSlot("5")}
+                  variant="outlined"
+                  fullWidth
+                >
                   11.00 am to 01.30 pm
                 </Button>
               </Grid>
@@ -210,43 +249,50 @@ const SlotCheck = () => {
             <br />
             <br />
             <Grid container spacing={2}>
-              <Grid item xs={6} sm={4} style={{display: 'flex'}}>
+              <Grid item xs={6} sm={4} style={{ display: "flex" }}>
                 <Box
                   sx={{
                     backgroundColor: "green",
                     width: "23px",
                     height: "23px",
-                    display: 'inline-block',
-                    marginRight: 1
+                    display: "inline-block",
+                    marginRight: 1,
                   }}
                 ></Box>
 
                 <span style={{ color: "green" }}>Available</span>
               </Grid>
-              <Grid item xs={6} sm={4} style={{display: 'flex'}}>
-              <Box
+              <Grid item xs={6} sm={4} style={{ display: "flex" }}>
+                <Box
                   sx={{
                     backgroundColor: "red",
                     width: "23px",
                     height: "23px",
-                    display: 'inline-block',
-                    marginRight: 1
+                    display: "inline-block",
+                    marginRight: 1,
                   }}
                 ></Box>
 
                 <span style={{ color: "red" }}>Not Available</span>
               </Grid>
             </Grid>
-            <br/>
-            <br/>
-            <Link to={'/bookingDetails'}>
-            <Button sx={{width:'100%', height:'10%'}}  variant="contained">Book Now</Button>
-            </Link>
-           
+            <br />
+            <br />
+            {slot.length > 0 && (
+              <Link to={"/decoration"}>
+                <Button
+                  onClick={handleClick}
+                  sx={{ width: "100%", height: "10%" }}
+                  variant="contained"
+                >
+                  Book Now
+                </Button>
+              </Link>
+            )}
           </Grid>
         </Grid>
       </Box>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

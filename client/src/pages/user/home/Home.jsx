@@ -10,7 +10,7 @@ const Home = () => {
           <div className="row g-5 align-items-center">
             <div className="col-lg-7 col-md-12">
               <small className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown">
-                Welcome to LetFlix
+                Welcome toletzFlix
               </small>
               <h1 className="display-1 mb-4 animated bounceInDown">
                 Book <span className="text-primary">Theaters</span> For Your

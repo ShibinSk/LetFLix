@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import homeRoute from "../src/pages/user/home/HomeRoutes";
 import ReactWhatsapp from "react-whatsapp";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import axios from 'axios'
 const App = () => {
   const [routes, setRoutes] = useState([
     { path: "/*", element: <Home height={200} width={100} /> },
@@ -12,12 +13,14 @@ const App = () => {
   useEffect(() => {
     setRoutes(homeRoute);
   }, []);
-  const phoneNumber = '7034928633';
-  const customMessage = 'Hello, I have a question for you!';
+  const phoneNumber = "7034928633";
+  const customMessage = "Hello, I have a question for you!";
 
   // Encode the phone number and message
   const encodedPhoneNumber = encodeURIComponent(phoneNumber);
   const encodedMessage = encodeURIComponent(customMessage);
+  const serverURL =`http://${window.location.hostname}:8080`;
+  axios.defaults.baseURL = serverURL;
 
   const whatsappLink = `https://wa.me/${encodedPhoneNumber}?text=${encodedMessage}`;
   return (

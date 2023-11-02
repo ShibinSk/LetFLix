@@ -14,10 +14,11 @@ const Navbar = () => {
             <a href="index.html" className="navbar-brand">
               <Link to={'/login'}>
               <h1 style={{color:'red'}}>
-                Let<span className="text-dark">Flix</span>
+                letz<span className="text-dark">Flix</span>
               </h1>
               </Link>
             </a>
+          
             <button
               className="navbar-toggler py-2 px-3"
               type="button"
@@ -166,7 +167,7 @@ const Navbar = () => {
                       style={{ color: 'rgba(0,0,0,.55' }}
                         label="Book Now"
                         component={Link}
-                        to="/booking"
+                        to="/chooseTheater"
                       />
                     </BottomNavigation>
                 {/* Book Now */}

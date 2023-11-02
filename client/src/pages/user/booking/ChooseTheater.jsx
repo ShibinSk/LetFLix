@@ -25,7 +25,6 @@ import PeopleIcon from "@mui/icons-material/People";
 
 const ChooseTheater = () => {
   const [selectedDate, setSelectedDate] = useState("");
-
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
   };
@@ -219,10 +218,17 @@ const ChooseTheater = () => {
                                   // label="Check Slot"
                                   icon={
                                     <Button
+                                    // onClick={()=>{
+                                    //   console.log("SLOT");
+                                    // }}
                                       variant="contained"
                                       color="primary" // Set the color you desire
                                       component={Link}
-                                      to="/checkSlot"
+                                      // to={{
+                                      //   pathname: '/checkSlot',
+                                      //   state: { isNaN: 'Hello from the button!' }
+                                      // }}
+                                      to="/checkSlot?button=button1"
                                     >
                                       Check Slot
                                     </Button>

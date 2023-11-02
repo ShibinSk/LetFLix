@@ -7,8 +7,10 @@ import RefundPolicy from '../RefundPolicy';
 import Booking from '../booking/Booking';
 import BookingDetails from '../booking/BookingDetails';
 import ChooseTheater from '../booking/ChooseTheater';
+import DecorationDetails from '../booking/DecorationDetails';
 import SlotCheck from '../booking/SlotCheck';
 import Gallery from '../gallery/Gallery';
+import PaymentSuccess from '../paymetSuccess';
 import Home from './Home';
 
 export default [
@@ -23,6 +25,8 @@ export default [
   { path: '/checkSlot', element: <SlotCheck /> },
   { path: '/login', element: <Login /> },
   { path: '/bookingDetails', element: <BookingDetails /> },
+  { path: '/decoration', element: <DecorationDetails /> },
+  { path: '/paymentSuccess', element: <PaymentSuccess /> },
  
 
 ];

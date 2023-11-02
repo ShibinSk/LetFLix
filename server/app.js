@@ -4,14 +4,16 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import extendResponse from './middleswares/standardResponse.js'
-
 // const adminRouter = require('./routes/adminRoutes');
 // import usersRouter from'./routes/usersRoutes.js';
-
+import dotenv from 'dotenv';
 import { router } from './routes/usersRoutes.js';
+import cors from 'cors';
+import mongoose from 'mongoose';
 
 const app = express();
-
+dotenv.config();
+app.use(cors());
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
@@ -31,6 +33,12 @@ app.use('/', router);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+mongoose
+  .connect("mongodb+srv://letzFlix:Qowdjo5shwQPzHpN@cluster0.nckwdg3.mongodb.net/" ?? 'mongodb://127.0.0.1:27017/letzFlix')
+  .then(async () => {
+    console.log('Connected to mongodb');
+    console.log('Connected to mongodb');
+  });
 
 // error handler
 app.use(function(err, req, res, next) {

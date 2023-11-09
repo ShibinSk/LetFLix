@@ -8,6 +8,7 @@ import extendResponse from './middleswares/standardResponse.js'
 // import usersRouter from'./routes/usersRoutes.js';
 import dotenv from 'dotenv';
 import { router } from './routes/usersRoutes.js';
+import Adminrouter  from './routes/adminRotes.js';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
@@ -27,7 +28,8 @@ app.use(cookieParser());
 app.use(extendResponse);
 
 app.use('/', router);
-// app.use('/admin', adminRouter);
+app.use('/admin', Adminrouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

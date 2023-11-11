@@ -12,8 +12,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import {
   ArrowBack as ArrowBackIcon,
   ExpandMore as ExpandMoreIcon,
@@ -26,39 +26,41 @@ import dayjs from "dayjs";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import enterOtp from "../../../assets/animation/116524-enter-password.json";
-import { CgSpinner } from "react-icons/cg";
 import PhoneInput from "react-phone-input-2";
 import { auth } from "../../../firebase/config";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
+import { amountContext } from "../../../common/ContextApi";
 
 // import firebase from 'firebase/app';
 
 function DecorationDetails() {
+  const { value, slot } = useParams();
   const [checkBok, setCheckBox] = useState("");
   const [isChecked, setIsChecked] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [selectedCake, setSelecteCake] = useState(null);
+  // const [bookingDetails.type, setSelectedOption] = useState(null);
+  // const [bookingDetails.cake , setSelecteCake] = useState(null);
   const [price, setPrice] = useState("1000");
   const [key, setKey] = useState(null);
   const [step, setStep] = useState("0");
   const [order, setOrder] = useState("0");
+  const { amount,setAmount  } = useContext(amountContext);
+  const [OTP, setOTP] = useState("");
+  const [ph, setPh] = useState("");
+  const [ShowOtp, setSHowOtp] = useState(false);
+  const [user, setUser] = useState(null);
 
-    const [OTP, setOTP] = useState("");
-    const [ph, setPh] = useState("");
-    const [ShowOtp, setSHowOtp] = useState(false);
-    const [user, setUser] = useState(null);
-    
-    const [error, setError] = useState("");
-    // const [loading, setLoading] = useState(false);
-    const otp = {
-      loop: true,
-      autoplay: true,
-      animationData: enterOtp,
-      rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice",
-      },
-    };
+  const [error, setError] = useState("");
+  // const [loading, setLoading] = useState(false);
+  const otp = {
+    loop: true,
+    autoplay: true,
+    animationData: enterOtp,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  // console.log(selectedOption);
 
   const [loading, setLoading] = useState(false);
   // const [users, setUsers] = useState([]);
@@ -122,14 +124,33 @@ function DecorationDetails() {
     purchase: {},
     // status: LotLifeCycleStates.SCHEDULED,
   });
+
+  const [bookingDetails, setBookingDetails] = useState({
+    slot: slot,
+    bookedDate: value,
+    amount: 0,
+    cake: null,
+    type: null,
+  });
+  console.log(bookingDetails, "s");
+
   // const [showOTP, setShowOTP] = useState(false);
   // const [user, setUser] = useState(null);
-  
+
+  console.log({ value }, { slot });
   const handleOptionSelect = (option) => {
-    setSelectedOption(option);
+    // setSelectedOption(option);
+    setBookingDetails((prevBookingDetails) => ({
+      ...prevBookingDetails, // Copy the existing state
+      type: option, // Update the specific field
+    }));
   };
   const handleCakeSelect = (option) => {
-    setSelecteCake(option);
+    // setSelecteCake(option);
+    setBookingDetails((prev) => ({
+      ...prev,
+      cake: option,
+    }));
   };
   console.log(ph);
 
@@ -171,7 +192,6 @@ function DecorationDetails() {
     });
   };
 
-
   function onCaptchVerify() {
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(
@@ -184,28 +204,28 @@ function DecorationDetails() {
             onSignup();
           },
           "expired-callback": () => {},
-        },
+        }
       );
     }
   }
 
   function onSignup() {
-    event.preventDefault(); 
+    event.preventDefault();
     setLoading(true);
-    
-    console.log('here');
+
+    console.log("here");
     onCaptchVerify();
-    console.log('bot');
+    console.log("bot");
 
     const appVerifier = window.recaptchaVerifier;
     const formatPh = "+" + ph;
 
-    signInWithPhoneNumber(auth, formatPh,appVerifier)
+    signInWithPhoneNumber(auth, formatPh, appVerifier)
       .then((confirmationResult) => {
-        console.log(confirmationResult, 'confirmationResult');
+        console.log(confirmationResult, "confirmationResult");
         window.confirmationResult = confirmationResult;
         setLoading(false);
-        setStep(null)
+        setStep(null);
         setSHowOtp(true);
         toast.success("OTP sended successfully!");
       })
@@ -217,7 +237,7 @@ function DecorationDetails() {
 
   function onOTPVerify() {
     setLoading(true);
-    console.log({OTP});
+    console.log({ OTP });
     window.confirmationResult
       .confirm(OTP)
       .then(async (res) => {
@@ -232,11 +252,10 @@ function DecorationDetails() {
       });
   }
 
-
   return (
     <>
       <Navbar />
-     
+
       <div
         style={{
           display: "flex",
@@ -246,8 +265,8 @@ function DecorationDetails() {
           background: "#FFFCF8",
         }}
       >
-         <Toaster toastOptions={{ duration: 4000 }} />
-      <div id="recaptcha-container"></div>
+        <Toaster toastOptions={{ duration: 4000 }} />
+        <div id="recaptcha-container"></div>
         {step === "0" && (
           <Card
             sx={{
@@ -282,7 +301,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Birthday"
-                    checked={selectedOption === "Birthday"}
+                    checked={bookingDetails.type === "Birthday"}
                     onChange={() => handleOptionSelect("Birthday")}
                   />
 
@@ -300,7 +319,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Anniversary"
-                    checked={selectedOption === "Anniversary"}
+                    checked={bookingDetails.type === "Anniversary"}
                     onChange={() => handleOptionSelect("Anniversary")}
                   />
                   <img
@@ -318,7 +337,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Romantic Date"
-                    checked={selectedOption === "Romantic Date"}
+                    checked={bookingDetails.type === "Romantic Date"}
                     onChange={() => handleOptionSelect("Romantic Date")}
                   />
                   <img
@@ -336,7 +355,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Marriage Proposal"
-                    checked={selectedOption === "Marriage Proposal"}
+                    checked={bookingDetails.type === "Marriage Proposal"}
                     onChange={() => handleOptionSelect("Marriage Proposal")}
                   />
                   <img
@@ -353,7 +372,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Bride to be"
-                    checked={selectedOption === "Bride to be"}
+                    checked={bookingDetails.type === "Bride to be"}
                     onChange={() => handleOptionSelect("Bride to be")}
                   />
                   <img
@@ -370,7 +389,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Farewell"
-                    checked={selectedOption === "Farewell"}
+                    checked={bookingDetails.type === "Farewell"}
                     onChange={() => handleOptionSelect("Farewell")}
                   />
                   <img
@@ -387,7 +406,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Congratulations"
-                    checked={selectedOption === "Congratulations"}
+                    checked={bookingDetails.type === "Congratulations"}
                     onChange={() => handleOptionSelect("Congratulations")}
                   />
                   <img
@@ -404,7 +423,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Baby Shower"
-                    checked={selectedOption === "Baby Shower"}
+                    checked={bookingDetails.type === "Baby Shower"}
                     onChange={() => handleOptionSelect("Baby Shower")}
                   />
                   <img
@@ -428,12 +447,12 @@ function DecorationDetails() {
                 justifyContent={"center"}
                 display={"flex"}
               >
-                {(selectedOption === "Birthday") |
-                (selectedOption === "Baby Shower") ? (
+                {(bookingDetails.type === "Birthday") |
+                (bookingDetails.type === "Baby Shower") ? (
                   <div>
                     <Grid item xs={12}>
                       <InputLabel>
-                        {selectedOption === "Birthday"
+                        {bookingDetails.type === "Birthday"
                           ? "Nick name of birthday person"
                           : "Baby Sho"}
                       </InputLabel>
@@ -512,7 +531,7 @@ function DecorationDetails() {
                         display={"flex"}
                       >
                         <Grid item sx={6}>
-                          <Typography variant="h5">Total Cost: 000</Typography>
+                          <Typography variant="h5">Total Cost: {amount}</Typography>
                         </Grid>
                         {/* <Grid item sx={6}>
                       <Typography variant="h5">Total Cost: 000</Typography>
@@ -582,7 +601,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Cake1"
-                    checked={selectedCake === "Cake1"}
+                    checked={bookingDetails.cake === "Cake1"}
                     onChange={() => handleCakeSelect("Cake1")}
                   />
 
@@ -591,8 +610,20 @@ function DecorationDetails() {
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                  <Typography
+                    color={"orange"}
+                    fontWeight={"600"}
+                    paddingLeft={"24%"}
+                    paddingTop={"6px"}
+                  >
                     Cake
+                  </Typography>
+                  <Typography
+                    paddingLeft={"20%"}
+                    paddingTop={"5px"}
+                    variant="h6"
+                  >
+                    ₹ 699
                   </Typography>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
@@ -600,7 +631,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Cake2"
-                    checked={selectedCake === "Cake2"}
+                    checked={bookingDetails.cake === "Cake2"}
                     onChange={() => handleCakeSelect("Cake2")}
                   />
                   <img
@@ -608,8 +639,20 @@ function DecorationDetails() {
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                  <Typography
+                    color={"orange"}
+                    fontWeight={"600"}
+                    paddingLeft={"24%"}
+                    paddingTop={"6px"}
+                  >
                     Cake
+                  </Typography>
+                  <Typography
+                    paddingLeft={"20%"}
+                    paddingTop={"5px"}
+                    variant="h6"
+                  >
+                    ₹ 699
                   </Typography>
                 </Grid>
 
@@ -618,7 +661,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Cake3"
-                    checked={selectedCake === "Cake3"}
+                    checked={bookingDetails.cake === "Cake3"}
                     onChange={() => handleCakeSelect("Cake3")}
                   />
                   <img
@@ -626,8 +669,20 @@ function DecorationDetails() {
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                  <Typography
+                    color={"orange"}
+                    fontWeight={"600"}
+                    paddingLeft={"24%"}
+                    paddingTop={"6px"}
+                  >
                     Cake
+                  </Typography>
+                  <Typography
+                    paddingLeft={"20%"}
+                    paddingTop={"5px"}
+                    variant="h6"
+                  >
+                    ₹ 699
                   </Typography>
                 </Grid>
 
@@ -636,7 +691,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Cake4"
-                    checked={selectedCake === "Cake4"}
+                    checked={bookingDetails.cake === "Cake4"}
                     onChange={() => handleCakeSelect("Cake4")}
                   />
                   <img
@@ -644,8 +699,20 @@ function DecorationDetails() {
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                  <Typography
+                    color={"orange"}
+                    fontWeight={"600"}
+                    paddingLeft={"24%"}
+                    paddingTop={"6px"}
+                  >
                     Cake
+                  </Typography>
+                  <Typography
+                    paddingLeft={"20%"}
+                    paddingTop={"5px"}
+                    variant="h6"
+                  >
+                    ₹ 699
                   </Typography>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
@@ -653,7 +720,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Cake5"
-                    checked={selectedCake === "Cake5"}
+                    checked={bookingDetails.cake === "Cake5"}
                     onChange={() => handleCakeSelect("Cake5")}
                   />
                   <img
@@ -661,8 +728,19 @@ function DecorationDetails() {
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                  <Typography
+                    fontWeight={"600"}
+                    paddingLeft={"24%"}
+                    paddingTop={"6px"}
+                  >
                     Cake
+                  </Typography>
+                  <Typography
+                    paddingLeft={"20%"}
+                    paddingTop={"5px"}
+                    variant="h6"
+                  >
+                    ₹ 699
                   </Typography>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
@@ -670,7 +748,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Cake6"
-                    checked={selectedCake === "Cake6"}
+                    checked={bookingDetails.cake === "Cake6"}
                     onChange={() => handleCakeSelect("Cake6")}
                   />
                   <img
@@ -678,8 +756,20 @@ function DecorationDetails() {
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                  <Typography
+                    color={"orange"}
+                    fontWeight={"600"}
+                    paddingLeft={"24%"}
+                    paddingTop={"6px"}
+                  >
                     Cake
+                  </Typography>
+                  <Typography
+                    paddingLeft={"20%"}
+                    paddingTop={"5px"}
+                    variant="h6"
+                  >
+                    ₹ 699
                   </Typography>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
@@ -687,7 +777,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Cake7"
-                    checked={selectedCake === "Cake7"}
+                    checked={bookingDetails.cake === "Cake7"}
                     onChange={() => handleCakeSelect("Cake7")}
                   />
                   <img
@@ -695,8 +785,20 @@ function DecorationDetails() {
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                  <Typography
+                    color={"orange"}
+                    fontWeight={"600"}
+                    paddingLeft={"24%"}
+                    paddingTop={"6px"}
+                  >
                     Cake
+                  </Typography>
+                  <Typography
+                    paddingLeft={"20%"}
+                    paddingTop={"5px"}
+                    variant="h6"
+                  >
+                    ₹ 699
                   </Typography>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
@@ -704,7 +806,7 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Cake8"
-                    checked={selectedCake === "Cake8"}
+                    checked={bookingDetails.cake === "Cake8"}
                     onChange={() => handleCakeSelect("Cake8")}
                   />
                   <img
@@ -712,8 +814,20 @@ function DecorationDetails() {
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                  <Typography
+                    color={"orange"}
+                    fontWeight={"600"}
+                    paddingLeft={"24%"}
+                    paddingTop={"6px"}
+                  >
                     Cake
+                  </Typography>
+                  <Typography
+                    paddingLeft={"20%"}
+                    paddingTop={"5px"}
+                    variant="h6"
+                  >
+                    ₹ 699
                   </Typography>
                 </Grid>
               </Grid>
@@ -726,7 +840,9 @@ function DecorationDetails() {
               display={"flex"}
             >
               <Grid item sx={6}>
-                <Typography variant="h5">Total Cost: 000</Typography>
+                <Typography variant="h5">
+                  Total Cost: {bookingDetails.amount}
+                </Typography>
               </Grid>
               {/* <Grid item sx={6}>
                       <Typography variant="h5">Total Cost: 000</Typography>
@@ -756,7 +872,7 @@ function DecorationDetails() {
             <br />
           </Card>
         )}
-        
+
         {step === "2" && (
           <>
             <div>
@@ -899,7 +1015,11 @@ function DecorationDetails() {
                             fullWidth
                             required
                           /> */}
-                           <PhoneInput country={"in"} value={ph} onChange={setPh} />
+                          <PhoneInput
+                            country={"in"}
+                            value={ph}
+                            onChange={setPh}
+                          />
                         </Grid>
                         <Grid item xs={12}>
                           <InputBase
@@ -1008,23 +1128,22 @@ function DecorationDetails() {
 
                         <Grid item xs={12}>
                           {/* <Link to={"/login"}> */}
-                            <Button
+                          <Button
                             // onClick={()=>setStep("3")}
-                            
-                            onClick={onSignup}
 
+                            onClick={onSignup}
                             type="submit"
-                              variant="contained"
-                              sx={{
-                                mt: 5,
-                                borderRadius: 50,
-                                padding: 2,
-                                marginRight: 2,
-                              }}
-                              fullWidth
-                            >
-                              Next
-                            </Button>
+                            variant="contained"
+                            sx={{
+                              mt: 5,
+                              borderRadius: 50,
+                              padding: 2,
+                              marginRight: 2,
+                            }}
+                            fullWidth
+                          >
+                            Next
+                          </Button>
                           {/* </Link> */}
                         </Grid>
                       </Grid>
@@ -1290,22 +1409,20 @@ function DecorationDetails() {
                         </Grid>
 
                         <Grid item xs={12}>
-                         
-                            <Button
-                            onClick={()=>setStep("4")}
-                              type="submit"
-                              variant="contained"
-                              sx={{
-                                mt: 5,
-                                borderRadius: 50,
-                                padding: 2,
-                                marginRight: 2,
-                              }}
-                              fullWidth
-                            >
-                              Next
-                            </Button>
-                        
+                          <Button
+                            onClick={() => setStep("4")}
+                            type="submit"
+                            variant="contained"
+                            sx={{
+                              mt: 5,
+                              borderRadius: 50,
+                              padding: 2,
+                              marginRight: 2,
+                            }}
+                            fullWidth
+                          >
+                            Next
+                          </Button>
                         </Grid>
                       </Grid>
                       <br />
@@ -1320,163 +1437,163 @@ function DecorationDetails() {
         )}
 
         {ShowOtp ? (
-           <div
-           style={{
-             display: "flex",
-             justifyContent: "center",
-             alignItems: "center",
-             height: "100vh",
-             background: "#FFFCF8",
-           }}
-         >
-           <Card
-             sx={{
-               background: "white",
-               width: "100%",
-               height: "80%",
-               borderRadius: 4,
-               overflow: "scroll",
-             }}
-           >
-             <form
-               onSubmit={(e) => {
-                 e.preventDefault();
-                 // AuthServices.getOTP({ phone })
-                 //   .then((res) => {
-                 //     setGetOTPResponse(res.data);
-                 //   })
-                 //   .catch((error) => {
-                 //     console.log('error', error);
-                 //   });
-               }}
-             >
-               <Link to={'/'}>
-               <Button
-                 sx={{ mt: 2 }}
-                 onClick={() => {
-                   setStep(0);
-                 }}
-               >
-                 
-                 <ArrowBackIcon />
-               </Button>
-               </Link>
-     
-               <Lottie options={otp} height={150} width={150} />
-               <Typography
-                 variant="h5"
-                 sx={{
-                   color: "black",
-                   textAlign: "center",
-                 }}
-               >
-                 Enter OTP
-               </Typography>
-               <br />
-               {error && (
-                 <Typography sx={{ color: "red", ml: 3, textAlign: "left" }}>
-                   {error}
-                 </Typography>
-               )}
-     
-               <Box sx={{ ml: 8, mr: 8, mt: 2 }}>
-                 <InputBase
-                   type="number"
-                   value={OTP}
-                   onChange={(e)=>{
-                    setOTP(e.target.value);
-                   }}
-                   // onChange={(e) => {
-                   //   setOTP(e.target.value);
-                   //   if (e.target.value.length === 4) {
-                   //     // Verify OTP!
-                   //     setLoading(true);
-                   //     AuthServices.verifyOTP({
-                   //       auth_process_id: getOTPResponse?.auth_process_id as string,
-                   //       OTP: e.target.value,
-                   //     })
-                   //       .then((res) => {
-                   //         setLoading(false);
-                   //         console.log(res);
-                   //         if (res.data.isExistingUser) {
-                   //           // handle that case
-                   //           localStorage.setItem('authUser', JSON.stringify(res.data.user));
-                   //           localStorage.setItem('userToken', res.data.authToken as string);
-                   //           auth.setUser(res.data.user as IUser);
-                   //           navigate('/');
-                   //         } else {
-                   //           setCreateUserRequest((req) => ({
-                   //             ...req,
-                   //             tempAuthToken: res.data.tempAuthToken as string,
-                   //           }));
-                   //           setStep(2);
-                   //         }
-                   //       })
-                   //       .catch((error) => {
-                   //         setLoading(false);
-                   //         console.log(error);
-                   //         setError(error.message);
-                   //       });
-                   //   }
-                   // }}
-                   placeholder="XXXX"
-                   sx={{
-                     background: "#f4f5f4",
-                     borderRadius: 50,
-                     padding: 1,
-                     paddingLeft: 4,
-                     latterSpacing: 10,
-                     textAlign: "center",
-                     fontWeight: "bold",
-                   }}
-                   inputProps={{
-                     maxLength: 4,
-                     style: { letterSpacing: 40, textAlign: "center" },
-                   }}
-                   disabled={loading}
-                   fullWidth
-                 />
-               </Box>
-               <div style={{ textAlign: "center", marginRight: 5 }}>
-                 <br />
-                 <br />
-                 Didn't receive ?
-                 <Button
-                   type="submit"
-                   sx={{ color: "#384971" }}
-                   // onClick={() => {
-                   //   setOTP('');
-                   // }}
-                 >
-                   Resend OTP
-                 </Button>
-               </div>
-             </form>
-             <Grid
-              alignContent={"center"}
-              justifyContent={"center"}
-              display={"flex"}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+              background: "#FFFCF8",
+            }}
+          >
+            <Card
+              sx={{
+                background: "white",
+                width: "100%",
+                height: "80%",
+                borderRadius: 4,
+                overflow: "scroll",
+              }}
             >
-              <Button
-               className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
-                // onClick={() => {
-        
-                  onClick={onOTPVerify}
-                // }}
-                variant="contained"
-                color="primary"
-                
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  // AuthServices.getOTP({ phone })
+                  //   .then((res) => {
+                  //     setGetOTPResponse(res.data);
+                  //   })
+                  //   .catch((error) => {
+                  //     console.log('error', error);
+                  //   });
+                }}
               >
-              {loading && (
-                 <CircularProgress sx={{ height:'15%'}} color="secondary" />
-                  )}
+                <Link to={"/"}>
+                  <Button
+                    sx={{ mt: 2 }}
+                    onClick={() => {
+                      setStep(0);
+                    }}
+                  >
+                    <ArrowBackIcon />
+                  </Button>
+                </Link>
 
-                Verify Otp
-              </Button>
-            </Grid>
-           </Card>
-         </div>
-        ):(
+                <Lottie options={otp} height={150} width={150} />
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "black",
+                    textAlign: "center",
+                  }}
+                >
+                  Enter OTP
+                </Typography>
+                <br />
+                {error && (
+                  <Typography sx={{ color: "red", ml: 3, textAlign: "left" }}>
+                    {error}
+                  </Typography>
+                )}
+
+                <Box sx={{ ml: 8, mr: 8, mt: 2 }}>
+                  <InputBase
+                    type="number"
+                    value={OTP}
+                    onChange={(e) => {
+                      setOTP(e.target.value);
+                    }}
+                    // onChange={(e) => {
+                    //   setOTP(e.target.value);
+                    //   if (e.target.value.length === 4) {
+                    //     // Verify OTP!
+                    //     setLoading(true);
+                    //     AuthServices.verifyOTP({
+                    //       auth_process_id: getOTPResponse?.auth_process_id as string,
+                    //       OTP: e.target.value,
+                    //     })
+                    //       .then((res) => {
+                    //         setLoading(false);
+                    //         console.log(res);
+                    //         if (res.data.isExistingUser) {
+                    //           // handle that case
+                    //           localStorage.setItem('authUser', JSON.stringify(res.data.user));
+                    //           localStorage.setItem('userToken', res.data.authToken as string);
+                    //           auth.setUser(res.data.user as IUser);
+                    //           navigate('/');
+                    //         } else {
+                    //           setCreateUserRequest((req) => ({
+                    //             ...req,
+                    //             tempAuthToken: res.data.tempAuthToken as string,
+                    //           }));
+                    //           setStep(2);
+                    //         }
+                    //       })
+                    //       .catch((error) => {
+                    //         setLoading(false);
+                    //         console.log(error);
+                    //         setError(error.message);
+                    //       });
+                    //   }
+                    // }}
+                    placeholder="XXXX"
+                    sx={{
+                      background: "#f4f5f4",
+                      borderRadius: 50,
+                      padding: 1,
+                      paddingLeft: 4,
+                      latterSpacing: 10,
+                      textAlign: "center",
+                      fontWeight: "bold",
+                    }}
+                    inputProps={{
+                      maxLength: 4,
+                      style: { letterSpacing: 40, textAlign: "center" },
+                    }}
+                    disabled={loading}
+                    fullWidth
+                  />
+                </Box>
+                <div style={{ textAlign: "center", marginRight: 5 }}>
+                  <br />
+                  <br />
+                  Didn't receive ?
+                  <Button
+                    type="submit"
+                    sx={{ color: "#384971" }}
+                    // onClick={() => {
+                    //   setOTP('');
+                    // }}
+                  >
+                    Resend OTP
+                  </Button>
+                </div>
+              </form>
+              <Grid
+                alignContent={"center"}
+                justifyContent={"center"}
+                display={"flex"}
+              >
+                <Button
+                  className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
+                  // onClick={() => {
+
+                  onClick={onOTPVerify}
+                  // }}
+                  variant="contained"
+                  color="primary"
+                >
+                  {loading && (
+                    <CircularProgress
+                      sx={{ height: "15%" }}
+                      color="secondary"
+                    />
+                  )}
+                  Verify Otp
+                </Button>
+              </Grid>
+            </Card>
+          </div>
+        ) : (
           // <>
           //   <div>
           //     <Container>
@@ -1727,7 +1844,7 @@ function DecorationDetails() {
           //               </Grid>
 
           //               <Grid item xs={12}>
-                         
+
           //                   <Button
           //                   onClick={()=>setStep("4")}
           //                     type="submit"
@@ -1742,7 +1859,7 @@ function DecorationDetails() {
           //                   >
           //                     Next
           //                   </Button>
-                        
+
           //               </Grid>
           //             </Grid>
           //             <br />
@@ -1754,8 +1871,7 @@ function DecorationDetails() {
           //     </Container>
           //   </div>
           // </>
-          <>
-          </>
+          <></>
         )}
         {user ? (
           <Card
@@ -1804,9 +1920,9 @@ function DecorationDetails() {
               </Button>
             </Grid>
           </Card>
-        ):(
+        ) : (
           <>
-         {/* <div
+            {/* <div
            style={{
              display: "flex",
              justifyContent: "center",

@@ -6,6 +6,8 @@ import homeRoute from "../src/pages/user/home/HomeRoutes";
 import ReactWhatsapp from "react-whatsapp";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import axios from 'axios'
+import { AmountProvider } from "./common/ContextApi.jsx";
+
 const App = () => {
   const [routes, setRoutes] = useState([
     { path: "/*", element: <Home height={200} width={100} /> },
@@ -24,7 +26,10 @@ const App = () => {
 
   const whatsappLink = `https://wa.me/${encodedPhoneNumber}?text=${encodedMessage}`;
   return (
+    <AmountProvider>
     <>
+
+  
       <RouterProvider router={createBrowserRouter(routes)} />
       {/* <Home /> */}
 
@@ -45,6 +50,7 @@ const App = () => {
         />
       </a>
     </>
+      </AmountProvider>
   );
 };
 

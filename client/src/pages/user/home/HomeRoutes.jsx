@@ -25,7 +25,7 @@ export default [
   { path: '/checkSlot', element: <SlotCheck /> },
   { path: '/login', element: <Login /> },
   { path: '/bookingDetails', element: <BookingDetails /> },
-  { path: '/decoration', element: <DecorationDetails /> },
+  { path: '/decoration/:value/:slot', element: <DecorationDetails /> },
   { path: '/paymentSuccess', element: <PaymentSuccess /> },
  
 

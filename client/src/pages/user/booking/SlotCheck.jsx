@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
 import {
@@ -27,12 +27,14 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BookingService from "./BookingService";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 import { useLocation } from 'react-router-dom';
+import { amountContext } from "../../../common/ContextApi";
 
 const SlotCheck = () => {
+  const navigate = useNavigate();
   const images = [
     {
       label: "San Francisco – Oakland Bay Bridge, United States",
@@ -60,9 +62,10 @@ const SlotCheck = () => {
   
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const [value, setValue] = React.useState(dayjs("2023-010-25"));
+  const [value, setValue] = React.useState(dayjs());
   const [slot, setSlot] = useState("");
   const maxSteps = images.length;
+  const { amount,setAmount  } = useContext(amountContext);
   //   const [value, onChange] = useState(new Date());
   console.log(slot);
   console.log(value);
@@ -79,8 +82,13 @@ const SlotCheck = () => {
   };
   const handleClick=()=>{
     console.log('Clicked');
+    const dataToPass = {
+      value/* value for state1 */,
+      slot /* value for state2 */,
+    };
+    // navigate('/decoration', { state: dataToPass });
   }
-
+console.log(amount, 'amount');
   useEffect(() => {
     BookingService.test().then((res) => {
       console.log(res.data);
@@ -279,7 +287,8 @@ const SlotCheck = () => {
             <br />
             <br />
             {slot.length > 0 && (
-              <Link to={"/decoration"}>
+              // <Link to={"/decoration"}>
+              <Link to={`/decoration/${slot}/${value}`}>
                 <Button
                   onClick={handleClick}
                   sx={{ width: "100%", height: "10%" }}
@@ -287,7 +296,7 @@ const SlotCheck = () => {
                 >
                   Book Now
                 </Button>
-              </Link>
+               </Link>
             )}
           </Grid>
         </Grid>

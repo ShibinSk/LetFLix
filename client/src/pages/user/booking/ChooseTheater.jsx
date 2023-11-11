@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
 import { Link } from "react-router-dom";
@@ -22,8 +22,11 @@ import {
   CardActions,
 } from "@mui/material";
 import PeopleIcon from "@mui/icons-material/People";
+import { amountContext } from "../../../common/ContextApi.jsx";
+
 
 const ChooseTheater = () => {
+  const { amount,setAmount  } = useContext(amountContext);
   const [selectedDate, setSelectedDate] = useState("");
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
@@ -218,9 +221,9 @@ const ChooseTheater = () => {
                                   // label="Check Slot"
                                   icon={
                                     <Button
-                                    // onClick={()=>{
-                                    //   console.log("SLOT");
-                                    // }}
+                                    onClick={()=>{
+                                      setAmount(1000)
+                                    }}
                                       variant="contained"
                                       color="primary" // Set the color you desire
                                       component={Link}
@@ -228,7 +231,7 @@ const ChooseTheater = () => {
                                       //   pathname: '/checkSlot',
                                       //   state: { isNaN: 'Hello from the button!' }
                                       // }}
-                                      to="/checkSlot?button=button1"
+                                      to="/checkSlot"
                                     >
                                       Check Slot
                                     </Button>

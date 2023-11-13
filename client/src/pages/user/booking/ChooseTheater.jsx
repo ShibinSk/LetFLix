@@ -155,7 +155,11 @@ const ChooseTheater = () => {
                                       color="primary" // Set the color you desire
                                       component={Link}
                                       to="/checkSlot"
+                                      onClick={()=>{
+                                        setAmount(1699)
+                                      }}
                                     >
+                                      
                                       Check Slot
                                     </Button>
                                   }
@@ -246,6 +250,7 @@ const ChooseTheater = () => {
                                   paddingLeft: "5px",
                                   // color:'blue'
                                 }}
+                                
                                 variant={"h5"}
                               >
                                 2 Peoples only

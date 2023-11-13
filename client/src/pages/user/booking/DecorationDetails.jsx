@@ -12,7 +12,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   ArrowBack as ArrowBackIcon,
@@ -35,7 +35,6 @@ import { amountContext } from "../../../common/ContextApi";
 // import firebase from 'firebase/app';
 
 function DecorationDetails() {
-  const { value, slot } = useParams();
   const [checkBok, setCheckBox] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   // const [bookingDetails.type, setSelectedOption] = useState(null);
@@ -44,14 +43,17 @@ function DecorationDetails() {
   const [key, setKey] = useState(null);
   const [step, setStep] = useState("0");
   const [order, setOrder] = useState("0");
-  const { amount,setAmount  } = useContext(amountContext);
+  const { amount, setAmount } = useContext(amountContext);
   const [OTP, setOTP] = useState("");
   const [ph, setPh] = useState("");
   const [ShowOtp, setSHowOtp] = useState(false);
   const [user, setUser] = useState(null);
-
   const [error, setError] = useState("");
   // const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+  },[]);
+  const { slot, value } = useParams();
   const otp = {
     loop: true,
     autoplay: true,
@@ -61,76 +63,32 @@ function DecorationDetails() {
     },
   };
   // console.log(selectedOption);
-
+  const availableSlots = [1, 2, 3, 4, 5];
+  const decorationWant = ["Yes", "No"];
   const [loading, setLoading] = useState(false);
   // const [users, setUsers] = useState([]);
   const [activeStep, setActiveStep] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
   const [auctions, setAuctions] = useState(null);
-  const [availableSlots, setAvailableSlots] = useState([]);
-  const [lot, setLot] = useState({
-    lotNo: null,
-    lotWt: null,
-    basePrice: null,
-    packingCharge: null,
-    expectedPrice: null,
-    color: "",
-    type: "",
-    attachments: {},
-    grade: {
-      mm8: {
-        clean: null,
-        sick: null,
-        split: null,
-      },
-      mm7_8: {
-        clean: null,
-        sick: null,
-        split: null,
-      },
-    },
-
-    quality: {
-      green: null,
-      average: null,
-      fruit: null,
-      belowAverage: null,
-    },
-
-    quantity: {
-      ltrWt: null,
-      moisture: null,
-      bagsNo: null,
-      netWt: null,
-    },
-    seller: {
-      name: "",
-      status: 100,
-      createdAt: dayjs(),
-      updatedAt: dayjs(),
-      kind: "seller",
-      _id: "",
-    },
-    auction: {
-      auctionNo: -1,
-      _id: "",
-      createdAt: dayjs(),
-      updatedAt: dayjs(),
-      status: 201,
-      weight: 0,
-      maxNoOfLots: 0,
-      lots: [],
-    },
-    purchase: {},
-    // status: LotLifeCycleStates.SCHEDULED,
-  });
+  // const [availableSlots, setAvailableSlots] = useState(1, 2, 3);
 
   const [bookingDetails, setBookingDetails] = useState({
     slot: slot,
     bookedDate: value,
-    amount: 0,
+    amount: amount,
     cake: null,
     type: null,
+    namingDetails: {
+      name: null,
+      partnerName: null,
+      singleName: null,
+    },
+    userDetails: {
+      userName: "",
+      phone: "",
+      numberOfPeoples: "",
+      wantDec: false,
+    },
   });
   console.log(bookingDetails, "s");
 
@@ -146,12 +104,17 @@ function DecorationDetails() {
     }));
   };
   const handleCakeSelect = (option) => {
+    console.log("Current amount:", amount);
+    console.log(option);
+    setAmount((prev)=>prev+500)
+    
     // setSelecteCake(option);
     setBookingDetails((prev) => ({
       ...prev,
       cake: option,
     }));
   };
+
   console.log(ph);
 
   console.log(OTP);
@@ -218,7 +181,7 @@ function DecorationDetails() {
     console.log("bot");
 
     const appVerifier = window.recaptchaVerifier;
-    const formatPh = "+" + ph;
+    const formatPh = "+91" + bookingDetails.userDetails.phone;
 
     signInWithPhoneNumber(auth, formatPh, appVerifier)
       .then((confirmationResult) => {
@@ -255,7 +218,7 @@ function DecorationDetails() {
   return (
     <>
       <Navbar />
-
+      <h1>{amount}</h1>
       <div
         style={{
           display: "flex",
@@ -454,18 +417,21 @@ function DecorationDetails() {
                       <InputLabel>
                         {bookingDetails.type === "Birthday"
                           ? "Nick name of birthday person"
-                          : "Baby Sho"}
+                          : "Baby Shower"}
                       </InputLabel>
                       <InputBase
                         type="Text"
-                        value={"value"}
-                        // onChange={(e) =>
-                        //   setLot({
-                        //     ...lot,
-                        //     color: e.target.value,
-                        //   })
-                        // }
-                        placeholder=" Text"
+                        value={bookingDetails.namingDetails.singleName}
+                        onChange={(e) =>
+                          setBookingDetails({
+                            ...bookingDetails,
+                            namingDetails: {
+                              ...bookingDetails.namingDetails,
+                              singleName: e.target.value,
+                            },
+                          })
+                        }
+                        placeholder="Name"
                         sx={{
                           background: "#f4f5f4",
                           borderRadius: 50,
@@ -483,14 +449,17 @@ function DecorationDetails() {
                       <InputLabel>Your NickName</InputLabel>
                       <InputBase
                         type="Text"
-                        value={"value"}
-                        // onChange={(e) =>
-                        //   setLot({
-                        //     ...lot,
-                        //     color: e.target.value,
-                        //   })
-                        // }
-                        placeholder=" Text"
+                        value={bookingDetails.namingDetails.name}
+                        onChange={(e) =>
+                          setBookingDetails({
+                            ...bookingDetails,
+                            namingDetails: {
+                              ...bookingDetails.namingDetails,
+                              name: e.target.value,
+                            },
+                          })
+                        }
+                        placeholder="Your NickName"
                         sx={{
                           background: "#f4f5f4",
                           borderRadius: 50,
@@ -506,14 +475,17 @@ function DecorationDetails() {
                       <InputLabel>Partner's NickName</InputLabel>
                       <InputBase
                         type="Text"
-                        value={"value"}
-                        // onChange={(e) =>
-                        //   setLot({
-                        //     ...lot,
-                        //     color: e.target.value,
-                        //   })
-                        // }
-                        placeholder=" Text"
+                        value={bookingDetails.namingDetails.partnerName}
+                        onChange={(e) =>
+                          setBookingDetails({
+                            ...bookingDetails,
+                            namingDetails: {
+                              ...bookingDetails.namingDetails,
+                              partnerName: e.target.value,
+                            },
+                          })
+                        }
+                        placeholder="Partner's NickName"
                         sx={{
                           background: "#f4f5f4",
                           borderRadius: 50,
@@ -525,19 +497,6 @@ function DecorationDetails() {
                       />
                       <br />
                       <br />
-                      <Grid
-                        alignContent={"center"}
-                        justifyContent={"center"}
-                        display={"flex"}
-                      >
-                        <Grid item sx={6}>
-                          <Typography variant="h5">Total Cost: {amount}</Typography>
-                        </Grid>
-                        {/* <Grid item sx={6}>
-                      <Typography variant="h5">Total Cost: 000</Typography>
-                    </Grid> */}
-                        <br />
-                      </Grid>
                     </Grid>
                   </div>
                 )}
@@ -548,6 +507,20 @@ function DecorationDetails() {
               <br />
             </Container>
             <br />
+
+            <Grid
+              alignContent={"center"}
+              justifyContent={"center"}
+              display={"flex"}
+            >
+              <Grid item sx={6}>
+                <Typography variant="h5">Total Cost: {amount}</Typography>
+              </Grid>
+              {/* <Grid item sx={6}>
+                      <Typography variant="h5">Total Cost: 000</Typography>
+                    </Grid> */}
+              <br />
+            </Grid>
 
             <Grid
               alignContent={"center"}
@@ -601,6 +574,8 @@ function DecorationDetails() {
                     type="radio"
                     name="options"
                     value="Cake1"
+                    // onClick={() => setAmount(0)}
+                    // onClick={ setAmount((prevAmount) => prevAmount + 500)}
                     checked={bookingDetails.cake === "Cake1"}
                     onChange={() => handleCakeSelect("Cake1")}
                   />
@@ -729,6 +704,7 @@ function DecorationDetails() {
                     alt=""
                   />
                   <Typography
+                    color={"orange"}
                     fontWeight={"600"}
                     paddingLeft={"24%"}
                     paddingTop={"6px"}
@@ -840,9 +816,7 @@ function DecorationDetails() {
               display={"flex"}
             >
               <Grid item sx={6}>
-                <Typography variant="h5">
-                  Total Cost: {bookingDetails.amount}
-                </Typography>
+                <Typography variant="h5">Total Cost: {amount}</Typography>
               </Grid>
               {/* <Grid item sx={6}>
                       <Typography variant="h5">Total Cost: 000</Typography>
@@ -979,11 +953,14 @@ function DecorationDetails() {
                         <Grid item xs={12}>
                           <InputBase
                             type="text"
-                            value={lot.color}
+                            value={bookingDetails.userDetails.userName}
                             onChange={(e) =>
-                              setLot({
-                                ...lot,
-                                color: e.target.value,
+                              setBookingDetails({
+                                ...bookingDetails,
+                                userDetails: {
+                                  ...bookingDetails.userDetails,
+                                  userName: e.target.value,
+                                },
                               })
                             }
                             placeholder="Name"
@@ -1015,13 +992,28 @@ function DecorationDetails() {
                             fullWidth
                             required
                           /> */}
-                          <PhoneInput
-                            country={"in"}
-                            value={ph}
-                            onChange={setPh}
+                          <InputBase
+                            placeholder="Whats App Number"
+                            value={bookingDetails?.userDetails?.phone || ""}
+                            onChange={(e) =>
+                              setBookingDetails({
+                                ...bookingDetails,
+                                userDetails: {
+                                  ...bookingDetails.userDetails,
+                                  phone: e.target.value,
+                                },
+                              })
+                            }
+                            sx={{
+                              background: "#f4f5f4",
+                              borderRadius: 50,
+                              padding: 2,
+                            }}
+                            disabled={loading}
+                            fullWidth
                           />
                         </Grid>
-                        <Grid item xs={12}>
+                        {/* <Grid item xs={12}>
                           <InputBase
                             type="Email"
                             value={lot.color}
@@ -1041,27 +1033,28 @@ function DecorationDetails() {
                             fullWidth
                             // required
                           />
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs={12}>
                           <Autocomplete
-                            options={availableSlots ?? []}
-                            value={lot.lotNo ?? null}
-                            getOptionLabel={(_lot) =>
-                              lot.lotNo == -1 ? "" : "Lot #" + _lot
+                            options={availableSlots}
+                            value={
+                              bookingDetails?.userDetails?.numberOfPeoples ||
+                              null
                             }
                             onChange={(e, newValue) =>
-                              newValue &&
-                              setLot({
-                                ...lot,
-                                lotNo: newValue,
+                              setBookingDetails({
+                                ...bookingDetails,
+                                userDetails: {
+                                  ...bookingDetails.userDetails,
+                                  numberOfPeoples: newValue,
+                                },
                               })
                             }
-                            // getOptionLabel={(auction) => 'Auction ' + auction.auctionNo.toString()}
+                            getOptionLabel={(option) => option.toString()} // Display the option as a string
                             renderInput={(params) => (
                               <TextField
                                 {...params}
                                 placeholder="Number Of People"
-                                // required
                                 variant="standard"
                                 sx={{
                                   background: "#f4f5f4",
@@ -1074,24 +1067,22 @@ function DecorationDetails() {
                         </Grid>
                         <Grid item xs={12}>
                           <Autocomplete
-                            options={availableSlots ?? []}
-                            value={lot.lotNo ?? null}
-                            getOptionLabel={(_lot) =>
-                              lot.lotNo == -1 ? "" : "Lot #" + _lot
-                            }
+                            options={decorationWant}
+                            value={bookingDetails?.userDetails?.wantDec || null}
                             onChange={(e, newValue) =>
-                              newValue &&
-                              setLot({
-                                ...lot,
-                                lotNo: newValue,
+                              setBookingDetails({
+                                ...bookingDetails,
+                                userDetails: {
+                                  ...bookingDetails.userDetails,
+                                  wantDec: newValue,
+                                },
                               })
                             }
-                            // getOptionLabel={(auction) => 'Auction ' + auction.auctionNo.toString()}
+                            getOptionLabel={(option) => option.toString()} // Display the option as a string
                             renderInput={(params) => (
                               <TextField
                                 {...params}
-                                placeholder="Do You Want DecorationNo"
-                                // required
+                                placeholder="You want decoration"
                                 variant="standard"
                                 sx={{
                                   background: "#f4f5f4",
@@ -1116,7 +1107,7 @@ function DecorationDetails() {
                         >
                           <Grid item xs={12}>
                             <Typography variant="h4">
-                              Total Cost: 1599
+                              Total Cost: {amount}
                             </Typography>
                           </Grid>
                           <Grid item xs={12}>
@@ -1142,6 +1133,12 @@ function DecorationDetails() {
                             }}
                             fullWidth
                           >
+                            {loading && (
+                              <CircularProgress
+                                sx={{ height: "15%" }}
+                                color="secondary"
+                              />
+                            )}
                             Next
                           </Button>
                           {/* </Link> */}
@@ -1890,7 +1887,7 @@ function DecorationDetails() {
             >
               <Typography variant="h5">Terms and conditions</Typography>
             </Grid>
-            <Link to={"/"}>
+            <Link to={"/decoration"}>
               <Button
                 sx={{ mt: 2 }}
                 onClick={() => {
@@ -1900,10 +1897,8 @@ function DecorationDetails() {
                 <ArrowBackIcon />
               </Button>
             </Link>
-            <Container></Container>
 
             <Box sx={{ ml: 8, mr: 8, mt: 2 }}></Box>
-
             <Grid
               alignContent={"center"}
               justifyContent={"center"}
@@ -1912,7 +1907,7 @@ function DecorationDetails() {
               <br />
 
               <Button
-                onClick={checkOutHandle}
+                // onClick={checkOutHandle}
                 variant="contained"
                 color="primary"
               >

@@ -221,7 +221,8 @@ console.log(amount, 'amount');
                   variant="outlined"
                   fullWidth
                 >
-                  11.00 am to 01.30 pm
+                  02.00 pm to 04.30 pm
+
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
@@ -230,7 +231,8 @@ console.log(amount, 'amount');
                   variant="outlined"
                   fullWidth
                 >
-                  11.00 am to 01.30 pm
+                   05.00 pm to 07.30 pm
+
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
@@ -240,7 +242,8 @@ console.log(amount, 'amount');
                   variant="outlined"
                   fullWidth
                 >
-                  11.00 am to 01.30 pm
+                  08.00 pm to 10.30 pm
+
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
@@ -290,7 +293,7 @@ console.log(amount, 'amount');
               // <Link to={"/decoration"}>
               <Link to={`/decoration/${slot}/${value}`}>
                 <Button
-                  onClick={handleClick}
+                  // onClick={handleClick}
                   sx={{ width: "100%", height: "10%" }}
                   variant="contained"
                 >

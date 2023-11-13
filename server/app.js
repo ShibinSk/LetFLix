@@ -36,7 +36,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 mongoose
-  .connect("mongodb+srv://letzFlix:Qowdjo5shwQPzHpN@cluster0.nckwdg3.mongodb.net/" ?? 'mongodb://127.0.0.1:27017/letzFlix')
+  .connect(process.env.MONGO_DB ?? 'mongodb://127.0.0.1:27017/letzFlix')
   .then(async () => {
     console.log('Connected to mongodb');
     console.log('Connected to mongodb');

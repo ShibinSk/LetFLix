@@ -6,6 +6,7 @@ import {
   Checkbox,
   CircularProgress,
   Container,
+  Divider,
   Grid,
   InputBase,
   InputLabel,
@@ -49,10 +50,10 @@ function DecorationDetails() {
   const [ShowOtp, setSHowOtp] = useState(false);
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
+  const [orderId, setOrderId] = useState("");
   // const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-  },[]);
+  useEffect(() => {}, []);
   const { slot, value } = useParams();
   const otp = {
     loop: true,
@@ -106,8 +107,24 @@ function DecorationDetails() {
   const handleCakeSelect = (option) => {
     console.log("Current amount:", amount);
     console.log(option);
-    setAmount((prev)=>prev+500)
-    
+    if (option === "Cake1") {
+      setAmount((prev) => prev + 500);
+    } else if (option === "Cake2") {
+      setAmount((prev) => prev + 3000);
+    } else if (option === "Cake3") {
+      setAmount((prev) => prev + 400);
+    } else if (option === "Cake4") {
+      setAmount((prev) => prev + 300);
+    } else if (option === "Cake5") {
+      setAmount((prev) => prev + 599);
+    } else if (option === "Cake6") {
+      setAmount((prev) => prev + 699);
+    } else if (option === "Cake7") {
+      setAmount((prev) => prev + 488);
+    } else if (option === "Cake8") {
+      setAmount((prev) => prev + 1);
+    }
+
     // setSelecteCake(option);
     setBookingDetails((prev) => ({
       ...prev,
@@ -153,6 +170,23 @@ function DecorationDetails() {
       const razor = new window.Razorpay(options);
       razor.open();
     });
+  };
+
+  const initiatePayment = () => {
+    console.log("ca;;");
+    BookingService.Checksum().then((res) => {
+      console.log("dd");
+      console.log(res.data);
+      setOrderId(res.data.ORDER_ID);
+      initiatePaytmPayment(res.data.ORDER_ID, res.data.CHECKSUMHASH);
+    });
+  };
+
+  const initiatePaytmPayment = (orderID, checksum) => {
+    console.log("inn");
+    const paytmURL = `https://securegw.paytm.in/theia/processTransaction?ORDER_ID=${orderID}&CHECKSUMHASH=${checksum}`;
+    // Redirect the user to the Paytm payment gateway
+    window.location.href = paytmURL;
   };
 
   function onCaptchVerify() {
@@ -218,7 +252,7 @@ function DecorationDetails() {
   return (
     <>
       <Navbar />
-      <h1>{amount}</h1>
+      {/* <h1>{amount}</h1> */}
       <div
         style={{
           display: "flex",
@@ -260,143 +294,191 @@ function DecorationDetails() {
             <Container>
               <Grid container spacing={2}>
                 <Grid item xs={6} sm={6} md={4}>
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Birthday"
-                    checked={bookingDetails.type === "Birthday"}
-                    onChange={() => handleOptionSelect("Birthday")}
-                  />
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Birthday"
+                      checked={bookingDetails.type === "Birthday"}
+                      onChange={() => handleOptionSelect("Birthday")}
+                    />
 
-                  <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
-                    src="/2023-09-26.jpg"
-                    alt=""
-                  />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                    Birthday
-                  </Typography>
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "55%",
+                      }}
+                      src="/2023-09-26.jpg"
+                      alt=""
+                    />
+                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                      Birthday
+                    </Typography>
+                  </label>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Anniversary"
-                    checked={bookingDetails.type === "Anniversary"}
-                    onChange={() => handleOptionSelect("Anniversary")}
-                  />
-                  <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
-                    src="/2023-09-26.jpg"
-                    alt=""
-                  />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                    Anniversary
-                  </Typography>
-                </Grid>
-
-                <Grid item xs={6} sm={6} md={4}>
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Romantic Date"
-                    checked={bookingDetails.type === "Romantic Date"}
-                    onChange={() => handleOptionSelect("Romantic Date")}
-                  />
-                  <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
-                    src="/2023-09-26.jpg"
-                    alt=""
-                  />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                    Romantic Date
-                  </Typography>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Anniversary"
+                      checked={bookingDetails.type === "Anniversary"}
+                      onChange={() => handleOptionSelect("Anniversary")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "55%",
+                      }}
+                      src="/2023-09-26.jpg"
+                      alt=""
+                    />
+                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                      Anniversary
+                    </Typography>
+                  </label>
                 </Grid>
 
                 <Grid item xs={6} sm={6} md={4}>
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Marriage Proposal"
-                    checked={bookingDetails.type === "Marriage Proposal"}
-                    onChange={() => handleOptionSelect("Marriage Proposal")}
-                  />
-                  <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
-                    src="/2023-09-26.jpg"
-                    alt=""
-                  />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                    Marriage Proposal
-                  </Typography>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Romantic Date"
+                      checked={bookingDetails.type === "Romantic Date"}
+                      onChange={() => handleOptionSelect("Romantic Date")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "55%",
+                      }}
+                      src="/2023-09-26.jpg"
+                      alt=""
+                    />
+                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                      Romantic Date
+                    </Typography>
+                  </label>
+                </Grid>
+
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Marriage Proposal"
+                      checked={bookingDetails.type === "Marriage Proposal"}
+                      onChange={() => handleOptionSelect("Marriage Proposal")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "55%",
+                      }}
+                      src="/2023-09-26.jpg"
+                      alt=""
+                    />
+                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                      Marriage Proposal
+                    </Typography>
+                  </label>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Bride to be"
-                    checked={bookingDetails.type === "Bride to be"}
-                    onChange={() => handleOptionSelect("Bride to be")}
-                  />
-                  <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
-                    src="/2023-09-26.jpg"
-                    alt=""
-                  />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                    Bride to be
-                  </Typography>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Bride to be"
+                      checked={bookingDetails.type === "Bride to be"}
+                      onChange={() => handleOptionSelect("Bride to be")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "55%",
+                      }}
+                      src="/2023-09-26.jpg"
+                      alt=""
+                    />
+                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                      Bride to be
+                    </Typography>
+                  </label>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Farewell"
-                    checked={bookingDetails.type === "Farewell"}
-                    onChange={() => handleOptionSelect("Farewell")}
-                  />
-                  <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
-                    src="/2023-09-26.jpg"
-                    alt=""
-                  />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                    Farewell
-                  </Typography>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Farewell"
+                      checked={bookingDetails.type === "Farewell"}
+                      onChange={() => handleOptionSelect("Farewell")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "55%",
+                      }}
+                      src="/2023-09-26.jpg"
+                      alt=""
+                    />
+                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                      Farewell
+                    </Typography>
+                  </label>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Congratulations"
-                    checked={bookingDetails.type === "Congratulations"}
-                    onChange={() => handleOptionSelect("Congratulations")}
-                  />
-                  <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
-                    src="/2023-09-26.jpg"
-                    alt=""
-                  />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                    Congratulations
-                  </Typography>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Congratulations"
+                      checked={bookingDetails.type === "Congratulations"}
+                      onChange={() => handleOptionSelect("Congratulations")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "55%",
+                      }}
+                      src="/2023-09-26.jpg"
+                      alt=""
+                    />
+                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                      Congratulations
+                    </Typography>
+                  </label>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Baby Shower"
-                    checked={bookingDetails.type === "Baby Shower"}
-                    onChange={() => handleOptionSelect("Baby Shower")}
-                  />
-                  <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
-                    src="/2023-09-26.jpg"
-                    alt=""
-                  />
-                  <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                    Baby Shower
-                  </Typography>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Baby Shower"
+                      checked={bookingDetails.type === "Baby Shower"}
+                      onChange={() => handleOptionSelect("Baby Shower")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "55%",
+                      }}
+                      src="/2023-09-26.jpg"
+                      alt=""
+                    />
+                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
+                      Baby Shower
+                    </Typography>
+                  </label>
                 </Grid>
               </Grid>
             </Container>
@@ -570,6 +652,8 @@ function DecorationDetails() {
             <Container>
               <Grid container spacing={2}>
                 <Grid item xs={6} sm={6} md={4}>
+                  <label>
+
                   <Checkbox
                     type="radio"
                     name="options"
@@ -581,7 +665,7 @@ function DecorationDetails() {
                   />
 
                   <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
+                    style={{ width: "30%", borderRadius: "50%", height: "45%" }}
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
@@ -590,9 +674,10 @@ function DecorationDetails() {
                     fontWeight={"600"}
                     paddingLeft={"24%"}
                     paddingTop={"6px"}
-                  >
+                    >
                     Cake
                   </Typography>
+                    </label>
                   <Typography
                     paddingLeft={"20%"}
                     paddingTop={"5px"}
@@ -602,6 +687,8 @@ function DecorationDetails() {
                   </Typography>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
+                <label>
+
                   <Checkbox
                     type="radio"
                     name="options"
@@ -610,7 +697,7 @@ function DecorationDetails() {
                     onChange={() => handleCakeSelect("Cake2")}
                   />
                   <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
+                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
@@ -626,12 +713,15 @@ function DecorationDetails() {
                     paddingLeft={"20%"}
                     paddingTop={"5px"}
                     variant="h6"
-                  >
+                    >
                     ₹ 699
                   </Typography>
+                      </label>
                 </Grid>
 
                 <Grid item xs={6} sm={6} md={4}>
+                <label>
+
                   <Checkbox
                     type="radio"
                     name="options"
@@ -640,7 +730,7 @@ function DecorationDetails() {
                     onChange={() => handleCakeSelect("Cake3")}
                   />
                   <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
+                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
@@ -649,30 +739,33 @@ function DecorationDetails() {
                     fontWeight={"600"}
                     paddingLeft={"24%"}
                     paddingTop={"6px"}
-                  >
+                    >
                     Cake
                   </Typography>
                   <Typography
                     paddingLeft={"20%"}
                     paddingTop={"5px"}
                     variant="h6"
-                  >
+                    >
                     ₹ 699
                   </Typography>
+                    </label>
                 </Grid>
 
                 <Grid item xs={6} sm={6} md={4}>
+                <label>
+
                   <Checkbox
                     type="radio"
                     name="options"
                     value="Cake4"
                     checked={bookingDetails.cake === "Cake4"}
                     onChange={() => handleCakeSelect("Cake4")}
-                  />
+                    />
                   <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
-                    src="/birthday-cake-unsplash.webp"
-                    alt=""
+                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
+                      src="/birthday-cake-unsplash.webp"
+                      alt=""
                   />
                   <Typography
                     color={"orange"}
@@ -689,8 +782,11 @@ function DecorationDetails() {
                   >
                     ₹ 699
                   </Typography>
+                  </label>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
+                <label>
+
                   <Checkbox
                     type="radio"
                     name="options"
@@ -699,7 +795,7 @@ function DecorationDetails() {
                     onChange={() => handleCakeSelect("Cake5")}
                   />
                   <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
+                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
@@ -718,18 +814,21 @@ function DecorationDetails() {
                   >
                     ₹ 699
                   </Typography>
+                      </label>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
+                <label>
+
                   <Checkbox
                     type="radio"
                     name="options"
                     value="Cake6"
                     checked={bookingDetails.cake === "Cake6"}
                     onChange={() => handleCakeSelect("Cake6")}
-                  />
+                    />
                   <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
-                    src="/birthday-cake-unsplash.webp"
+                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
+                      src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
                   <Typography
@@ -744,11 +843,14 @@ function DecorationDetails() {
                     paddingLeft={"20%"}
                     paddingTop={"5px"}
                     variant="h6"
-                  >
+                    >
                     ₹ 699
                   </Typography>
+                    </label>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
+                <label>
+
                   <Checkbox
                     type="radio"
                     name="options"
@@ -757,7 +859,7 @@ function DecorationDetails() {
                     onChange={() => handleCakeSelect("Cake7")}
                   />
                   <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
+                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
@@ -773,11 +875,14 @@ function DecorationDetails() {
                     paddingLeft={"20%"}
                     paddingTop={"5px"}
                     variant="h6"
-                  >
+                    >
                     ₹ 699
                   </Typography>
+                    </label>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
+                <label>
+
                   <Checkbox
                     type="radio"
                     name="options"
@@ -786,7 +891,7 @@ function DecorationDetails() {
                     onChange={() => handleCakeSelect("Cake8")}
                   />
                   <img
-                    style={{ width: "50%", borderRadius: "50%", height: "60%" }}
+                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
                     src="/birthday-cake-unsplash.webp"
                     alt=""
                   />
@@ -805,6 +910,7 @@ function DecorationDetails() {
                   >
                     ₹ 699
                   </Typography>
+                    </label>
                 </Grid>
               </Grid>
             </Container>
@@ -1897,7 +2003,58 @@ function DecorationDetails() {
                 <ArrowBackIcon />
               </Button>
             </Link>
-
+            <Container>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Typography
+                    style={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    1. Couples under 18 years of age are not allowed to book the
+                    theatre
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Divider />
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography>
+                    2. We do NOT provide any movie/OTT accounts. We will do the
+                    setup using your OTT accounts/downloaded content.
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Divider />
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography>
+                    3. Smoking/Drinking is NOT allowed inside the theater.
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Divider />
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography>
+                    4. Any DAMAGE caused to theater, including decorative
+                    materials like balloons, lights etc will have to be
+                    reimbursed.
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Divider />
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography>
+                    5. Guests are requested to maintain CLEANLINESS inside the
+                    theater
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Container>
             <Box sx={{ ml: 8, mr: 8, mt: 2 }}></Box>
             <Grid
               alignContent={"center"}
@@ -1907,7 +2064,7 @@ function DecorationDetails() {
               <br />
 
               <Button
-                // onClick={checkOutHandle}
+                onClick={initiatePayment}
                 variant="contained"
                 color="primary"
               >

@@ -30,7 +30,7 @@ import "react-calendar/dist/Calendar.css";
 import { Link, useNavigate } from "react-router-dom";
 import BookingService from "./BookingService";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import { amountContext } from "../../../common/ContextApi";
 
 const SlotCheck = () => {
@@ -58,14 +58,12 @@ const SlotCheck = () => {
     },
   ];
 
-
-  
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const [value, setValue] = React.useState(dayjs());
   const [slot, setSlot] = useState("");
   const maxSteps = images.length;
-  const { amount,setAmount  } = useContext(amountContext);
+  const { amount, setAmount } = useContext(amountContext);
   //   const [value, onChange] = useState(new Date());
   console.log(slot);
   console.log(value);
@@ -80,15 +78,15 @@ const SlotCheck = () => {
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
-  const handleClick=()=>{
-    console.log('Clicked');
+  const handleClick = () => {
+    console.log("Clicked");
     const dataToPass = {
-      value/* value for state1 */,
+      value /* value for state1 */,
       slot /* value for state2 */,
     };
     // navigate('/decoration', { state: dataToPass });
-  }
-console.log(amount, 'amount');
+  };
+  console.log(amount, "amount");
   useEffect(() => {
     BookingService.test().then((res) => {
       console.log(res.data);
@@ -204,55 +202,76 @@ console.log(amount, 'amount');
                 {/* <Calendar onChange={onChange} value={value} /> */}
               </Grid>
             </Grid>
+            {/* <a
+              href=""
+              className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
+            >
+              <BottomNavigation
+                showLabels
+                value={0}
+                className="nav-item nav-link active"
+                style={{
+                  backgroundColor: "transparent",
+                  height: "10px",
+                  width: "50px",
+                  paddingBottom: "5px",
+                }}
+              ></BottomNavigation>
 
+              <h6> 11.00 am to 01.30 pm</h6>
+            </a> */}
             <Grid container spacing={2}>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Button
+               
+                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
+                  // style={{ backgroundColor: 'transparent',height:'50',width:'50px',paddingBottom:'5px' }}
                   onClick={() => setSlot("1")}
                   variant="outlined"
                   fullWidth
                 >
-                  11.00 am to 01.30 pm
+                  <h6>11.00 am to 01.30 pm</h6>
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Button
+                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
                   onClick={() => setSlot("2")}
                   variant="outlined"
                   fullWidth
                 >
-                  02.00 pm to 04.30 pm
-
+                  <h6> 02.00 pm to 04.30 pm</h6>
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Button
+                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
                   onClick={() => setSlot("3")}
                   variant="outlined"
                   fullWidth
                 >
-                   05.00 pm to 07.30 pm
-
+                  <h6>05.00 pm to 07.30 pm</h6>
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Grid item lg></Grid>
                 <Button
+                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
                   onClick={() => setSlot("4")}
                   variant="outlined"
                   fullWidth
                 >
-                  08.00 pm to 10.30 pm
-
+                  <h6>08.00 pm to 10.30 pm</h6>
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Button
+                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
                   onClick={() => setSlot("5")}
                   variant="outlined"
                   fullWidth
                 >
-                  11.00 am to 01.30 pm
+                  <h6> 11.00 am to 01.30 pm</h6>
                 </Button>
               </Grid>
               <Grid item lg></Grid>
@@ -299,7 +318,7 @@ console.log(amount, 'amount');
                 >
                   Book Now
                 </Button>
-               </Link>
+              </Link>
             )}
           </Grid>
         </Grid>

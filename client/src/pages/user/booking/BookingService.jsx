@@ -7,4 +7,8 @@ export default{
     key: () => getStandardResponse(axios.get('/getkey')),
 
     checkout: (amount) => getStandardResponse(axios.post('/checkOut',{amount})),
+
+
+
+    Checksum: () => getStandardResponse(axios.post('/generateChecksum')),
 }

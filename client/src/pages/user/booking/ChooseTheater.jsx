@@ -24,9 +24,8 @@ import {
 import PeopleIcon from "@mui/icons-material/People";
 import { amountContext } from "../../../common/ContextApi.jsx";
 
-
 const ChooseTheater = () => {
-  const { amount,setAmount  } = useContext(amountContext);
+  const { amount, setAmount } = useContext(amountContext);
   const [selectedDate, setSelectedDate] = useState("");
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
@@ -108,12 +107,15 @@ const ChooseTheater = () => {
                             Standard Theatre
                           </Typography>
                           <CardActionArea>
-                            <CardMedia
-                              component="img"
-                              height="140"
-                              image="/2023-09-26.jpg"
-                              alt="green iguana"
-                            />
+                            <Link to="/T1Gallery">
+                              <CardMedia
+                                component="img"
+                                height="140"
+                                image="/2023-09-26.jpg"
+                                alt="green iguana"
+                              />
+                            </Link>
+
                             <CardContent>
                               {/* <Typography
                                   gutterBottom
@@ -155,11 +157,12 @@ const ChooseTheater = () => {
                                       color="primary" // Set the color you desire
                                       component={Link}
                                       to="/checkSlot"
-                                      onClick={()=>{
-                                        setAmount(1699)
+                                      className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
+                                      style={{height:'93%'}}
+                                      onClick={() => {
+                                        setAmount(1699);
                                       }}
                                     >
-                                      
                                       Check Slot
                                     </Button>
                                   }
@@ -189,12 +192,15 @@ const ChooseTheater = () => {
                             Romantic Theatre
                           </Typography>
                           <CardActionArea>
+                          <Link to="/T2Gallery">
+
                             <CardMedia
                               component="img"
                               height="140"
                               image="/2023-09-26.jpg"
                               alt="green iguana"
                             />
+                          </Link>
                             <CardContent>
                               <Typography
                                 variant="h6"
@@ -225,9 +231,11 @@ const ChooseTheater = () => {
                                   // label="Check Slot"
                                   icon={
                                     <Button
-                                    onClick={()=>{
-                                      setAmount(1000)
-                                    }}
+                                      onClick={() => {
+                                        setAmount(1000);
+                                      }}
+                                      className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
+                                      style={{height:'93%'}}
                                       variant="contained"
                                       color="primary" // Set the color you desire
                                       component={Link}
@@ -250,7 +258,6 @@ const ChooseTheater = () => {
                                   paddingLeft: "5px",
                                   // color:'blue'
                                 }}
-                                
                                 variant={"h5"}
                               >
                                 2 Peoples only

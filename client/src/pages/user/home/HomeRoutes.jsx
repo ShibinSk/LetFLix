@@ -1,4 +1,7 @@
 
+import T1Gallery from '../../../components/T1Gallery';
+import T2Gallery from '../../../components/T2Gallery';
+import Test from '../../../components/Test';
 import About from '../About';
 import Contact from '../Contact';
 import Faq from '../Faq';
@@ -27,6 +30,10 @@ export default [
   { path: '/bookingDetails', element: <BookingDetails /> },
   { path: '/decoration/:slot/:value/', element: <DecorationDetails /> },
   { path: '/paymentSuccess', element: <PaymentSuccess /> },
+  { path: '/T1Gallery', element: <T1Gallery /> },
+  { path: '/T2Gallery', element: <T2Gallery/> },
+  { path: '/Test', element: <Test/> },
+
  
 
 ];

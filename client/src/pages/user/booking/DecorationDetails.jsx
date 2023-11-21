@@ -90,6 +90,13 @@ function DecorationDetails() {
       numberOfPeoples: "",
       wantDec: false,
     },
+    extraDec:{
+      dec1:'',
+      dec2:'',
+      dec3:''
+      
+    }
+
   });
   console.log(bookingDetails, "s");
 
@@ -129,6 +136,35 @@ function DecorationDetails() {
     setBookingDetails((prev) => ({
       ...prev,
       cake: option,
+    }));
+  };
+  const handleExtraDec = (option) => {
+    console.log("Current amount:", amount);
+    console.log(option);
+    if (option === "Cake1") {
+      setAmount((prev) => prev + 500);
+    } else if (option === "Cake2") {
+      setAmount((prev) => prev + 3000);
+    } else if (option === "Cake3") {
+      setAmount((prev) => prev + 400);
+    } else if (option === "Cake4") {
+      setAmount((prev) => prev + 300);
+    } else if (option === "Cake5") {
+      setAmount((prev) => prev + 599);
+    } else if (option === "Cake6") {
+      setAmount((prev) => prev + 699);
+    } else if (option === "Cake7") {
+      setAmount((prev) => prev + 488);
+    } else if (option === "Cake8") {
+      setAmount((prev) => prev + 1);
+    }
+
+    // setSelecteCake(option);
+    setBookingDetails((prev) => ({
+      ...prev,
+      extraDec:{
+
+      },
     }));
   };
 
@@ -653,264 +689,288 @@ function DecorationDetails() {
               <Grid container spacing={2}>
                 <Grid item xs={6} sm={6} md={4}>
                   <label>
-
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Cake1"
-                    // onClick={() => setAmount(0)}
-                    // onClick={ setAmount((prevAmount) => prevAmount + 500)}
-                    checked={bookingDetails.cake === "Cake1"}
-                    onChange={() => handleCakeSelect("Cake1")}
-                  />
-
-                  <img
-                    style={{ width: "30%", borderRadius: "50%", height: "45%" }}
-                    src="/birthday-cake-unsplash.webp"
-                    alt=""
-                  />
-                  <Typography
-                    color={"orange"}
-                    fontWeight={"600"}
-                    paddingLeft={"24%"}
-                    paddingTop={"6px"}
-                    >
-                    Cake
-                  </Typography>
-                    </label>
-                  <Typography
-                    paddingLeft={"20%"}
-                    paddingTop={"5px"}
-                    variant="h6"
-                  >
-                    ₹ 699
-                  </Typography>
-                </Grid>
-                <Grid item xs={6} sm={6} md={4}>
-                <label>
-
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Cake2"
-                    checked={bookingDetails.cake === "Cake2"}
-                    onChange={() => handleCakeSelect("Cake2")}
-                  />
-                  <img
-                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
-                    src="/birthday-cake-unsplash.webp"
-                    alt=""
-                  />
-                  <Typography
-                    color={"orange"}
-                    fontWeight={"600"}
-                    paddingLeft={"24%"}
-                    paddingTop={"6px"}
-                  >
-                    Cake
-                  </Typography>
-                  <Typography
-                    paddingLeft={"20%"}
-                    paddingTop={"5px"}
-                    variant="h6"
-                    >
-                    ₹ 699
-                  </Typography>
-                      </label>
-                </Grid>
-
-                <Grid item xs={6} sm={6} md={4}>
-                <label>
-
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Cake3"
-                    checked={bookingDetails.cake === "Cake3"}
-                    onChange={() => handleCakeSelect("Cake3")}
-                  />
-                  <img
-                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
-                    src="/birthday-cake-unsplash.webp"
-                    alt=""
-                  />
-                  <Typography
-                    color={"orange"}
-                    fontWeight={"600"}
-                    paddingLeft={"24%"}
-                    paddingTop={"6px"}
-                    >
-                    Cake
-                  </Typography>
-                  <Typography
-                    paddingLeft={"20%"}
-                    paddingTop={"5px"}
-                    variant="h6"
-                    >
-                    ₹ 699
-                  </Typography>
-                    </label>
-                </Grid>
-
-                <Grid item xs={6} sm={6} md={4}>
-                <label>
-
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Cake4"
-                    checked={bookingDetails.cake === "Cake4"}
-                    onChange={() => handleCakeSelect("Cake4")}
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake1"
+                      // onClick={() => setAmount(0)}
+                      // onClick={ setAmount((prevAmount) => prevAmount + 500)}
+                      checked={bookingDetails.cake === "Cake1"}
+                      onChange={() => handleCakeSelect("Cake1")}
                     />
-                  <img
-                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
+
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/product-jpeg.jpg"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Cake
+                    </Typography>
+                  </label>
+                  <Typography
+                    paddingLeft={"20%"}
+                    paddingTop={"5px"}
+                    variant="h6"
+                  >
+                    ₹ 699
+                  </Typography>
+                </Grid>
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake2"
+                      checked={bookingDetails.cake === "Cake2"}
+                      onChange={() => handleCakeSelect("Cake2")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
                       src="/birthday-cake-unsplash.webp"
                       alt=""
-                  />
-                  <Typography
-                    color={"orange"}
-                    fontWeight={"600"}
-                    paddingLeft={"24%"}
-                    paddingTop={"6px"}
-                  >
-                    Cake
-                  </Typography>
-                  <Typography
-                    paddingLeft={"20%"}
-                    paddingTop={"5px"}
-                    variant="h6"
-                  >
-                    ₹ 699
-                  </Typography>
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Cake
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
+                </Grid>
+
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake3"
+                      checked={bookingDetails.cake === "Cake3"}
+                      onChange={() => handleCakeSelect("Cake3")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/birthday-cake-unsplash.webp"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Cake
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
+                </Grid>
+
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake4"
+                      checked={bookingDetails.cake === "Cake4"}
+                      onChange={() => handleCakeSelect("Cake4")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/birthday-cake-unsplash.webp"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Cake
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
                   </label>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
-                <label>
-
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Cake5"
-                    checked={bookingDetails.cake === "Cake5"}
-                    onChange={() => handleCakeSelect("Cake5")}
-                  />
-                  <img
-                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
-                    src="/birthday-cake-unsplash.webp"
-                    alt=""
-                  />
-                  <Typography
-                    color={"orange"}
-                    fontWeight={"600"}
-                    paddingLeft={"24%"}
-                    paddingTop={"6px"}
-                  >
-                    Cake
-                  </Typography>
-                  <Typography
-                    paddingLeft={"20%"}
-                    paddingTop={"5px"}
-                    variant="h6"
-                  >
-                    ₹ 699
-                  </Typography>
-                      </label>
-                </Grid>
-                <Grid item xs={6} sm={6} md={4}>
-                <label>
-
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Cake6"
-                    checked={bookingDetails.cake === "Cake6"}
-                    onChange={() => handleCakeSelect("Cake6")}
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake5"
+                      checked={bookingDetails.cake === "Cake5"}
+                      onChange={() => handleCakeSelect("Cake5")}
                     />
-                  <img
-                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
                       src="/birthday-cake-unsplash.webp"
-                    alt=""
-                  />
-                  <Typography
-                    color={"orange"}
-                    fontWeight={"600"}
-                    paddingLeft={"24%"}
-                    paddingTop={"6px"}
-                  >
-                    Cake
-                  </Typography>
-                  <Typography
-                    paddingLeft={"20%"}
-                    paddingTop={"5px"}
-                    variant="h6"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
                     >
-                    ₹ 699
-                  </Typography>
-                    </label>
+                      Cake
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
-                <label>
-
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Cake7"
-                    checked={bookingDetails.cake === "Cake7"}
-                    onChange={() => handleCakeSelect("Cake7")}
-                  />
-                  <img
-                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
-                    src="/birthday-cake-unsplash.webp"
-                    alt=""
-                  />
-                  <Typography
-                    color={"orange"}
-                    fontWeight={"600"}
-                    paddingLeft={"24%"}
-                    paddingTop={"6px"}
-                  >
-                    Cake
-                  </Typography>
-                  <Typography
-                    paddingLeft={"20%"}
-                    paddingTop={"5px"}
-                    variant="h6"
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake6"
+                      checked={bookingDetails.cake === "Cake6"}
+                      onChange={() => handleCakeSelect("Cake6")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/birthday-cake-unsplash.webp"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
                     >
-                    ₹ 699
-                  </Typography>
-                    </label>
+                      Cake
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
                 </Grid>
                 <Grid item xs={6} sm={6} md={4}>
-                <label>
-
-                  <Checkbox
-                    type="radio"
-                    name="options"
-                    value="Cake8"
-                    checked={bookingDetails.cake === "Cake8"}
-                    onChange={() => handleCakeSelect("Cake8")}
-                  />
-                  <img
-                      style={{ width: "30%", borderRadius: "50%", height: "45%" }}
-                    src="/birthday-cake-unsplash.webp"
-                    alt=""
-                  />
-                  <Typography
-                    color={"orange"}
-                    fontWeight={"600"}
-                    paddingLeft={"24%"}
-                    paddingTop={"6px"}
-                  >
-                    Cake
-                  </Typography>
-                  <Typography
-                    paddingLeft={"20%"}
-                    paddingTop={"5px"}
-                    variant="h6"
-                  >
-                    ₹ 699
-                  </Typography>
-                    </label>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake7"
+                      checked={bookingDetails.cake === "Cake7"}
+                      onChange={() => handleCakeSelect("Cake7")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/birthday-cake-unsplash.webp"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Cake
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
+                </Grid>
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake8"
+                      checked={bookingDetails.cake === "Cake8"}
+                      onChange={() => handleCakeSelect("Cake8")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/birthday-cake-unsplash.webp"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Cake
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
                 </Grid>
               </Grid>
             </Container>
@@ -954,6 +1014,412 @@ function DecorationDetails() {
         )}
 
         {step === "2" && (
+          <Card
+            sx={{
+              background: "white",
+              width: "90%",
+              height: "80%",
+              borderRadius: 4,
+              overflow: "scroll",
+            }}
+          >
+            <Grid
+              alignContent={"center"}
+              justifyContent={"center"}
+              display={"flex"}
+            >
+              <Typography style={{ textDecoration: "underline" }} variant="h5">
+                ADONS
+              </Typography>
+              <br />
+              <Typography variant="h6">(Optional)</Typography>
+            </Grid>
+            <Link to={"/"}>
+              <Button
+                sx={{ mt: 2 }}
+                onClick={() => {
+                  setStep(0);
+                }}
+              >
+                <ArrowBackIcon />
+              </Button>
+            </Link>
+            <Container>
+              <Grid container spacing={2}>
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake1"
+                      // onClick={() => setAmount(0)}
+                      // onClick={ setAmount((prevAmount) => prevAmount + 500)}
+                      checked={bookingDetails.cake === "Cake1"}
+                      onChange={() => handleCakeSelect("Cake1")}
+                    />
+
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/product-jpeg.jpg"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Rose Heart
+                    </Typography>
+                  </label>
+                  <Typography
+                    paddingLeft={"20%"}
+                    paddingTop={"5px"}
+                    variant="h6"
+                  >
+                    ₹ 699
+                  </Typography>
+                </Grid>
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake2"
+                      checked={bookingDetails.cake === "Cake2"}
+                      onChange={() => handleCakeSelect("Cake2")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/product-jpeg.jpg"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Rose Heart
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
+                </Grid>
+
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake3"
+                      checked={bookingDetails.cake === "Cake3"}
+                      onChange={() => handleCakeSelect("Cake3")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/product-jpeg.jpg"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Rose Heart
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
+                </Grid>
+                <Grid></Grid>
+              </Grid>
+            </Container>
+
+            
+            <Container>
+              <Grid container spacing={2}>
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake1"
+                      // onClick={() => setAmount(0)}
+                      // onClick={ setAmount((prevAmount) => prevAmount + 500)}
+                      // checked={bookingDetails.cake === "Cake1"}
+                      // onChange={() => handleCakeSelect("Cake1")}
+                    />
+
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/product-jpeg.jpg"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Rose Heart
+                    </Typography>
+                  </label>
+                  <Typography
+                    paddingLeft={"20%"}
+                    paddingTop={"5px"}
+                    variant="h6"
+                  >
+                    ₹ 699
+                  </Typography>
+                </Grid>
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake2"
+                      // checked={bookingDetails.cake === "Cake2"}
+                      // onChange={() => handleCakeSelect("Cake2")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/product-jpeg.jpg"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Rose Heart
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
+                </Grid>
+
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake3"
+                      // checked={bookingDetails.cake === "Cake3"}
+                      // onChange={() => handleCakeSelect("Cake3")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/product-jpeg.jpg"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Rose Heart
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
+                </Grid>
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake3"
+                      // checked={bookingDetails.cake === "Cake3"}
+                      // onChange={() => handleCakeSelect("Cake3")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/product-jpeg.jpg"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Rose Heart
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
+                </Grid>
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake3"
+                      // checked={bookingDetails.cake === "Cake3"}
+                      // onChange={() => handleCakeSelect("Cake3")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/product-jpeg.jpg"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Rose Heart
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
+                </Grid>
+                <Grid item xs={6} sm={6} md={4}>
+                  <label>
+                    <Checkbox
+                      type="radio"
+                      name="options"
+                      value="Cake3"
+                      // checked={bookingDetails.cake === "Cake3"}
+                      // onChange={() => handleCakeSelect("Cake3")}
+                    />
+                    <img
+                      style={{
+                        width: "30%",
+                        borderRadius: "50%",
+                        height: "45%",
+                      }}
+                      src="/product-jpeg.jpg"
+                      alt=""
+                    />
+                    <Typography
+                      color={"orange"}
+                      fontWeight={"600"}
+                      paddingLeft={"24%"}
+                      paddingTop={"6px"}
+                    >
+                      Rose Heart
+                    </Typography>
+                    <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                  </label>
+                </Grid>
+                <Grid></Grid>
+              </Grid>
+            </Container>
+
+            <Box sx={{ ml: 8, mr: 8, mt: 2 }}></Box>
+            <Grid
+              alignContent={"center"}
+              justifyContent={"center"}
+              display={"flex"}
+              fontSize={""}
+            >
+              <Grid item sx={6}>
+                <Typography variant="h5">Total Cost: {amount}</Typography>
+              </Grid>
+              {/* <Grid item sx={6}>
+                      <Typography variant="h5">Total Cost: 000</Typography>
+                    </Grid> */}
+              <br />
+            </Grid>
+            <br />
+            <br />
+            <Grid
+              alignContent={"center"}
+              justifyContent={"center"}
+              display={"flex"}
+            >
+              <br />
+
+              <Button
+                onClick={() => {
+                  setStep("3");
+                  navigator;
+                }}
+                variant="contained"
+                color="primary"
+              >
+                Next
+              </Button>
+            </Grid>
+            <br />
+          </Card>
+        )}
+
+        {step === "3" && (
           <>
             <div>
               <Container>
@@ -1171,7 +1637,7 @@ function DecorationDetails() {
                             )}
                           />
                         </Grid>
-                        <Grid item xs={12}>
+                        {/* <Grid item xs={12}>
                           <Autocomplete
                             options={decorationWant}
                             value={bookingDetails?.userDetails?.wantDec || null}
@@ -1198,7 +1664,7 @@ function DecorationDetails() {
                               />
                             )}
                           />
-                        </Grid>
+                        </Grid> */}
                         <br />
                         <br />
 
@@ -1261,283 +1727,7 @@ function DecorationDetails() {
           </>
         )}
 
-        {step === "3" && (
-          <>
-            <div>
-              <Container>
-                {/* <h2 style={{ textAlign: 'center' }}>Add New Lot</h2> */}
-                <br />
-                <Box sx={{ width: "100%", typography: "body1" }}>
-                  <Container maxWidth="sm">
-                    <Grid container spacing={2}>
-                      <Grid item xs={12}>
-                        <Typography variant="h4">Standard Theatre</Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography variant="subtitle1">
-                          <CalendarMonthIcon /> Date: 14/12/2023
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Typography variant="subtitle1">
-                          <AccessTimeIcon /> Time: 10:00 PM - 1:00 AM
-                        </Typography>
-                      </Grid>
-                    </Grid>
-
-                    {/* <Stepper activeStep={activeStep}>
-              <Step>
-                <StepLabel>Basic</StepLabel>
-              </Step>
-              <Step>
-                <StepLabel>Quality</StepLabel>
-              </Step>
-            </Stepper> */}
-                  </Container>
-                  <br />
-                  {activeStep == 0 && (
-                    <form
-                      onSubmit={(e) => {
-                        // e.preventDefault();
-                        // if (!lot.attachments.pic) {
-                        //   setWarning('Image is missing');
-                        //   setOpen(true);
-                        // } else if (!lot.attachments.video) {
-                        //   setWarning('Video is missing');
-                        //   setOpen(true);
-                        // } else {
-                        //   setActiveStep(1);
-                        // }
-                      }}
-                    >
-                      <Grid container spacing={2}>
-                        {/* <Grid item xs={12}>
-                  <Autocomplete
-                    options={auctions ?? []}
-                    value={lot.auction ?? null}
-                    onChange={(e, newValue) =>
-                      newValue &&
-                      setLot({
-                        ...lot,
-                        auction: newValue,
-                      })
-                    }
-                    // getOptionLabel={(auction) =>
-                    //   auction._id == ''
-                    //     ? ''
-                    //     : 'Auction ' + auction.auctionNo.toString() + (auction.date ? ' (' + auction.date?.format('DD/MM/YYYY hh:mm A') + ')' : '')
-                    // }
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        placeholder="Auction"
-                        required
-                        variant="standard"
-                        sx={{
-                          background: '#f4f5f4',
-                          borderRadius: 50,
-                          padding: 2,
-                        }}
-                      />
-                    )}
-                  />
-                </Grid> */}
-
-                        {/* <Grid item xs={12}>
-                  <Autocomplete
-                    options={users ?? []}
-                    // value={lot.seller ?? null}
-                    // onChange={(e, newValue) => newValue && setLot((req) => ({ ...req, seller: newValue }))}
-                    getOptionLabel={(user) => user.name}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        placeholder="Seller"
-                        variant="standard"
-                        required
-                        sx={{
-                          background: '#f4f5f4',
-                          borderRadius: 50,
-                          padding: 2,
-                        }}
-                      />
-                    )}
-                  />
-                </Grid> */}
-                        <Grid item xs={12}>
-                          <InputBase
-                            type="text"
-                            value={lot.color}
-                            onChange={(e) =>
-                              setLot({
-                                ...lot,
-                                color: e.target.value,
-                              })
-                            }
-                            placeholder="Name"
-                            sx={{
-                              background: "#f4f5f4",
-                              borderRadius: 50,
-                              padding: 2,
-                            }}
-                            disabled={loading}
-                            fullWidth
-                            required
-                          />
-                        </Grid>
-                        <Grid item xs={12}>
-                          <InputBase
-                            type="Number"
-                            value={lot.color}
-                            onChange={(e) =>
-                              setLot({
-                                ...lot,
-                                color: e.target.value,
-                              })
-                            }
-                            placeholder="Phone Number"
-                            sx={{
-                              background: "#f4f5f4",
-                              borderRadius: 50,
-                              padding: 2,
-                            }}
-                            disabled={loading}
-                            fullWidth
-                            required
-                          />
-                        </Grid>
-                        <Grid item xs={12}>
-                          <InputBase
-                            type="Email"
-                            value={lot.color}
-                            onChange={(e) =>
-                              setLot({
-                                ...lot,
-                                color: e.target.value,
-                              })
-                            }
-                            placeholder="Email"
-                            sx={{
-                              background: "#f4f5f4",
-                              borderRadius: 50,
-                              padding: 2,
-                            }}
-                            disabled={loading}
-                            fullWidth
-                            // required
-                          />
-                        </Grid>
-                        <Grid item xs={12}>
-                          <Autocomplete
-                            options={availableSlots ?? []}
-                            value={lot.lotNo ?? null}
-                            getOptionLabel={(_lot) =>
-                              lot.lotNo == -1 ? "" : "Lot #" + _lot
-                            }
-                            onChange={(e, newValue) =>
-                              newValue &&
-                              setLot({
-                                ...lot,
-                                lotNo: newValue,
-                              })
-                            }
-                            // getOptionLabel={(auction) => 'Auction ' + auction.auctionNo.toString()}
-                            renderInput={(params) => (
-                              <TextField
-                                {...params}
-                                placeholder="Number Of People"
-                                required
-                                variant="standard"
-                                sx={{
-                                  background: "#f4f5f4",
-                                  borderRadius: 50,
-                                  padding: 2,
-                                }}
-                              />
-                            )}
-                          />
-                        </Grid>
-                        <Grid item xs={12}>
-                          <Autocomplete
-                            options={availableSlots ?? []}
-                            value={lot.lotNo ?? null}
-                            getOptionLabel={(_lot) =>
-                              lot.lotNo == -1 ? "" : "Lot #" + _lot
-                            }
-                            onChange={(e, newValue) =>
-                              newValue &&
-                              setLot({
-                                ...lot,
-                                lotNo: newValue,
-                              })
-                            }
-                            // getOptionLabel={(auction) => 'Auction ' + auction.auctionNo.toString()}
-                            renderInput={(params) => (
-                              <TextField
-                                {...params}
-                                placeholder="Do You Want DecorationNo"
-                                // required
-                                variant="standard"
-                                sx={{
-                                  background: "#f4f5f4",
-                                  borderRadius: 50,
-                                  padding: 2,
-                                }}
-                              />
-                            )}
-                          />
-                        </Grid>
-                        <br />
-                        <br />
-
-                        <Grid
-                          container
-                          spacing={2}
-                          sx={{
-                            alignItems: "center",
-                            justifyContent: "center",
-                            textAlign: "center",
-                          }}
-                        >
-                          <Grid item xs={12}>
-                            <Typography variant="h4">
-                              Total Cost: 1599
-                            </Typography>
-                          </Grid>
-                          <Grid item xs={12}>
-                            <Typography variant="subtitle1">
-                              (All taxes included)
-                            </Typography>
-                          </Grid>
-                        </Grid>
-
-                        <Grid item xs={12}>
-                          <Button
-                            onClick={() => setStep("4")}
-                            type="submit"
-                            variant="contained"
-                            sx={{
-                              mt: 5,
-                              borderRadius: 50,
-                              padding: 2,
-                              marginRight: 2,
-                            }}
-                            fullWidth
-                          >
-                            Next
-                          </Button>
-                        </Grid>
-                      </Grid>
-                      <br />
-                      <br />
-                      <br />
-                    </form>
-                  )}
-                </Box>
-              </Container>
-            </div>
-          </>
-        )}
+       
 
         {ShowOtp ? (
           <div

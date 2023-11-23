@@ -40,6 +40,8 @@ function DecorationDetails() {
   const [isChecked, setIsChecked] = useState(false);
   // const [bookingDetails.type, setSelectedOption] = useState(null);
   // const [bookingDetails.cake , setSelecteCake] = useState(null);
+  const [discordChecked, setDiscordChecked] = useState(true);
+  const [framerChecked, setFramerChecked] = useState(true);
   const [price, setPrice] = useState("1000");
   const [key, setKey] = useState(null);
   const [step, setStep] = useState("0");
@@ -90,13 +92,11 @@ function DecorationDetails() {
       numberOfPeoples: "",
       wantDec: false,
     },
-    extraDec:{
-      dec1:'',
-      dec2:'',
-      dec3:''
-      
-    }
-
+    extraDec: {
+      dec1: "",
+      dec2: "",
+      dec3: "",
+    },
   });
   console.log(bookingDetails, "s");
 
@@ -162,9 +162,7 @@ function DecorationDetails() {
     // setSelecteCake(option);
     setBookingDetails((prev) => ({
       ...prev,
-      extraDec:{
-
-      },
+      extraDec: {},
     }));
   };
 
@@ -315,7 +313,7 @@ function DecorationDetails() {
               justifyContent={"center"}
               display={"flex"}
             >
-              <Typography variant="h5">Decretion details</Typography>
+              <Typography variant="h5">Choose Your Special Occasion</Typography>
             </Grid>
             <Link to={"/"}>
               <Button
@@ -327,9 +325,288 @@ function DecorationDetails() {
                 <ArrowBackIcon />
               </Button>
             </Link>
-            <Container>
+            <Container sx={{alignItems:'center', justifyContent:'center'}}>
               <Grid container spacing={2}>
-                <Grid item xs={6} sm={6} md={4}>
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.type === "Birthday"}
+                      onChange={() => handleOptionSelect("Birthday")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
+                        height: "45%",
+                      }}
+                      src="/product-jpeg.jpg"
+                      alt=""
+                    />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">BirthDay</h3>
+                    </span>
+                  </label>
+                </Grid>
+
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "12px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.type === "Anniversary"}
+                      onChange={() => handleOptionSelect("Anniversary")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        {/* You can replace this with an SVG for Discord */}
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                        style={{
+                            width: "70%",
+                        borderRadius: "12%",
+                        height: "45%",
+                        }}
+                        src="/product-jpeg.jpg"
+                        alt=""
+                      />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Anniversary</h3>
+                    </span>
+                  </label>
+                </Grid>
+
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "12px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.type === "Romantic Date"}
+                      onChange={() => handleOptionSelect("Romantic Date")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        {/* You can replace this with an SVG for Discord */}
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                        style={{
+                            width: "70%",
+                        borderRadius: "12%",
+                        height: "45%",
+                        }}
+                        src="/product-jpeg.jpg"
+                        alt=""
+                      />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Romantic Date</h3>
+                    </span>
+                  </label>
+                </Grid>
+
+                
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "12px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.type === "Bride to be"}
+                      onChange={() => handleOptionSelect("Bride to be")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        {/* You can replace this with an SVG for Discord */}
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                        style={{
+                            width: "70%",
+                        borderRadius: "12%",
+                        height: "45%",
+                        }}
+                        src="/product-jpeg.jpg"
+                        alt=""
+                      />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Bride to be</h3>
+                    </span>
+                  </label>
+                </Grid>
+              
+              </Grid>
+
+              <Grid container spacing={2}>
+                {/* <Grid item xs={6} sm={6} md={4}>
                   <label>
                     <Checkbox
                       type="radio"
@@ -352,8 +629,8 @@ function DecorationDetails() {
                       Birthday
                     </Typography>
                   </label>
-                </Grid>
-                <Grid item xs={6} sm={6} md={4}>
+                </Grid> */}
+                {/* <Grid item xs={6} sm={6} md={4}>
                   <label>
                     <Checkbox
                       type="radio"
@@ -375,9 +652,9 @@ function DecorationDetails() {
                       Anniversary
                     </Typography>
                   </label>
-                </Grid>
+                </Grid> */}
 
-                <Grid item xs={6} sm={6} md={4}>
+                {/* <Grid item xs={6} sm={6} md={4}>
                   <label>
                     <Checkbox
                       type="radio"
@@ -399,9 +676,9 @@ function DecorationDetails() {
                       Romantic Date
                     </Typography>
                   </label>
-                </Grid>
+                </Grid> */}
 
-                <Grid item xs={6} sm={6} md={4}>
+                {/* <Grid item xs={6} sm={6} md={4}>
                   <label>
                     <Checkbox
                       type="radio"
@@ -423,8 +700,8 @@ function DecorationDetails() {
                       Marriage Proposal
                     </Typography>
                   </label>
-                </Grid>
-                <Grid item xs={6} sm={6} md={4}>
+                </Grid> */}
+                {/* <Grid item xs={6} sm={6} md={4}>
                   <label>
                     <Checkbox
                       type="radio"
@@ -446,8 +723,8 @@ function DecorationDetails() {
                       Bride to be
                     </Typography>
                   </label>
-                </Grid>
-                <Grid item xs={6} sm={6} md={4}>
+                </Grid> */}
+                {/* <Grid item xs={6} sm={6} md={4}>
                   <label>
                     <Checkbox
                       type="radio"
@@ -469,8 +746,8 @@ function DecorationDetails() {
                       Farewell
                     </Typography>
                   </label>
-                </Grid>
-                <Grid item xs={6} sm={6} md={4}>
+                </Grid> */}
+                {/* <Grid item xs={6} sm={6} md={4}>
                   <label>
                     <Checkbox
                       type="radio"
@@ -492,8 +769,8 @@ function DecorationDetails() {
                       Congratulations
                     </Typography>
                   </label>
-                </Grid>
-                <Grid item xs={6} sm={6} md={4}>
+                </Grid> */}
+                {/* <Grid item xs={6} sm={6} md={4}>
                   <label>
                     <Checkbox
                       type="radio"
@@ -514,6 +791,285 @@ function DecorationDetails() {
                     <Typography paddingLeft={"24%"} paddingTop={"6px"}>
                       Baby Shower
                     </Typography>
+                  </label>
+                </Grid> */}
+              </Grid>
+            {/* </Container> */}
+            <br />
+            <br />
+           
+            
+              <Grid  container spacing={2}> 
+              <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "12px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.type === "Farewell"}
+                      onChange={() => handleOptionSelect("Farewell")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        {/* You can replace this with an SVG for Discord */}
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                        style={{
+                          width: "70%",
+                          borderRadius: "12%",
+                          height: "45%",
+                        }}
+                        src="/product-jpeg.jpg"
+                        alt=""
+                      />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Farewell</h3>
+                    </span>
+                  </label>
+                </Grid>
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "12px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.type === "Congratulations"}
+                      onChange={() => handleOptionSelect("Congratulations")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        {/* You can replace this with an SVG for Discord */}
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                        style={{
+                            width: "70%",
+                        borderRadius: "12%",
+                        height: "45%",
+                        }}
+                        src="/product-jpeg.jpg"
+                        alt=""
+                      />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Congratul <br /> ations</h3>
+                    </span>
+                  </label>
+                </Grid>
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "12px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.type === "Baby Shower"}
+                      onChange={() => handleOptionSelect("Baby Shower")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        {/* You can replace this with an SVG for Discord */}
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                        style={{
+                            width: "70%",
+                        borderRadius: "8%",
+                        height: "45%",
+                        }}
+                        src="/product-jpeg.jpg"
+                        alt=""
+                      />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Baby Shower</h3>
+                    </span>
+                  </label>
+                </Grid>
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "12px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.type === "Marriage Proposal"}
+                      onChange={() => handleOptionSelect("Marriage Proposal")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        {/* You can replace this with an SVG for Discord */}
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                        style={{
+                            width: "70%",
+                        borderRadius: "12%",
+                        height: "45%",
+                        }}
+                        src="/product-jpeg.jpg"
+                        alt=""
+                      />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Proposal</h3>
+                    </span>
                   </label>
                 </Grid>
               </Grid>
@@ -1159,7 +1715,6 @@ function DecorationDetails() {
               </Grid>
             </Container>
 
-            
             <Container>
               <Grid container spacing={2}>
                 <Grid item xs={6} sm={6} md={4}>
@@ -1726,8 +2281,6 @@ function DecorationDetails() {
             </div>
           </>
         )}
-
-       
 
         {ShowOtp ? (
           <div

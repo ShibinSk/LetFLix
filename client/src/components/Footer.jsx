@@ -31,22 +31,6 @@ function Footer() {
                   There cursus massa at urnaaculis estieSed aliquamellus vitae
                   ultrs condmentum leo massamollis its estiegittis miristum.
                 </p>
-                <Container>
-                  <Grid spacing={2}>
-                      <Grid></Grid>
-                <Iframe
-
-                  url="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15549.50105872033!2d77.6306175!3d13.0117583!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17d6baeb459b%3A0xa8879f452a632820!2sletzFlix!5e0!3m2!1sen!2sin!4v1700760374172!5m2!1sen!2sin"
-                  maxWidth="100%"
-                  height="450"
-                  id="myId"
-                  className="myClassname"
-                  display="initial"
-                  position="relative"
-                  allowFullScreen
-                />
-                  </Grid>
-                </Container>
                 <div className="footer-icon d-flex">
                   <a
                     className="btn btn-primary btn-sm-square me-2 rounded-circle"
@@ -151,7 +135,24 @@ function Footer() {
           </div> */}
           </div>
         </div>
-
+<br />
+        <Container>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Iframe
+                url="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15549.50105872033!2d77.6306175!3d13.0117583!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17d6baeb459b%3A0xa8879f452a632820!2sletzFlix!5e0!3m2!1sen!2sin!4v1700760374172!5m2!1sen!2sin"
+                width="100%" // Adjust the width as needed
+                height="450"
+                id="myId"
+                className="myClassname"
+                display="initial"
+                position="relative"
+                allowFullScreen
+              />
+            </Grid>
+          </Grid>
+        </Container>
+        <br />
         <div className="container-fluid copyright bg-dark py-4">
           <div className="container">
             <div className="row">

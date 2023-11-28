@@ -104,7 +104,7 @@ const ChooseTheater = () => {
                       <Grid item xs={12} sm={6} md={4}>
                         <Card sx={{ maxWidth: 345 }}>
                           <Typography variant={"h5"} sx={{ color: "#d4a762" }}>
-                            Standard Theatre
+                          Theatre Max
                           </Typography>
                           <CardActionArea>
                             <Link to="/T1Gallery">
@@ -129,9 +129,11 @@ const ChooseTheater = () => {
                                 sx={{ fontSize: "15px" }}
                                 color="text.primary"
                               >
-                                ₹999 for 4 or less people including taxes (Rs
-                                200 per extra person)
+                                Experience the magic for just ₹ 2100 (5ppl, 2.5
+                                hrs) with standard decoration.
                               </Typography>{" "}
+                              Additional guests 5, Rs. 200 each (Sofa seating)
+                              Max capacity: 8 persons.
                               <Typography
                                 gutterBottom
                                 variant="h6"
@@ -158,7 +160,7 @@ const ChooseTheater = () => {
                                       component={Link}
                                       to="/checkSlot"
                                       className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
-                                      style={{height:'93%'}}
+                                      style={{ height: "93%" }}
                                       onClick={() => {
                                         setAmount(1699);
                                       }}
@@ -192,21 +194,22 @@ const ChooseTheater = () => {
                             Romantic Theatre
                           </Typography>
                           <CardActionArea>
-                          <Link to="/T2Gallery">
-
-                            <CardMedia
-                              component="img"
-                              height="140"
-                              image="/2023-09-26.jpg"
-                              alt="green iguana"
-                            />
-                          </Link>
+                            <Link to="/T2Gallery">
+                              <CardMedia
+                                component="img"
+                                height="140"
+                                image="/2023-09-26.jpg"
+                                alt="green iguana"
+                              />
+                            </Link>
                             <CardContent>
                               <Typography
                                 variant="h6"
                                 sx={{ fontSize: "15px" }}
                                 color="text.primary"
                               >
+                                ₹1799 for 2 people including taxes (Decorations
+                                included)
                                 ₹1799 for 2 people including taxes (Decorations
                                 included)
                               </Typography>
@@ -235,7 +238,7 @@ const ChooseTheater = () => {
                                         setAmount(1000);
                                       }}
                                       className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
-                                      style={{height:'93%'}}
+                                      style={{ height: "93%" }}
                                       variant="contained"
                                       color="primary" // Set the color you desire
                                       component={Link}

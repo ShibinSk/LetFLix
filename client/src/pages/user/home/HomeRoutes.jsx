@@ -6,6 +6,7 @@ import About from '../About';
 import Contact from '../Contact';
 import Faq from '../Faq';
 import Login from '../LoginWithOtp/Login';
+import Privacypolicy from '../Privacypolicy';
 import RefundPolicy from '../RefundPolicy';
 import Booking from '../booking/Booking';
 import BookingDetails from '../booking/BookingDetails';
@@ -33,6 +34,7 @@ export default [
   { path: '/T1Gallery', element: <T1Gallery /> },
   { path: '/T2Gallery', element: <T2Gallery/> },
   { path: '/Test', element: <Test/> },
+  { path: '/privacypolicy', element: <Privacypolicy/> },
 
  
 

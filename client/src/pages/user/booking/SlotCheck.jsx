@@ -6,6 +6,7 @@ import {
   BottomNavigation,
   BottomNavigationAction,
   Typography,
+  Container,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -32,6 +33,7 @@ import BookingService from "./BookingService";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 import { useLocation } from "react-router-dom";
 import { amountContext } from "../../../common/ContextApi";
+import ReactPlayer from 'react-player'
 
 const SlotCheck = () => {
   const navigate = useNavigate();
@@ -63,6 +65,7 @@ const SlotCheck = () => {
   const [value, setValue] = React.useState(dayjs());
   const [slot, setSlot] = useState("");
   const maxSteps = images.length;
+  
   const { amount, setAmount } = useContext(amountContext);
   //   const [value, onChange] = useState(new Date());
   console.log(slot);
@@ -117,68 +120,26 @@ const SlotCheck = () => {
                 person)
               </Typography>
             </Paper>
-            <AutoPlaySwipeableViews
-              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-              index={activeStep}
-              onChangeIndex={handleStepChange}
-              enableMouseEvents
-            >
-              {images.map((step, index) => (
-                <div key={step.label}>
-                  {Math.abs(activeStep - index) <= 2 ? (
-                    <Box
-                      component="img"
-                      sx={{
-                        height: "60vh",
-                        display: "block",
-                        maxWidth: "90%",
-                        margin: "0 auto", // Center the image
-                      }}
-                      src={step.imgPath}
-                      alt={step.label}
-                    />
-                  ) : null}
-                </div>
-              ))}
-            </AutoPlaySwipeableViews>
-            <MobileStepper
-              steps={maxSteps}
-              position="static"
-              activeStep={activeStep}
-              nextButton={
-                <Button
-                  size="small"
-                  onClick={handleNext}
-                  disabled={activeStep === maxSteps - 1}
-                >
-                  {theme.direction === "rtl" ? (
-                    <KeyboardArrowLeft />
-                  ) : (
-                    <KeyboardArrowRight />
-                  )}
-                </Button>
-              }
-              backButton={
-                <Button
-                  size="small"
-                  onClick={handleBack}
-                  disabled={activeStep === 0}
-                >
-                  {theme.direction === "rtl" ? (
-                    <KeyboardArrowRight />
-                  ) : (
-                    <KeyboardArrowLeft />
-                  )}
-                </Button>
-              }
-            />
+           
+            <Grid item xs={12} md={6} style={{ position: 'relative', paddingTop: '56.25%' }}>
+      <ReactPlayer
+        url='https://youtube.com/shorts/xMl-RLSW96g?si=Ta5lZrT0uh9odpfX'
+        style={{ position: 'absolute', top: 0, left: 0 }}
+        width='100%'
+        height='100%'
+      
+      />
+    </Grid>
+          
             <Box sx={{ paddingLeft: "13%" }}>
-              <Typography> - 135 inch HD Screen</Typography>
-              <Typography> - 600W Sony Surround sound system</Typography>
-              <Typography> - Ideal for couples, families & friends</Typography>
+              <Typography> -  5 cozy Recliners </Typography>
+              <Typography> - Captivating 4K projection</Typography>
+              <Typography> - Large 150-inch Screen</Typography>
+              <Typography> - Immersive Dolby Atmos audio</Typography>
               <Typography>
+
                 {" "}
-                - Food & Beverages can be ordered at the theatre.
+               - 8 world class Speakers : Jamo Denmark + Bose Atmos speakers
               </Typography>
             </Box>
           </Grid>
@@ -315,6 +276,8 @@ const SlotCheck = () => {
                   // onClick={handleClick}
                   sx={{ width: "100%", height: "10%" }}
                   variant="contained"
+                  style={{backgroundColor:'#ffc107'}}
+                  className="btn btn-primary border-0 rounded-pill py-3 px-4 px-md-5 me-4 animated bounceInLeft"
                 >
                   Book Now
                 </Button>

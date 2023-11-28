@@ -21,12 +21,27 @@ const RefundPolicy = () => {
         <br />
         <br />
         <p>
-          We collect an advance amount of Rs 650 for reservation of a slot of
-          our theater. This advance amount is fully refundable (except
-          convenience charges of payment gateway, if any) if we are informed
-          about booking cancellation at least 72 hours before the booking
-          through WhatsApp chat. Refund is usually initiated within 24 hours and
-          takes maximum 5-7 days to be completed
+          Booking Advance To secure your slot, we require a 50% advance payment
+          for regular time slots and 100% payment for midnight slots, serving as
+          a deposit.
+          <br /> 
+          Cancellation and Refund Policy: At letzFlix Micro Theatres,
+          we understand plans change and strive to be most flexible in the
+          industry. We're happy to cancel and refund your payment (excluding any
+          convenience charges imposed by payment gateway service providers), or
+          assist with rescheduling any number of times. You can also transfer
+          your booking to a friend. Please notify us at least 6 hours before
+          your scheduled booking's start time to make these changes. However,
+          for ordered add-ons (cakes, bouquets, fog entry, etc), cancellations
+          must be made 48 hours to your booking’s start time prior to be
+          eligible for a refund on these items. Initiate the cancellation
+          process by reaching out to us on WhatsApp using this link:
+          https://bit.ly/Whatsapp_letzFlix Refund Process: Refunds are promptly
+          initiated within 48 hours of receiving your cancellation request.
+          While we aim for efficiency, please allow 5-7 days for the refund to
+          reflect in your account due to standard processing times. We
+          appreciate your understanding and look forward to providing you with
+          an exceptional experience at letzFlix Micro Theatres. See you soon!
         </p>
       </Container>
       <br />

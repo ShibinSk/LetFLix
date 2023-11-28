@@ -326,7 +326,7 @@ function DecorationDetails() {
               </Button>
             </Link>
             <Container sx={{alignItems:'center', justifyContent:'center'}}>
-              <Grid container spacing={2}>
+              <Grid container spacing={1} sx={{justifyContent:'center'}}>
                 <Grid
                   item
                   xs={4}
@@ -459,7 +459,7 @@ function DecorationDetails() {
                         alt=""
                       />
                       {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Anniversary</h3>
+                      <h3 className="checkbox-label">Wedding</h3>
                     </span>
                   </label>
                 </Grid>
@@ -605,201 +605,15 @@ function DecorationDetails() {
               
               </Grid>
 
-              <Grid container spacing={2}>
-                {/* <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Birthday"
-                      checked={bookingDetails.type === "Birthday"}
-                      onChange={() => handleOptionSelect("Birthday")}
-                    />
-
-                    <img
-                      style={{
-                        width: "30%",
-                        borderRadius: "50%",
-                        height: "55%",
-                      }}
-                      src="/2023-09-26.jpg"
-                      alt=""
-                    />
-                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                      Birthday
-                    </Typography>
-                  </label>
-                </Grid> */}
-                {/* <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Anniversary"
-                      checked={bookingDetails.type === "Anniversary"}
-                      onChange={() => handleOptionSelect("Anniversary")}
-                    />
-                    <img
-                      style={{
-                        width: "30%",
-                        borderRadius: "50%",
-                        height: "55%",
-                      }}
-                      src="/2023-09-26.jpg"
-                      alt=""
-                    />
-                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                      Anniversary
-                    </Typography>
-                  </label>
-                </Grid> */}
-
-                {/* <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Romantic Date"
-                      checked={bookingDetails.type === "Romantic Date"}
-                      onChange={() => handleOptionSelect("Romantic Date")}
-                    />
-                    <img
-                      style={{
-                        width: "30%",
-                        borderRadius: "50%",
-                        height: "55%",
-                      }}
-                      src="/2023-09-26.jpg"
-                      alt=""
-                    />
-                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                      Romantic Date
-                    </Typography>
-                  </label>
-                </Grid> */}
-
-                {/* <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Marriage Proposal"
-                      checked={bookingDetails.type === "Marriage Proposal"}
-                      onChange={() => handleOptionSelect("Marriage Proposal")}
-                    />
-                    <img
-                      style={{
-                        width: "30%",
-                        borderRadius: "50%",
-                        height: "55%",
-                      }}
-                      src="/2023-09-26.jpg"
-                      alt=""
-                    />
-                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                      Marriage Proposal
-                    </Typography>
-                  </label>
-                </Grid> */}
-                {/* <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Bride to be"
-                      checked={bookingDetails.type === "Bride to be"}
-                      onChange={() => handleOptionSelect("Bride to be")}
-                    />
-                    <img
-                      style={{
-                        width: "30%",
-                        borderRadius: "50%",
-                        height: "55%",
-                      }}
-                      src="/2023-09-26.jpg"
-                      alt=""
-                    />
-                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                      Bride to be
-                    </Typography>
-                  </label>
-                </Grid> */}
-                {/* <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Farewell"
-                      checked={bookingDetails.type === "Farewell"}
-                      onChange={() => handleOptionSelect("Farewell")}
-                    />
-                    <img
-                      style={{
-                        width: "30%",
-                        borderRadius: "50%",
-                        height: "55%",
-                      }}
-                      src="/2023-09-26.jpg"
-                      alt=""
-                    />
-                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                      Farewell
-                    </Typography>
-                  </label>
-                </Grid> */}
-                {/* <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Congratulations"
-                      checked={bookingDetails.type === "Congratulations"}
-                      onChange={() => handleOptionSelect("Congratulations")}
-                    />
-                    <img
-                      style={{
-                        width: "30%",
-                        borderRadius: "50%",
-                        height: "55%",
-                      }}
-                      src="/2023-09-26.jpg"
-                      alt=""
-                    />
-                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                      Congratulations
-                    </Typography>
-                  </label>
-                </Grid> */}
-                {/* <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Baby Shower"
-                      checked={bookingDetails.type === "Baby Shower"}
-                      onChange={() => handleOptionSelect("Baby Shower")}
-                    />
-                    <img
-                      style={{
-                        width: "30%",
-                        borderRadius: "50%",
-                        height: "55%",
-                      }}
-                      src="/2023-09-26.jpg"
-                      alt=""
-                    />
-                    <Typography paddingLeft={"24%"} paddingTop={"6px"}>
-                      Baby Shower
-                    </Typography>
-                  </label>
-                </Grid> */}
+              <Grid container spacing={1} sx={{justifyContent:'center'}} >
+              
               </Grid>
-            {/* </Container> */}
+          
             <br />
             <br />
            
             
-              <Grid  container spacing={2}> 
+              <Grid  container spacing={2} sx={{justifyContent:'center'}}> 
               <Grid
                   item
                   xs={4}
@@ -1242,8 +1056,8 @@ function DecorationDetails() {
               </Button>
             </Link>
             <Container>
-              <Grid container spacing={2}>
-                <Grid item xs={6} sm={6} md={4}>
+              <Grid container spacing={2} sx={{justifyContent:'center'}}>
+                {/* <Grid item xs={6} sm={6} md={4}>
                   <label>
                     <Checkbox
                       type="radio"
@@ -1280,252 +1094,604 @@ function DecorationDetails() {
                   >
                     ₹ 699
                   </Typography>
+                </Grid> */}
+                 <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.cake === "Cake1"}
+                      onChange={() => handleCakeSelect("Cake1")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
+                        height: "45%",
+                      }}
+                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
+                      alt=""
+                    />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Red Velvet cake</h3>
+                      <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                    </span>
+                  </label>
                 </Grid>
-                <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Cake2"
+
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
                       checked={bookingDetails.cake === "Cake2"}
                       onChange={() => handleCakeSelect("Cake2")}
                     />
-                    <img
+                    <span
+                      className="checkbox-tile"
                       style={{
-                        width: "30%",
-                        borderRadius: "50%",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
                         height: "45%",
                       }}
-                      src="/birthday-cake-unsplash.webp"
+                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
                       alt=""
                     />
-                    <Typography
-                      color={"orange"}
-                      fontWeight={"600"}
-                      paddingLeft={"24%"}
-                      paddingTop={"6px"}
-                    >
-                      Cake
-                    </Typography>
-                    <Typography
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Carrot Cake</h3>
+                      <Typography
                       paddingLeft={"20%"}
                       paddingTop={"5px"}
                       variant="h6"
                     >
                       ₹ 699
                     </Typography>
+                    </span>
                   </label>
                 </Grid>
 
-                <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Cake3"
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
                       checked={bookingDetails.cake === "Cake3"}
                       onChange={() => handleCakeSelect("Cake3")}
                     />
-                    <img
+                    <span
+                      className="checkbox-tile"
                       style={{
-                        width: "30%",
-                        borderRadius: "50%",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
                         height: "45%",
                       }}
-                      src="/birthday-cake-unsplash.webp"
+                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
                       alt=""
                     />
-                    <Typography
-                      color={"orange"}
-                      fontWeight={"600"}
-                      paddingLeft={"24%"}
-                      paddingTop={"6px"}
-                    >
-                      Cake
-                    </Typography>
-                    <Typography
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Lemon cake</h3>
+                      <Typography
                       paddingLeft={"20%"}
                       paddingTop={"5px"}
                       variant="h6"
                     >
                       ₹ 699
                     </Typography>
+                    </span>
                   </label>
                 </Grid>
 
-                <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Cake4"
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
                       checked={bookingDetails.cake === "Cake4"}
                       onChange={() => handleCakeSelect("Cake4")}
                     />
-                    <img
+                    <span
+                      className="checkbox-tile"
                       style={{
-                        width: "30%",
-                        borderRadius: "50%",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
                         height: "45%",
                       }}
-                      src="/birthday-cake-unsplash.webp"
+                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
                       alt=""
                     />
-                    <Typography
-                      color={"orange"}
-                      fontWeight={"600"}
-                      paddingLeft={"24%"}
-                      paddingTop={"6px"}
-                    >
-                      Cake
-                    </Typography>
-                    <Typography
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">BirthDay</h3>
+                      <Typography
                       paddingLeft={"20%"}
                       paddingTop={"5px"}
                       variant="h6"
                     >
                       ₹ 699
                     </Typography>
+                    </span>
                   </label>
                 </Grid>
-                <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Cake5"
+
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
                       checked={bookingDetails.cake === "Cake5"}
                       onChange={() => handleCakeSelect("Cake5")}
                     />
-                    <img
+                    <span
+                      className="checkbox-tile"
                       style={{
-                        width: "30%",
-                        borderRadius: "50%",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
                         height: "45%",
                       }}
-                      src="/birthday-cake-unsplash.webp"
+                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
                       alt=""
                     />
-                    <Typography
-                      color={"orange"}
-                      fontWeight={"600"}
-                      paddingLeft={"24%"}
-                      paddingTop={"6px"}
-                    >
-                      Cake
-                    </Typography>
-                    <Typography
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">BirthDay</h3>
+                      <Typography
                       paddingLeft={"20%"}
                       paddingTop={"5px"}
                       variant="h6"
                     >
                       ₹ 699
                     </Typography>
+                    </span>
                   </label>
                 </Grid>
-                <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Cake6"
+
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
                       checked={bookingDetails.cake === "Cake6"}
                       onChange={() => handleCakeSelect("Cake6")}
                     />
-                    <img
+                    <span
+                      className="checkbox-tile"
                       style={{
-                        width: "30%",
-                        borderRadius: "50%",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
                         height: "45%",
                       }}
-                      src="/birthday-cake-unsplash.webp"
+                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
                       alt=""
                     />
-                    <Typography
-                      color={"orange"}
-                      fontWeight={"600"}
-                      paddingLeft={"24%"}
-                      paddingTop={"6px"}
-                    >
-                      Cake
-                    </Typography>
-                    <Typography
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Vanila Cake</h3>
+                      <Typography
                       paddingLeft={"20%"}
                       paddingTop={"5px"}
                       variant="h6"
                     >
                       ₹ 699
                     </Typography>
+                    </span>
                   </label>
                 </Grid>
-                <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Cake7"
+
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
                       checked={bookingDetails.cake === "Cake7"}
                       onChange={() => handleCakeSelect("Cake7")}
                     />
-                    <img
+                    <span
+                      className="checkbox-tile"
                       style={{
-                        width: "30%",
-                        borderRadius: "50%",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
                         height: "45%",
                       }}
-                      src="/birthday-cake-unsplash.webp"
+                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
                       alt=""
                     />
-                    <Typography
-                      color={"orange"}
-                      fontWeight={"600"}
-                      paddingLeft={"24%"}
-                      paddingTop={"6px"}
-                    >
-                      Cake
-                    </Typography>
-                    <Typography
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Rainbow cake</h3>
+                      <Typography
                       paddingLeft={"20%"}
                       paddingTop={"5px"}
                       variant="h6"
                     >
                       ₹ 699
                     </Typography>
+                    </span>
                   </label>
                 </Grid>
-                <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Cake8"
+
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
                       checked={bookingDetails.cake === "Cake8"}
                       onChange={() => handleCakeSelect("Cake8")}
                     />
-                    <img
+                    <span
+                      className="checkbox-tile"
                       style={{
-                        width: "30%",
-                        borderRadius: "50%",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
                         height: "45%",
                       }}
-                      src="/birthday-cake-unsplash.webp"
+                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
                       alt=""
                     />
-                    <Typography
-                      color={"orange"}
-                      fontWeight={"600"}
-                      paddingLeft={"24%"}
-                      paddingTop={"6px"}
-                    >
-                      Cake
-                    </Typography>
-                    <Typography
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <Typography
                       paddingLeft={"20%"}
                       paddingTop={"5px"}
                       variant="h6"
                     >
                       ₹ 699
                     </Typography>
+                    </span>
                   </label>
                 </Grid>
               </Grid>
@@ -1601,121 +1767,683 @@ function DecorationDetails() {
               </Button>
             </Link>
             <Container>
-              <Grid container spacing={2}>
-                <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Cake1"
-                      // onClick={() => setAmount(0)}
-                      // onClick={ setAmount((prevAmount) => prevAmount + 500)}
-                      checked={bookingDetails.cake === "Cake1"}
-                      onChange={() => handleCakeSelect("Cake1")}
-                    />
-
-                    <img
-                      style={{
-                        width: "30%",
-                        borderRadius: "50%",
-                        height: "45%",
-                      }}
-                      src="/product-jpeg.jpg"
-                      alt=""
-                    />
-                    <Typography
-                      color={"orange"}
-                      fontWeight={"600"}
-                      paddingLeft={"24%"}
-                      paddingTop={"6px"}
-                    >
-                      Rose Heart
-                    </Typography>
-                  </label>
-                  <Typography
-                    paddingLeft={"20%"}
-                    paddingTop={"5px"}
-                    variant="h6"
+              <Grid container spacing={2} sx={{justifyContent:'center'}}>
+                  <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
                   >
-                    ₹ 699
-                  </Typography>
-                </Grid>
-                <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Cake2"
-                      checked={bookingDetails.cake === "Cake2"}
-                      onChange={() => handleCakeSelect("Cake2")}
-                    />
-                    <img
+                    <input
+                      type="checkbox"
                       style={{
-                        width: "30%",
-                        borderRadius: "50%",
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.cake === "Cake8"}
+                      onChange={() => handleCakeSelect("Cake8")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
                         height: "45%",
                       }}
-                      src="/product-jpeg.jpg"
+                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
                       alt=""
                     />
-                    <Typography
-                      color={"orange"}
-                      fontWeight={"600"}
-                      paddingLeft={"24%"}
-                      paddingTop={"6px"}
-                    >
-                      Rose Heart
-                    </Typography>
-                    <Typography
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <Typography
                       paddingLeft={"20%"}
                       paddingTop={"5px"}
                       variant="h6"
                     >
                       ₹ 699
                     </Typography>
+                    </span>
                   </label>
                 </Grid>
 
-                <Grid item xs={6} sm={6} md={4}>
-                  <label>
-                    <Checkbox
-                      type="radio"
-                      name="options"
-                      value="Cake3"
-                      checked={bookingDetails.cake === "Cake3"}
-                      onChange={() => handleCakeSelect("Cake3")}
-                    />
-                    <img
+                  <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
                       style={{
-                        width: "30%",
-                        borderRadius: "50%",
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.cake === "Cake8"}
+                      onChange={() => handleCakeSelect("Cake8")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
                         height: "45%",
                       }}
-                      src="/product-jpeg.jpg"
+                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
                       alt=""
                     />
-                    <Typography
-                      color={"orange"}
-                      fontWeight={"600"}
-                      paddingLeft={"24%"}
-                      paddingTop={"6px"}
-                    >
-                      Rose Heart
-                    </Typography>
-                    <Typography
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <Typography
                       paddingLeft={"20%"}
                       paddingTop={"5px"}
                       variant="h6"
                     >
                       ₹ 699
                     </Typography>
+                    </span>
                   </label>
                 </Grid>
-                <Grid></Grid>
+
+                  <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.cake === "Cake8"}
+                      onChange={() => handleCakeSelect("Cake8")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
+                        height: "45%",
+                      }}
+                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
+                      alt=""
+                    />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                    </span>
+                  </label>
+                </Grid>
+                
+                  <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.cake === "Cake8"}
+                      onChange={() => handleCakeSelect("Cake8")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
+                        height: "45%",
+                      }}
+                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
+                      alt=""
+                    />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                    </span>
+                  </label>
+                </Grid>
+                  <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.cake === "Cake8"}
+                      onChange={() => handleCakeSelect("Cake8")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
+                        height: "45%",
+                      }}
+                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
+                      alt=""
+                    />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                    </span>
+                  </label>
+                </Grid>
+
+                  <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.cake === "Cake8"}
+                      onChange={() => handleCakeSelect("Cake8")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
+                        height: "45%",
+                      }}
+                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
+                      alt=""
+                    />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                    </span>
+                  </label>
+                </Grid>
+
+                  <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.cake === "Cake8"}
+                      onChange={() => handleCakeSelect("Cake8")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
+                        height: "45%",
+                      }}
+                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
+                      alt=""
+                    />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                    </span>
+                  </label>
+                </Grid>
+
+                  <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.cake === "Cake8"}
+                      onChange={() => handleCakeSelect("Cake8")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
+                        height: "45%",
+                      }}
+                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
+                      alt=""
+                    />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                    </span>
+                  </label>
+                </Grid>
+                  <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.cake === "Cake8"}
+                      onChange={() => handleCakeSelect("Cake8")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                      style={{
+                        width: "70%",
+                        borderRadius: "10%",
+                        height: "45%",
+                      }}
+                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
+                      alt=""
+                    />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <Typography
+                      paddingLeft={"20%"}
+                      paddingTop={"5px"}
+                      variant="h6"
+                    >
+                      ₹ 699
+                    </Typography>
+                    </span>
+                  </label>
+                </Grid>
               </Grid>
             </Container>
 
-            <Container>
+            {/* <Container>
               <Grid container spacing={2}>
                 <Grid item xs={6} sm={6} md={4}>
                   <label>
@@ -1790,7 +2518,6 @@ function DecorationDetails() {
                     </Typography>
                   </label>
                 </Grid>
-
                 <Grid item xs={6} sm={6} md={4}>
                   <label>
                     <Checkbox
@@ -1933,9 +2660,9 @@ function DecorationDetails() {
                 </Grid>
                 <Grid></Grid>
               </Grid>
-            </Container>
+            </Container> */}
 
-            <Box sx={{ ml: 8, mr: 8, mt: 2 }}></Box>
+            <Box sx={{ ml: 8, mr: 8, mt: 2 }} ></Box>
             <Grid
               alignContent={"center"}
               justifyContent={"center"}
@@ -2252,11 +2979,13 @@ function DecorationDetails() {
                             onClick={onSignup}
                             type="submit"
                             variant="contained"
+                            className="btn btn-primary border-0 rounded-pill py-3 px-4 px-md-5 me-4 animated bounceInLeft"
                             sx={{
                               mt: 5,
                               borderRadius: 50,
                               padding: 2,
                               marginRight: 2,
+                              backgroundColor:'#ffc107'
                             }}
                             fullWidth
                           >

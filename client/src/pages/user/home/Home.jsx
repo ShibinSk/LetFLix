@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-<Carousels/>
+      <Carousels />
       <div className="container-fluid bg-light py-6 my-6 mt-0">
         <div className="container">
           <div className="row g-5 align-items-center">
@@ -15,12 +15,17 @@ const Home = () => {
               {/* <small className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown">
                 Welcome toletzFlix
               </small> */}
-              <h1 className="display-1 mb-4 animated bounceInDown">
+              {/* <h1 className="display-1 mb-4 animated bounceInDown">
                 Book <span className="text-primary">Theaters</span> For Your
                 Dream Event
+              </h1> */}
+              <h1 className="display-1 mb-4 animated bounceInDown">
+                <span className="text-primary">Curating Surprises,</span>
+                <br />
+                Your Story, Our Screen
               </h1>
               <a
-                href="#"
+                href="/chooseTheater"
                 className="btn btn-primary border-0 rounded-pill py-3 px-4 px-md-5 me-4 animated bounceInLeft"
               >
                 Book Now
@@ -36,18 +41,23 @@ const Home = () => {
               <img
                 src="/img2.JPG"
                 className="img-fluid rounded animated zoomIn"
-                style={{height:'auto', width:'50vh'}}
+                style={{ height: "auto", width: "50vh" }}
                 alt=""
               />
             </div>
           </div>
         </div>
-<br />
+        <br />
         <div className="container-fluid py-6">
           <div className="container">
             <div className="row g-5 align-items-center">
               <div className="col-lg-5 wow bounceInUp" data-wow-delay="0.1s">
-                <img   style={{height:'auto', width:'50vh'}} src="/img3.JPG" className="img-fluid rounded" alt="" />
+                <img
+                  style={{ height: "auto", width: "50vh" }}
+                  src="/img3.JPG"
+                  className="img-fluid rounded"
+                  alt=""
+                />
               </div>
               <br />
               <div className="col-lg-7 wow bounceInUp" data-wow-delay="0.3s">
@@ -87,7 +97,7 @@ const Home = () => {
                 </a>
               </div>
             </div>
-              <br />
+            <br />
           </div>
         </div>
 
@@ -151,15 +161,15 @@ const Home = () => {
               </div>
               <div className="col-lg-5 wow bounceInUp" data-wow-delay="0.1s">
                 <div className="video">
-                <iframe
-                          className="embed-responsive-item"
-                          src="https://www.youtube.com/embed/DdFRuXMMNa4"
-                          id="video"
-                          allowFullScreen
-                          style={{width:'100%',height:'50vh'}}
-                          allow="autoplay; encrypted-media"
-                        ></iframe>
-                        {/* <video style={{width:'100%',height:'50vh'}} src="/premer pro video.mp4">hh</video> */}
+                  <iframe
+                    className="embed-responsive-item"
+                    src="https://www.youtube.com/embed/DdFRuXMMNa4"
+                    id="video"
+                    allowFullScreen
+                    style={{ width: "100%", height: "50vh" }}
+                    allow="autoplay; encrypted-media"
+                  ></iframe>
+                  {/* <video style={{width:'100%',height:'50vh'}} src="/premer pro video.mp4">hh</video> */}
                   {/* <button
                     type="button"
                     className="btn btn-play"
@@ -194,7 +204,6 @@ const Home = () => {
                     <div className="modal-body">
                       {/* 16:9 aspect ratio */}
                       <div className="ratio ratio-16x9">
-                       
                         <iframe
                           className="embed-responsive-item"
                           src="https://www.youtube.com/embed/DdFRuXMMNa4"

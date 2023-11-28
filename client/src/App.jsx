@@ -15,7 +15,8 @@ const App = () => {
   useEffect(() => {
     setRoutes(homeRoute);
   }, []);
-  const phoneNumber = "8015287599";
+  const phoneNumber = "+918015287599";
+  // +91 80152 87599
   const customMessage = "Hello, I have a question for you!";
 
   // Encode the phone number and message

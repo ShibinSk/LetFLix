@@ -43,7 +43,7 @@ const Navbar = () => {
                   justify="center"
                   sx={{ color: "black" }}
                 >
-                  <Grid item xs={12} sm={6} md={2}>
+                  <Grid item xs={12} sm={6} md={1}>
                     <BottomNavigation
                       showLabels
                       value={0}
@@ -85,7 +85,7 @@ const Navbar = () => {
                       />
                     </BottomNavigation>
                   </Grid>
-                  <Grid item xs={12} sm={6} md={2}>
+                  <Grid item xs={12} sm={6} md={1}>
                     <BottomNavigation
                       showLabels
                       value={0}
@@ -110,6 +110,20 @@ const Navbar = () => {
                         label="RefundPolicy"
                         component={Link}
                         to="/RefundPolicy"
+                      />
+                    </BottomNavigation>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={2}>
+                    <BottomNavigation
+                      showLabels
+                      value={0}
+                      className="nav-item nav-link active"
+                    >
+                      <BottomNavigationAction
+                        style={{ color: "rgba(0,0,0,.55" }}
+                        label="PrivacyPolicy"
+                        component={Link}
+                        to="/privacypolicy"
                       />
                     </BottomNavigation>
                   </Grid>

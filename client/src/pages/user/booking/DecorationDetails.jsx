@@ -386,7 +386,7 @@ function DecorationDetails() {
                         borderRadius: "10%",
                         height: "45%",
                       }}
-                      src="/product-jpeg.jpg"
+                      src="/Bday.jpg"
                       alt=""
                     />
                       {/* Uncomment the line below if you want to add a label */}
@@ -455,11 +455,11 @@ function DecorationDetails() {
                         borderRadius: "12%",
                         height: "45%",
                         }}
-                        src="/product-jpeg.jpg"
+                        src="/anniversary.jpg"
                         alt=""
                       />
                       {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Wedding</h3>
+                      <h3 className="checkbox-label">Anniversary</h3>
                     </span>
                   </label>
                 </Grid>
@@ -524,11 +524,11 @@ function DecorationDetails() {
                         borderRadius: "12%",
                         height: "45%",
                         }}
-                        src="/product-jpeg.jpg"
+                        src="/romatic1.jpg"
                         alt=""
                       />
                       {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Romantic Date</h3>
+                      <h3 className="checkbox-label">Bespoke Date</h3>
                     </span>
                   </label>
                 </Grid>
@@ -594,7 +594,7 @@ function DecorationDetails() {
                         borderRadius: "12%",
                         height: "45%",
                         }}
-                        src="/product-jpeg.jpg"
+                        src="/bridToBe.JPG"
                         alt=""
                       />
                       {/* Uncomment the line below if you want to add a label */}
@@ -674,7 +674,7 @@ function DecorationDetails() {
                           borderRadius: "12%",
                           height: "45%",
                         }}
-                        src="/product-jpeg.jpg"
+                        src="/farewell.JPG"
                         alt=""
                       />
                       {/* Uncomment the line below if you want to add a label */}
@@ -878,7 +878,7 @@ function DecorationDetails() {
                         borderRadius: "12%",
                         height: "45%",
                         }}
-                        src="/product-jpeg.jpg"
+                        src="/proposal.JPG"
                         alt=""
                       />
                       {/* Uncomment the line below if you want to add a label */}
@@ -2751,59 +2751,7 @@ function DecorationDetails() {
                       }}
                     >
                       <Grid container spacing={2}>
-                        {/* <Grid item xs={12}>
-                  <Autocomplete
-                    options={auctions ?? []}
-                    value={lot.auction ?? null}
-                    onChange={(e, newValue) =>
-                      newValue &&
-                      setLot({
-                        ...lot,
-                        auction: newValue,
-                      })
-                    }
-                    // getOptionLabel={(auction) =>
-                    //   auction._id == ''
-                    //     ? ''
-                    //     : 'Auction ' + auction.auctionNo.toString() + (auction.date ? ' (' + auction.date?.format('DD/MM/YYYY hh:mm A') + ')' : '')
-                    // }
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        placeholder="Auction"
-                        required
-                        variant="standard"
-                        sx={{
-                          background: '#f4f5f4',
-                          borderRadius: 50,
-                          padding: 2,
-                        }}
-                      />
-                    )}
-                  />
-                </Grid> */}
-
-                        {/* <Grid item xs={12}>
-                  <Autocomplete
-                    options={users ?? []}
-                    // value={lot.seller ?? null}
-                    // onChange={(e, newValue) => newValue && setLot((req) => ({ ...req, seller: newValue }))}
-                    getOptionLabel={(user) => user.name}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        placeholder="Seller"
-                        variant="standard"
-                        required
-                        sx={{
-                          background: '#f4f5f4',
-                          borderRadius: 50,
-                          padding: 2,
-                        }}
-                      />
-                    )}
-                  />
-                </Grid> */}
+                        
                         <Grid item xs={12}>
                           <InputBase
                             type="text"
@@ -2829,23 +2777,7 @@ function DecorationDetails() {
                           />
                         </Grid>
                         <Grid item xs={12}>
-                          {/* <InputBase
                           
-                            type="Number"
-                            value={ph}
-                            onChange={(e)=>{
-                              setPh(e.target.value)
-                            }}
-                            placeholder="Phone Number"
-                            sx={{
-                              background: "#f4f5f4",
-                              borderRadius: 50,
-                              padding: 2,
-                            }}
-                            disabled={loading}
-                            fullWidth
-                            required
-                          /> */}
                           <InputBase
                             placeholder="Whats App Number"
                             value={bookingDetails?.userDetails?.phone || ""}
@@ -3077,39 +3009,6 @@ function DecorationDetails() {
                     onChange={(e) => {
                       setOTP(e.target.value);
                     }}
-                    // onChange={(e) => {
-                    //   setOTP(e.target.value);
-                    //   if (e.target.value.length === 4) {
-                    //     // Verify OTP!
-                    //     setLoading(true);
-                    //     AuthServices.verifyOTP({
-                    //       auth_process_id: getOTPResponse?.auth_process_id as string,
-                    //       OTP: e.target.value,
-                    //     })
-                    //       .then((res) => {
-                    //         setLoading(false);
-                    //         console.log(res);
-                    //         if (res.data.isExistingUser) {
-                    //           // handle that case
-                    //           localStorage.setItem('authUser', JSON.stringify(res.data.user));
-                    //           localStorage.setItem('userToken', res.data.authToken as string);
-                    //           auth.setUser(res.data.user as IUser);
-                    //           navigate('/');
-                    //         } else {
-                    //           setCreateUserRequest((req) => ({
-                    //             ...req,
-                    //             tempAuthToken: res.data.tempAuthToken as string,
-                    //           }));
-                    //           setStep(2);
-                    //         }
-                    //       })
-                    //       .catch((error) => {
-                    //         setLoading(false);
-                    //         console.log(error);
-                    //         setError(error.message);
-                    //       });
-                    //   }
-                    // }}
                     placeholder="XXXX"
                     sx={{
                       background: "#f4f5f4",
@@ -3169,283 +3068,6 @@ function DecorationDetails() {
             </Card>
           </div>
         ) : (
-          // <>
-          //   <div>
-          //     <Container>
-          //       {/* <h2 style={{ textAlign: 'center' }}>Add New Lot</h2> */}
-          //       <br />
-          //       <Box sx={{ width: "100%", typography: "body1" }}>
-          //         <Container maxWidth="sm">
-          //           <Grid container spacing={2}>
-          //             <Grid item xs={12}>
-          //               <Typography variant="h4">Standard Theatre</Typography>
-          //             </Grid>
-          //             <Grid item xs={6}>
-          //               <Typography variant="subtitle1">
-          //                 <CalendarMonthIcon /> Date: 14/12/2023
-          //               </Typography>
-          //             </Grid>
-          //             <Grid item xs={6}>
-          //               <Typography variant="subtitle1">
-          //                 <AccessTimeIcon /> Time: 10:00 PM - 1:00 AM
-          //               </Typography>
-          //             </Grid>
-          //           </Grid>
-
-          //           {/* <Stepper activeStep={activeStep}>
-          //     <Step>
-          //       <StepLabel>Basic</StepLabel>
-          //     </Step>
-          //     <Step>
-          //       <StepLabel>Quality</StepLabel>
-          //     </Step>
-          //   </Stepper> */}
-          //         </Container>
-          //         <br />
-          //         {activeStep == 0 && (
-          //           <form
-          //             onSubmit={(e) => {
-          //               // e.preventDefault();
-          //               // if (!lot.attachments.pic) {
-          //               //   setWarning('Image is missing');
-          //               //   setOpen(true);
-          //               // } else if (!lot.attachments.video) {
-          //               //   setWarning('Video is missing');
-          //               //   setOpen(true);
-          //               // } else {
-          //               //   setActiveStep(1);
-          //               // }
-          //             }}
-          //           >
-          //             <Grid container spacing={2}>
-          //               {/* <Grid item xs={12}>
-          //         <Autocomplete
-          //           options={auctions ?? []}
-          //           value={lot.auction ?? null}
-          //           onChange={(e, newValue) =>
-          //             newValue &&
-          //             setLot({
-          //               ...lot,
-          //               auction: newValue,
-          //             })
-          //           }
-          //           // getOptionLabel={(auction) =>
-          //           //   auction._id == ''
-          //           //     ? ''
-          //           //     : 'Auction ' + auction.auctionNo.toString() + (auction.date ? ' (' + auction.date?.format('DD/MM/YYYY hh:mm A') + ')' : '')
-          //           // }
-          //           renderInput={(params) => (
-          //             <TextField
-          //               {...params}
-          //               placeholder="Auction"
-          //               required
-          //               variant="standard"
-          //               sx={{
-          //                 background: '#f4f5f4',
-          //                 borderRadius: 50,
-          //                 padding: 2,
-          //               }}
-          //             />
-          //           )}
-          //         />
-          //       </Grid> */}
-
-          //               {/* <Grid item xs={12}>
-          //         <Autocomplete
-          //           options={users ?? []}
-          //           // value={lot.seller ?? null}
-          //           // onChange={(e, newValue) => newValue && setLot((req) => ({ ...req, seller: newValue }))}
-          //           getOptionLabel={(user) => user.name}
-          //           renderInput={(params) => (
-          //             <TextField
-          //               {...params}
-          //               placeholder="Seller"
-          //               variant="standard"
-          //               required
-          //               sx={{
-          //                 background: '#f4f5f4',
-          //                 borderRadius: 50,
-          //                 padding: 2,
-          //               }}
-          //             />
-          //           )}
-          //         />
-          //       </Grid> */}
-          //               <Grid item xs={12}>
-          //                 <InputBase
-          //                   type="text"
-          //                   value={lot.color}
-          //                   onChange={(e) =>
-          //                     setLot({
-          //                       ...lot,
-          //                       color: e.target.value,
-          //                     })
-          //                   }
-          //                   placeholder="Name"
-          //                   sx={{
-          //                     background: "#f4f5f4",
-          //                     borderRadius: 50,
-          //                     padding: 2,
-          //                   }}
-          //                   disabled={loading}
-          //                   fullWidth
-          //                   required
-          //                 />
-          //               </Grid>
-          //               <Grid item xs={12}>
-          //                 <InputBase
-          //                   type="Number"
-          //                   value={lot.color}
-          //                   onChange={(e) =>
-          //                     setLot({
-          //                       ...lot,
-          //                       color: e.target.value,
-          //                     })
-          //                   }
-          //                   placeholder="Phone Number"
-          //                   sx={{
-          //                     background: "#f4f5f4",
-          //                     borderRadius: 50,
-          //                     padding: 2,
-          //                   }}
-          //                   disabled={loading}
-          //                   fullWidth
-          //                   required
-          //                 />
-          //               </Grid>
-          //               <Grid item xs={12}>
-          //                 <InputBase
-          //                   type="Email"
-          //                   value={lot.color}
-          //                   onChange={(e) =>
-          //                     setLot({
-          //                       ...lot,
-          //                       color: e.target.value,
-          //                     })
-          //                   }
-          //                   placeholder="Email"
-          //                   sx={{
-          //                     background: "#f4f5f4",
-          //                     borderRadius: 50,
-          //                     padding: 2,
-          //                   }}
-          //                   disabled={loading}
-          //                   fullWidth
-          //                   // required
-          //                 />
-          //               </Grid>
-          //               <Grid item xs={12}>
-          //                 <Autocomplete
-          //                   options={availableSlots ?? []}
-          //                   value={lot.lotNo ?? null}
-          //                   getOptionLabel={(_lot) =>
-          //                     lot.lotNo == -1 ? "" : "Lot #" + _lot
-          //                   }
-          //                   onChange={(e, newValue) =>
-          //                     newValue &&
-          //                     setLot({
-          //                       ...lot,
-          //                       lotNo: newValue,
-          //                     })
-          //                   }
-          //                   // getOptionLabel={(auction) => 'Auction ' + auction.auctionNo.toString()}
-          //                   renderInput={(params) => (
-          //                     <TextField
-          //                       {...params}
-          //                       placeholder="Number Of People"
-          //                       required
-          //                       variant="standard"
-          //                       sx={{
-          //                         background: "#f4f5f4",
-          //                         borderRadius: 50,
-          //                         padding: 2,
-          //                       }}
-          //                     />
-          //                   )}
-          //                 />
-          //               </Grid>
-          //               <Grid item xs={12}>
-          //                 <Autocomplete
-          //                   options={availableSlots ?? []}
-          //                   value={lot.lotNo ?? null}
-          //                   getOptionLabel={(_lot) =>
-          //                     lot.lotNo == -1 ? "" : "Lot #" + _lot
-          //                   }
-          //                   onChange={(e, newValue) =>
-          //                     newValue &&
-          //                     setLot({
-          //                       ...lot,
-          //                       lotNo: newValue,
-          //                     })
-          //                   }
-          //                   // getOptionLabel={(auction) => 'Auction ' + auction.auctionNo.toString()}
-          //                   renderInput={(params) => (
-          //                     <TextField
-          //                       {...params}
-          //                       placeholder="Do You Want DecorationNo"
-          //                       // required
-          //                       variant="standard"
-          //                       sx={{
-          //                         background: "#f4f5f4",
-          //                         borderRadius: 50,
-          //                         padding: 2,
-          //                       }}
-          //                     />
-          //                   )}
-          //                 />
-          //               </Grid>
-          //               <br />
-          //               <br />
-
-          //               <Grid
-          //                 container
-          //                 spacing={2}
-          //                 sx={{
-          //                   alignItems: "center",
-          //                   justifyContent: "center",
-          //                   textAlign: "center",
-          //                 }}
-          //               >
-          //                 <Grid item xs={12}>
-          //                   <Typography variant="h4">
-          //                     Total Cost: 1599
-          //                   </Typography>
-          //                 </Grid>
-          //                 <Grid item xs={12}>
-          //                   <Typography variant="subtitle1">
-          //                     (All taxes included)
-          //                   </Typography>
-          //                 </Grid>
-          //               </Grid>
-
-          //               <Grid item xs={12}>
-
-          //                   <Button
-          //                   onClick={()=>setStep("4")}
-          //                     type="submit"
-          //                     variant="contained"
-          //                     sx={{
-          //                       mt: 5,
-          //                       borderRadius: 50,
-          //                       padding: 2,
-          //                       marginRight: 2,
-          //                     }}
-          //                     fullWidth
-          //                   >
-          //                     Next
-          //                   </Button>
-
-          //               </Grid>
-          //             </Grid>
-          //             <br />
-          //             <br />
-          //             <br />
-          //           </form>
-          //         )}
-          //       </Box>
-          //     </Container>
-          //   </div>
-          // </>
           <></>
         )}
         {user ? (
@@ -3546,160 +3168,7 @@ function DecorationDetails() {
           </Card>
         ) : (
           <>
-            {/* <div
-           style={{
-             display: "flex",
-             justifyContent: "center",
-             alignItems: "center",
-             height: "100vh",
-             background: "#FFFCF8",
-           }}
-         >
-           <Card
-             sx={{
-               background: "white",
-               width: "80%",
-               height: "70%",
-               borderRadius: 4,
-               overflow: "scroll",
-             }}
-           >
-             <form
-               onSubmit={(e) => {
-                 e.preventDefault();
-                 // AuthServices.getOTP({ phone })
-                 //   .then((res) => {
-                 //     setGetOTPResponse(res.data);
-                 //   })
-                 //   .catch((error) => {
-                 //     console.log('error', error);
-                 //   });
-               }}
-             >
-               <Link to={'/'}>
-               <Button
-                 sx={{ mt: 2 }}
-                 onClick={() => {
-                   setStep(0);
-                 }}
-               >
-                 
-                 <ArrowBackIcon />
-               </Button>
-               </Link>
-     
-               <Lottie options={otp} height={150} width={150} />
-               <Typography
-                 variant="h5"
-                 sx={{
-                   color: "black",
-                   textAlign: "center",
-                 }}
-               >
-                 Enter OTP
-               </Typography>
-               <br />
-               {error && (
-                 <Typography sx={{ color: "red", ml: 3, textAlign: "left" }}>
-                   {error}
-                 </Typography>
-               )}
-     
-               <Box sx={{ ml: 8, mr: 8, mt: 2 }}>
-                 <InputBase
-                   type="number"
-                   value={OTP}
-                   onChange={(e)=>{
-                    setOTP(e.target.value);
-                   }}
-                   // onChange={(e) => {
-                   //   setOTP(e.target.value);
-                   //   if (e.target.value.length === 4) {
-                   //     // Verify OTP!
-                   //     setLoading(true);
-                   //     AuthServices.verifyOTP({
-                   //       auth_process_id: getOTPResponse?.auth_process_id as string,
-                   //       OTP: e.target.value,
-                   //     })
-                   //       .then((res) => {
-                   //         setLoading(false);
-                   //         console.log(res);
-                   //         if (res.data.isExistingUser) {
-                   //           // handle that case
-                   //           localStorage.setItem('authUser', JSON.stringify(res.data.user));
-                   //           localStorage.setItem('userToken', res.data.authToken as string);
-                   //           auth.setUser(res.data.user as IUser);
-                   //           navigate('/');
-                   //         } else {
-                   //           setCreateUserRequest((req) => ({
-                   //             ...req,
-                   //             tempAuthToken: res.data.tempAuthToken as string,
-                   //           }));
-                   //           setStep(2);
-                   //         }
-                   //       })
-                   //       .catch((error) => {
-                   //         setLoading(false);
-                   //         console.log(error);
-                   //         setError(error.message);
-                   //       });
-                   //   }
-                   // }}
-                   placeholder="XXXX"
-                   sx={{
-                     background: "#f4f5f4",
-                     borderRadius: 50,
-                     padding: 1,
-                     paddingLeft: 4,
-                     latterSpacing: 10,
-                     textAlign: "center",
-                     fontWeight: "bold",
-                   }}
-                   inputProps={{
-                     maxLength: 4,
-                     style: { letterSpacing: 40, textAlign: "center" },
-                   }}
-                   disabled={loading}
-                   fullWidth
-                 />
-               </Box>
-               <div style={{ textAlign: "center", marginRight: 5 }}>
-                 <br />
-                 <br />
-                 Didn't receive ?
-                 <Button
-                   type="submit"
-                   sx={{ color: "#384971" }}
-                   // onClick={() => {
-                   //   setOTP('');
-                   // }}
-                 >
-                   Resend OTP
-                 </Button>
-               </div>
-             </form>
-             <Grid
-              alignContent={"center"}
-              justifyContent={"center"}
-              display={"flex"}
-            >
-              <Button
-               className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
-                // onClick={() => {
-        
-                  onClick={onOTPVerify}
-                // }}
-                variant="contained"
-                color="primary"
-                
-              >
-              <CgSpinner size={20} className="mt-1 animate-spin" />
-
-                Verify Otp
-              </Button>
-            </Grid>
-           </Card>
-         </div> */}
+         
           </>
         )}
       </div>

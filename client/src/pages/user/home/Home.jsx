@@ -22,7 +22,9 @@ const Home = () => {
               <h1 className="display-1 mb-4 animated bounceInDown">
                 <span className="text-primary">Curating Surprises,</span>
                 <br />
-                Your Story, Our Screen
+                Your Story,
+                <br />
+                 Our Screen
               </h1>
               <a
                 href="/chooseTheater"
@@ -31,10 +33,10 @@ const Home = () => {
                 Book Now
               </a>
               <a
-                href="#"
+                href="/gallery"
                 className="btn btn-primary border-0 rounded-pill py-3 px-4 px-md-5 animated bounceInLeft"
               >
-                Know More
+                Gallery
               </a>
             </div>
             <div className="col-lg-5 col-md-12">

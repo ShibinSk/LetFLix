@@ -43,34 +43,34 @@ const Navbar = () => {
                   justify="center"
                   sx={{ color: "black" }}
                 >
-                  <Grid item xs={12} sm={6} md={1}>
+                  <Grid item xs={12} sm={6} md={2}>
                     <BottomNavigation
                       showLabels
                       value={0}
                       className="nav-item nav-link active"
                     >
                       <BottomNavigationAction
-                        style={{ color: "rgba(0,0,0,.55" }}
+                        style={{ color: "rgba(0,0,0,.55",fontWeight:'200'  }}
                         label="Home"
                         component={Link}
                         to="/"
                       />
                     </BottomNavigation>
                   </Grid>
-                  <Grid item xs={12} sm={6} md={2}>
+                  {/* <Grid item xs={12} sm={6} md={2}>
                     <BottomNavigation
                       showLabels
                       value={0}
                       className="nav-item nav-link active"
                     >
                       <BottomNavigationAction
-                        style={{ color: "rgba(0,0,0,.55" }}
+                        style={{ color: "rgba(0,0,0,.55",fontWeight:'200'  }}
                         label="About"
                         component={Link}
                         to="/about"
                       />
                     </BottomNavigation>
-                  </Grid>
+                  </Grid> */}
                   <Grid item xs={12} sm={6} md={2}>
                     <BottomNavigation
                       showLabels
@@ -78,27 +78,13 @@ const Navbar = () => {
                       className="nav-item nav-link active"
                     >
                       <BottomNavigationAction
-                        style={{ color: "rgba(0,0,0,.55" }}
+                        style={{ color: "rgba(0,0,0,.55" ,fontWeight:'200' }}
                         label="Gallery"
                         component={Link}
                         to="/gallery"
                       />
                     </BottomNavigation>
                   </Grid>
-                  <Grid item xs={12} sm={6} md={1}>
-                    <BottomNavigation
-                      showLabels
-                      value={0}
-                      className="nav-item nav-link active"
-                    >
-                      <BottomNavigationAction
-                        style={{ color: "rgba(0,0,0,.55" }}
-                        label="Faq"
-                        component={Link}
-                        to="/faq"
-                      />
-                    </BottomNavigation>
-                  </Grid>
                   <Grid item xs={12} sm={6} md={2}>
                     <BottomNavigation
                       showLabels
@@ -106,8 +92,8 @@ const Navbar = () => {
                       className="nav-item nav-link active"
                     >
                       <BottomNavigationAction
-                        style={{ color: "rgba(0,0,0,.55" }}
-                        label="RefundPolicy"
+                        style={{ color: "rgba(0,0,0,.55",fontWeight:'200' }}
+                        label="Refund Policy"
                         component={Link}
                         to="/RefundPolicy"
                       />
@@ -120,11 +106,11 @@ const Navbar = () => {
                       className="nav-item nav-link active"
                     >
                       <BottomNavigationAction
-                        style={{ color: "rgba(0,0,0,.55" }}
-                        label="PrivacyPolicy"
+                        style={{ color: "rgba(0,0,0,.55",fontWeight:'200'  }}
+                        label="Terms & Conditions"
                         component={Link}
                         to="/privacypolicy"
-                      />
+                      /> 
                     </BottomNavigation>
                   </Grid>
                   <Grid item xs={12} sm={6} md={2}>
@@ -134,10 +120,24 @@ const Navbar = () => {
                       className="nav-item nav-link active"
                     >
                       <BottomNavigationAction
-                        style={{ color: "rgba(0,0,0,.55" }}
+                        style={{ color: "rgba(0,0,0,.55",fontWeight:'200'  }}
                         label="Contact"
                         component={Link}
                         to="/contact"
+                      />
+                    </BottomNavigation>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={1}>
+                    <BottomNavigation
+                      showLabels
+                      value={0}
+                      className="nav-item nav-link active"
+                    >
+                      <BottomNavigationAction
+                        style={{ color: "rgba(0,0,0,.55" ,fontWeight:'200' }}
+                        label="Faq"
+                        component={Link}
+                        to="/faq"
                       />
                     </BottomNavigation>
                   </Grid>

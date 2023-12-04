@@ -104,14 +104,14 @@ const ChooseTheater = () => {
                       <Grid item xs={12} sm={6} md={4}>
                         <Card sx={{ maxWidth: 345 }}>
                           <Typography variant={"h5"} sx={{ color: "#d4a762" }}>
-                          Theatre Max
+                            Theatre Max
                           </Typography>
                           <CardActionArea>
                             <Link to="/T1Gallery">
                               <CardMedia
                                 component="img"
-                                height="140"
-                                image="/2023-09-26.jpg"
+                                height="225"
+                                image="/20231102033453__MG_5380.JPG"
                                 alt="green iguana"
                               />
                             </Link>
@@ -131,9 +131,9 @@ const ChooseTheater = () => {
                               >
                                 Experience the magic for just ₹ 2100 (5ppl, 2.5
                                 hrs) with standard decoration.
-                              </Typography>{" "}
                               Additional guests 5, Rs. 200 each (Sofa seating)
                               Max capacity: 8 persons.
+                              </Typography>{" "}
                               <Typography
                                 gutterBottom
                                 variant="h6"
@@ -191,14 +191,14 @@ const ChooseTheater = () => {
                         <Card sx={{ maxWidth: 345 }}>
                           <Typography variant={"h5"} sx={{ color: "#d4a762" }}>
                             {" "}
-                            Romantic Theatre
+                            Theatre Lalaland
                           </Typography>
                           <CardActionArea>
                             <Link to="/T2Gallery">
                               <CardMedia
                                 component="img"
-                                height="140"
-                                image="/2023-09-26.jpg"
+                                height="auto"
+                                image="/_MG_7150.JPG"
                                 alt="green iguana"
                               />
                             </Link>
@@ -208,10 +208,10 @@ const ChooseTheater = () => {
                                 sx={{ fontSize: "15px" }}
                                 color="text.primary"
                               >
-                                ₹1799 for 2 people including taxes (Decorations
-                                included)
-                                ₹1799 for 2 people including taxes (Decorations
-                                included)
+                                ₹ 1800 with Fairytale Theme Decoration A snug
+                                cuddle Recliner for two and a canopy over you.
+                                Grand 150-inch Screen Bose Atmos + Onkyo
+                                theatre speakers
                               </Typography>
                               <Typography
                                 gutterBottom

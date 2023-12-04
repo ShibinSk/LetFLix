@@ -1,4 +1,5 @@
 
+import CommingSoon from '../../../components/CommingSoon';
 import T1Gallery from '../../../components/T1Gallery';
 import T2Gallery from '../../../components/T2Gallery';
 import Test from '../../../components/Test';
@@ -18,15 +19,21 @@ import PaymentSuccess from '../paymetSuccess';
 import Home from './Home';
 
 export default [
-  { path: '/', element: <Home /> },
+  // { path: '/', element: <Home /> },
+  { path: '/', element: <CommingSoon/>},
   { path: '/about', element: <About /> },
-  { path: '/faq', element: <Faq /> },
-  { path: '/gallery', element: <Gallery /> },
+  // { path: '/faq', element: <Faq /> },
+  { path: '/faq', element: <CommingSoon/> },
+  // { path: '/gallery', element: <Gallery /> },
+  { path: '/gallery', element: <CommingSoon/> },
   { path: '/RefundPolicy', element: <RefundPolicy /> },
-  { path: '/contact', element: <Contact /> },
+  // { path: '/contact', element: <Contact /> },
+  { path: '/contact', element: <CommingSoon/>},
   { path: '/booking', element: <Booking /> },
   { path: '/chooseTheater', element: <ChooseTheater /> },
-  { path: '/checkSlot', element: <SlotCheck /> },
+  // { path: '/chooseTheater', element: <CommingSoon/> },
+  // { path: '/checkSlot', element: <SlotCheck /> },
+  { path: '/checkSlot', element: <CommingSoon/> },
   { path: '/login', element: <Login /> },
   { path: '/bookingDetails', element: <BookingDetails /> },
   { path: '/decoration/:slot/:value/', element: <DecorationDetails /> },

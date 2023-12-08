@@ -71,7 +71,7 @@ const ChooseTheater = () => {
           <div className="row g-0">
             <div className="col-1">
               <img
-                src="/2023-09-26.jpg"
+                src="/img2.JPG"
                 className="img-fluid h-100 w-100 rounded-start"
                 style={{ objectFit: "cover", opacity: 0.7 }}
                 alt=""
@@ -80,9 +80,9 @@ const ChooseTheater = () => {
             <div className="col-10">
               <div className="border-bottom border-top border-primary bg-light py-5 px-4">
                 <div className="text-center">
-                  <small className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-3">
+                  {/* <small className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-3">
                     Choose Us
-                  </small>
+                  </small> */}
                   <h1 className="display-5 mb-5">Choose Your Theatre</h1>
                 </div>
                 <div className="row g-4 form">
@@ -191,14 +191,15 @@ const ChooseTheater = () => {
                         <Card sx={{ maxWidth: 345 }}>
                           <Typography variant={"h5"} sx={{ color: "#d4a762" }}>
                             {" "}
-                            Theatre Lalaland
+                            Theatre La la land
                           </Typography>
                           <CardActionArea>
                             <Link to="/T2Gallery">
                               <CardMedia
                                 component="img"
-                                height="auto"
-                                image="/_MG_7150.JPG"
+                                // height="auto"
+                                height="225"
+                                image="/_MG_5661.JPG"
                                 alt="green iguana"
                               />
                             </Link>
@@ -277,7 +278,7 @@ const ChooseTheater = () => {
             </div>
             <div className="col-1">
               <img
-                src="/2023-09-26.jpg"
+                src="/img2.JPG"
                 className="img-fluid h-100 w-100 rounded-end"
                 style={{ objectFit: "cover", opacity: 0.7 }}
                 alt=""

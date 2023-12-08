@@ -6,80 +6,135 @@ import Footer from "../../../components/Footer";
 const Gallery = () => {
   const itemData = [
     {
-      img: '/img2.JPG',
+      img: 'T2/img1.jpg',
       title: 'Breakfast',
       rows: 2,
       cols: 2,
     },
     {
-      img: '/img1.JPG',
+      img: 'T2/img2.jpg',
       title: 'Burger',
     },
     {
-      img: '/img3.JPG',
+      img: 'T2/img3.jpg',
       title: 'Camera',
     },
     {
-      img: '/img2.JPG',
+      img: 'T2/img4.jpg',
       title: 'Coffee',
       cols: 2,
     },
     {
-      img: '/img3.JPG',
+      img: 'T2/img5.jpg',
       title: 'Hats',
       cols: 2,
     },
     {
-      img: '/img1.JPG',
+      img: 'T2/img6.jpg',
       title: 'Honey',
       author: '@arwinneil',
       rows: 2,
       cols: 2,
     },
     {
-      img: '/img2.JPG',
+      img: 'T2/img7.jpg',
       title: 'Basketball',
     },
     {
-      img: '/img2.JPG',
+      img: 'T2/img1.jpg',
       title: 'Fern',
     },
     {
-      img: '/img2.JPG',
+      img: 'T2/img8.jpg',
       title: 'Mushrooms',
       rows: 2,
       cols: 2,
     },
     {
-      img: '/img2.JPG',
+      img: 'T2/img9.jpg',
       title: 'Tomato basil',
     },
     {
-      img: '/img3.JPG',
+      img: 'T2/img10.jpg',
       title: 'Sea star',
     },
+    
+    
+    // {
+    //   img: '/img2.JPG',
+    //   title: 'Bike',
+    //   cols: 2,
+    // },
+    // {
+    //   img: '/img1.JPG',
+    //   title: 'Sea star',
+    // },
+    // {
+    //   img: '/img2.JPG',
+    //   title: 'Bike',
+    //   cols: 2,
+    // },
+    // {
+    //   img: '/img3.JPG',
+    //   title: 'Sea star',
+    // },
+    // {
+    //   img: '/img1.JPG',
+    //   title: 'Bike',
+    //   cols: 2,
+    // },
     {
-      img: '/img2.JPG',
-      title: 'Bike',
+      img: 'T1/img1.jpg',
+      title: 'Breakfast',
+      rows: 2,
       cols: 2,
     },
     {
-      img: '/img1.JPG',
-      title: 'Sea star',
+      img: 'T1/img2.jpg',
+      title: 'Burger',
     },
     {
-      img: '/img2.JPG',
-      title: 'Bike',
+      img: 'T1/img3.jpg',
+      title: 'Camera',
+    },
+    {
+      img: 'T1/img4.jpg',
+      title: 'Coffee',
       cols: 2,
     },
     {
-      img: '/img3.JPG',
-      title: 'Sea star',
+      img: 'T1/img5.jpg',
+      title: 'Hats',
+      cols: 2,
     },
     {
-      img: '/img1.JPG',
-      title: 'Bike',
+      img: 'T1/img6.jpg',
+      title: 'Honey',
+      author: '@arwinneil',
+      rows: 2,
       cols: 2,
+    },
+    {
+      img: 'T1/img7.jpg',
+      title: 'Basketball',
+    },
+    {
+      img: 'T1/img1.jpg',
+      title: 'Fern',
+    },
+    {
+      img: 'T1/img8.jpg',
+      title: 'Mushrooms',
+      rows: 2,
+      cols: 2,
+    },
+    {
+      img: 'T1/img9.jpg',
+      title: 'Tomato basil',
+    },
+    {
+      img: 'T1/img10.jpg',
+      title: 'Sea star',
     },
   ];
 
@@ -110,11 +165,13 @@ const Gallery = () => {
                 cols={item.cols || 1}
                 rows={item.rows || 1}
               >
-                <img
-                  {...srcset(item.img, 121, item.rows, item.cols)}
-                  alt={item.title}
-                  loading="lazy"
-                />
+               <img
+  {...srcset(item.img, 121, item.rows, item.cols)}
+  alt={item.title}
+  loading="lazy"
+  decoding="async" // Use async decoding for progressive loading
+/>
+
               </ImageListItem>
             ))}
           </ImageList>

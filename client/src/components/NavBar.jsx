@@ -43,7 +43,7 @@ const Navbar = () => {
                   justify="center"
                   sx={{ color: "black" }}
                 >
-                  <Grid item xs={12} sm={6} md={2}>
+                  <Grid item xs={12} sm={6} md={4}>
                     <BottomNavigation
                       showLabels
                       value={0}
@@ -85,7 +85,7 @@ const Navbar = () => {
                       />
                     </BottomNavigation>
                   </Grid>
-                  <Grid item xs={12} sm={6} md={2}>
+                  <Grid item xs={12} sm={6} md={4}>
                     <BottomNavigation
                       showLabels
                       value={0}
@@ -113,7 +113,7 @@ const Navbar = () => {
                       /> 
                     </BottomNavigation>
                   </Grid>
-                  <Grid item xs={12} sm={6} md={2}>
+                  {/* <Grid item xs={12} sm={6} md={2}>
                     <BottomNavigation
                       showLabels
                       value={0}
@@ -126,8 +126,8 @@ const Navbar = () => {
                         to="/contact"
                       />
                     </BottomNavigation>
-                  </Grid>
-                  <Grid item xs={12} sm={6} md={1}>
+                  </Grid> */}
+                  {/* <Grid item xs={12} sm={6} md={1}>
                     <BottomNavigation
                       showLabels
                       value={0}
@@ -140,7 +140,7 @@ const Navbar = () => {
                         to="/faq"
                       />
                     </BottomNavigation>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
                 {/* </Paper> */}
 

@@ -92,11 +92,7 @@ function DecorationDetails() {
       numberOfPeoples: "",
       wantDec: false,
     },
-    extraDec: {
-      dec1: "",
-      dec2: "",
-      dec3: "",
-    },
+    adons: []
   });
   console.log(bookingDetails, "s");
 
@@ -115,7 +111,7 @@ function DecorationDetails() {
     console.log("Current amount:", amount);
     console.log(option);
     if (option === "Cake1") {
-      setAmount((prev) => prev + 500);
+      setAmount((prev) => prev + 200);
     } else if (option === "Cake2") {
       setAmount((prev) => prev + 3000);
     } else if (option === "Cake3") {
@@ -139,32 +135,53 @@ function DecorationDetails() {
     }));
   };
   const handleExtraDec = (option) => {
-    console.log("Current amount:", amount);
-    console.log(option);
-    if (option === "Cake1") {
-      setAmount((prev) => prev + 500);
-    } else if (option === "Cake2") {
-      setAmount((prev) => prev + 3000);
-    } else if (option === "Cake3") {
-      setAmount((prev) => prev + 400);
-    } else if (option === "Cake4") {
-      setAmount((prev) => prev + 300);
-    } else if (option === "Cake5") {
-      setAmount((prev) => prev + 599);
-    } else if (option === "Cake6") {
-      setAmount((prev) => prev + 699);
-    } else if (option === "Cake7") {
-      setAmount((prev) => prev + 488);
-    } else if (option === "Cake8") {
-      setAmount((prev) => prev + 1);
+    console.log("Current selected options:", bookingDetails.adons);
+    console.log("Option selected:", option);
+  
+    // Check if the option is already selected
+    if (bookingDetails.adons.includes(option)) {
+      // If selected, remove it from the array and subtract its amount
+      setBookingDetails((prev) => ({
+        ...prev,
+        adons: prev.adons.filter((item) => item !== option),
+      }));
+      updateAmount(option, "subtract");
+    } else {
+      // If not selected, add it to the array and add its amount
+      setBookingDetails((prev) => ({
+        ...prev,
+        adons: [...prev.adons, option],
+      }));
+      updateAmount(option, "add");
     }
-
-    // setSelecteCake(option);
-    setBookingDetails((prev) => ({
-      ...prev,
-      extraDec: {},
-    }));
   };
+  
+  const updateAmount = (option, action) => {
+    // Define the amount for each option
+    const amountMap = {
+      LedName: 200,
+      LedNumber: 50,
+      TblDec: 100,
+      Photography: 250,
+      VideoEdting: 250,
+      cc: 250,
+      Cake7: 488,
+      Cake8: 1,
+      // Add more options as needed
+    };
+  
+    // Calculate the amount based on the action (add or subtract)
+    const optionAmount = amountMap[option];
+    const updatedAmount =
+      action === "add"
+        ? amount + optionAmount
+        : amount - optionAmount;
+  
+    // Update the total amount
+    setAmount(updatedAmount);
+
+  };
+  
 
   console.log(ph);
 
@@ -325,8 +342,8 @@ function DecorationDetails() {
                 <ArrowBackIcon />
               </Button>
             </Link>
-            <Container sx={{alignItems:'center', justifyContent:'center'}}>
-              <Grid container spacing={1} sx={{justifyContent:'center'}}>
+            <Container sx={{ alignItems: "center", justifyContent: "center" }}>
+              <Grid container spacing={1} sx={{ justifyContent: "center" }}>
                 <Grid
                   item
                   xs={4}
@@ -381,14 +398,14 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="/Bday.jpg"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="/Bday.jpg"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">BirthDay</h3>
                     </span>
@@ -451,9 +468,9 @@ function DecorationDetails() {
                       </span>
                       <img
                         style={{
-                            width: "70%",
-                        borderRadius: "12%",
-                        height: "45%",
+                          width: "70%",
+                          borderRadius: "12%",
+                          height: "45%",
                         }}
                         src="/anniversary.jpg"
                         alt=""
@@ -520,9 +537,9 @@ function DecorationDetails() {
                       </span>
                       <img
                         style={{
-                            width: "70%",
-                        borderRadius: "12%",
-                        height: "45%",
+                          width: "70%",
+                          borderRadius: "12%",
+                          height: "45%",
                         }}
                         src="/romatic1.jpg"
                         alt=""
@@ -533,7 +550,6 @@ function DecorationDetails() {
                   </label>
                 </Grid>
 
-                
                 <Grid
                   item
                   xs={4}
@@ -590,9 +606,9 @@ function DecorationDetails() {
                       </span>
                       <img
                         style={{
-                            width: "70%",
-                        borderRadius: "12%",
-                        height: "45%",
+                          width: "70%",
+                          borderRadius: "12%",
+                          height: "45%",
                         }}
                         src="/bridToBe.JPG"
                         alt=""
@@ -602,19 +618,19 @@ function DecorationDetails() {
                     </span>
                   </label>
                 </Grid>
-              
               </Grid>
 
-              <Grid container spacing={1} sx={{justifyContent:'center'}} >
-              
-              </Grid>
-          
-            <br />
-            <br />
-           
-            
-              <Grid  container spacing={2} sx={{justifyContent:'center'}}> 
               <Grid
+                container
+                spacing={1}
+                sx={{ justifyContent: "center" }}
+              ></Grid>
+
+              <br />
+              <br />
+
+              <Grid container spacing={2} sx={{ justifyContent: "center" }}>
+                <Grid
                   item
                   xs={4}
                   sm={6}
@@ -738,15 +754,17 @@ function DecorationDetails() {
                       </span>
                       <img
                         style={{
-                            width: "70%",
-                        borderRadius: "12%",
-                        height: "45%",
+                          width: "70%",
+                          borderRadius: "12%",
+                          height: "45%",
                         }}
                         src="/product-jpeg.jpg"
                         alt=""
                       />
                       {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Congratul <br /> ations</h3>
+                      <h3 className="checkbox-label">
+                        Congratul <br /> ations
+                      </h3>
                     </span>
                   </label>
                 </Grid>
@@ -806,9 +824,9 @@ function DecorationDetails() {
                       </span>
                       <img
                         style={{
-                            width: "70%",
-                        borderRadius: "8%",
-                        height: "45%",
+                          width: "70%",
+                          borderRadius: "8%",
+                          height: "45%",
                         }}
                         src="/product-jpeg.jpg"
                         alt=""
@@ -874,9 +892,9 @@ function DecorationDetails() {
                       </span>
                       <img
                         style={{
-                            width: "70%",
-                        borderRadius: "12%",
-                        height: "45%",
+                          width: "70%",
+                          borderRadius: "12%",
+                          height: "45%",
                         }}
                         src="/proposal.JPG"
                         alt=""
@@ -1056,7 +1074,7 @@ function DecorationDetails() {
               </Button>
             </Link>
             <Container>
-              <Grid container spacing={2} sx={{justifyContent:'center'}}>
+              <Grid container spacing={2} sx={{ justifyContent: "center" }}>
                 {/* <Grid item xs={6} sm={6} md={4}>
                   <label>
                     <Checkbox
@@ -1095,7 +1113,7 @@ function DecorationDetails() {
                     ₹ 699
                   </Typography>
                 </Grid> */}
-                 <Grid
+                <Grid
                   item
                   xs={4}
                   sm={6}
@@ -1149,23 +1167,23 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">Red Velvet cake</h3>
                       <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
+                      >
+                        ₹ 699
+                      </Typography>
                     </span>
                   </label>
                 </Grid>
@@ -1224,23 +1242,23 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">Carrot Cake</h3>
                       <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
+                      >
+                        ₹ 699
+                      </Typography>
                     </span>
                   </label>
                 </Grid>
@@ -1299,23 +1317,23 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">Lemon cake</h3>
                       <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
+                      >
+                        ₹ 699
+                      </Typography>
                     </span>
                   </label>
                 </Grid>
@@ -1374,23 +1392,23 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">BirthDay</h3>
                       <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
+                      >
+                        ₹ 699
+                      </Typography>
                     </span>
                   </label>
                 </Grid>
@@ -1449,23 +1467,23 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">BirthDay</h3>
                       <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
+                      >
+                        ₹ 699
+                      </Typography>
                     </span>
                   </label>
                 </Grid>
@@ -1524,23 +1542,23 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">Vanila Cake</h3>
                       <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
+                      >
+                        ₹ 699
+                      </Typography>
                     </span>
                   </label>
                 </Grid>
@@ -1599,23 +1617,23 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">Rainbow cake</h3>
                       <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
+                      >
+                        ₹ 699
+                      </Typography>
                     </span>
                   </label>
                 </Grid>
@@ -1674,23 +1692,23 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="https://handletheheat.com/wp-content/uploads/2015/03/Best-Birthday-Cake-with-milk-chocolate-buttercream-SQUARE-550x550.jpg"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">Chocolate Cake</h3>
                       <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
+                      >
+                        ₹ 699
+                      </Typography>
                     </span>
                   </label>
                 </Grid>
@@ -1767,8 +1785,8 @@ function DecorationDetails() {
               </Button>
             </Link>
             <Container>
-              <Grid container spacing={2} sx={{justifyContent:'center'}}>
-                  <Grid
+              <Grid container spacing={2} sx={{ justifyContent: "center" }}>
+                <Grid
                   item
                   xs={4}
                   sm={6}
@@ -1803,8 +1821,8 @@ function DecorationDetails() {
                         left: "5px",
                         cursor: "pointer",
                       }}
-                      checked={bookingDetails.cake === "Cake8"}
-                      onChange={() => handleCakeSelect("Cake8")}
+                      checked={bookingDetails.adons.includes("LedName")}
+                      onChange={() => handleExtraDec("LedName")}
                     />
                     <span
                       className="checkbox-tile"
@@ -1822,28 +1840,28 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="/LED Name 200 for 5 lattar_.jpg"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <h3 className="checkbox-label">LED Name</h3>
                       <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
+                      >
+                        ₹ 200
+                      </Typography>
                     </span>
                   </label>
                 </Grid>
 
-                  <Grid
+                <Grid
                   item
                   xs={4}
                   sm={6}
@@ -1878,8 +1896,8 @@ function DecorationDetails() {
                         left: "5px",
                         cursor: "pointer",
                       }}
-                      checked={bookingDetails.cake === "Cake8"}
-                      onChange={() => handleCakeSelect("Cake8")}
+                      checked={bookingDetails.adons.includes("LedNumber")}
+                      onChange={() => handleExtraDec("LedNumber")}
                     />
                     <span
                       className="checkbox-tile"
@@ -1897,28 +1915,28 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="/led number Rs 50.jpg"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <h3 className="checkbox-label">Led Numbers</h3>
                       <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
+                      >
+                        ₹ 50
+                      </Typography>
                     </span>
                   </label>
                 </Grid>
 
-                  <Grid
+                <Grid
                   item
                   xs={4}
                   sm={6}
@@ -1953,8 +1971,8 @@ function DecorationDetails() {
                         left: "5px",
                         cursor: "pointer",
                       }}
-                      checked={bookingDetails.cake === "Cake8"}
-                      onChange={() => handleCakeSelect("Cake8")}
+                      checked={bookingDetails.adons.includes("TblDec")}
+                      onChange={() => handleExtraDec("TblDec")}
                     />
                     <span
                       className="checkbox-tile"
@@ -1972,177 +1990,28 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="/Table Decor Rs.100.JPG"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <h3 className="checkbox-label">Table Dec</h3>
                       <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
-                    </span>
-                  </label>
-                </Grid>
-                
-                  <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.cake === "Cake8"}
-                      onChange={() => handleCakeSelect("Cake8")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
                       >
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
-                      alt=""
-                    />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Chocolate Cake</h3>
-                      <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
-                    </span>
-                  </label>
-                </Grid>
-                  <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.cake === "Cake8"}
-                      onChange={() => handleCakeSelect("Cake8")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
-                      >
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
-                      alt=""
-                    />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Chocolate Cake</h3>
-                      <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
+                        ₹ 100
+                      </Typography>
                     </span>
                   </label>
                 </Grid>
 
-                  <Grid
+                <Grid
                   item
                   xs={4}
                   sm={6}
@@ -2177,8 +2046,8 @@ function DecorationDetails() {
                         left: "5px",
                         cursor: "pointer",
                       }}
-                      checked={bookingDetails.cake === "Cake8"}
-                      onChange={() => handleCakeSelect("Cake8")}
+                      checked={bookingDetails.adons.includes("Photography")}
+                      onChange={() => handleExtraDec("Photography")}
                     />
                     <span
                       className="checkbox-tile"
@@ -2196,250 +2065,103 @@ function DecorationDetails() {
                         <br />
                       </span>
                       <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
-                      alt=""
-                    />
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="/photography 250.jpg"
+                        alt=""
+                      />
                       {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Chocolate Cake</h3>
+                      <h3 className="checkbox-label">Photography</h3>
                       <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
+                      >
+                        ₹ 250
+                      </Typography>
+                    </span>
+                  </label>
+                </Grid>
+                <Grid
+                  item
+                  xs={4}
+                  sm={6}
+                  md={2}
+                  style={{
+                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
+                    display: "inline-block",
+                    margin: "8px",
+                    padding: "10px",
+                    borderRadius: "8px",
+                    position: "relative", // Add position relative to the container
+                    overflow: "hidden", // Hide the checkbox overflow
+                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
+                    transition: "border 0.3s, background-color 0.3s",
+                  }}
+                >
+                  <label
+                    style={{
+                      // display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      position: "relative",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        position: "absolute",
+                        top: "5px",
+                        left: "5px",
+                        cursor: "pointer",
+                      }}
+                      checked={bookingDetails.adons.includes("VideoEdting")}
+                      onChange={() => handleExtraDec("VideoEdting")}
+                    />
+                    <span
+                      className="checkbox-tile"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
                     >
-                      ₹ 699
-                    </Typography>
+                      <span
+                        className="checkbox-icon"
+                        style={{ marginBottom: "5px" }}
+                      >
+                        <br />
+                        <br />
+                      </span>
+                      <img
+                        style={{
+                          width: "70%",
+                          borderRadius: "10%",
+                          height: "45%",
+                        }}
+                        src="/video editing 250.jpg"
+                        alt=""
+                      />
+                      {/* Uncomment the line below if you want to add a label */}
+                      <h3 className="checkbox-label">Video Editing</h3>
+                      <Typography
+                        paddingLeft={"20%"}
+                        paddingTop={"5px"}
+                        variant="h6"
+                      >
+                        ₹ 250
+                      </Typography>
                     </span>
                   </label>
                 </Grid>
 
-                  <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.cake === "Cake8"}
-                      onChange={() => handleCakeSelect("Cake8")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
-                      >
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
-                      alt=""
-                    />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Chocolate Cake</h3>
-                      <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
-                    </span>
-                  </label>
-                </Grid>
-
-                  <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.cake === "Cake8"}
-                      onChange={() => handleCakeSelect("Cake8")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
-                      >
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
-                      alt=""
-                    />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Chocolate Cake</h3>
-                      <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
-                    </span>
-                  </label>
-                </Grid>
-                  <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.cake === "Cake8"}
-                      onChange={() => handleCakeSelect("Cake8")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
-                      >
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                      style={{
-                        width: "70%",
-                        borderRadius: "10%",
-                        height: "45%",
-                      }}
-                      src="https://tse1.mm.bing.net/th?id=OIP.D4OZWIwZxMMOJJCyYYNnMAHaLH&pid=Api&P=0&h=180"
-                      alt=""
-                    />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Chocolate Cake</h3>
-                      <Typography
-                      paddingLeft={"20%"}
-                      paddingTop={"5px"}
-                      variant="h6"
-                    >
-                      ₹ 699
-                    </Typography>
-                    </span>
-                  </label>
-                </Grid>
+              
+             
               </Grid>
             </Container>
 
@@ -2662,7 +2384,7 @@ function DecorationDetails() {
               </Grid>
             </Container> */}
 
-            <Box sx={{ ml: 8, mr: 8, mt: 2 }} ></Box>
+            <Box sx={{ ml: 8, mr: 8, mt: 2 }}></Box>
             <Grid
               alignContent={"center"}
               justifyContent={"center"}
@@ -2751,7 +2473,6 @@ function DecorationDetails() {
                       }}
                     >
                       <Grid container spacing={2}>
-                        
                         <Grid item xs={12}>
                           <InputBase
                             type="text"
@@ -2777,7 +2498,6 @@ function DecorationDetails() {
                           />
                         </Grid>
                         <Grid item xs={12}>
-                          
                           <InputBase
                             placeholder="Whats App Number"
                             value={bookingDetails?.userDetails?.phone || ""}
@@ -2917,7 +2637,7 @@ function DecorationDetails() {
                               borderRadius: 50,
                               padding: 2,
                               marginRight: 2,
-                              backgroundColor:'#ffc107'
+                              backgroundColor: "#ffc107",
                             }}
                             fullWidth
                           >
@@ -3167,9 +2887,7 @@ function DecorationDetails() {
             </Grid>
           </Card>
         ) : (
-          <>
-         
-          </>
+          <></>
         )}
       </div>
       <Footer />

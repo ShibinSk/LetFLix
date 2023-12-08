@@ -6,82 +6,59 @@ import Footer from "./Footer";
 
 const T1Gallery = () => {
     const itemData = [
-        {
-          img: '/img2.JPG',
-          title: 'Breakfast',
-          rows: 2,
-          cols: 2,
-        },
-        {
-          img: '/img1.JPG',
-          title: 'Burger',
-        },
-        {
-          img: '/img3.JPG',
-          title: 'Camera',
-        },
-        {
-          img: '/img2.JPG',
-          title: 'Coffee',
-          cols: 2,
-        },
-        {
-          img: '/img3.JPG',
-          title: 'Hats',
-          cols: 2,
-        },
-        {
-          img: '/img1.JPG',
-          title: 'Honey',
-          author: '@arwinneil',
-          rows: 2,
-          cols: 2,
-        },
-        {
-          img: '/img2.JPG',
-          title: 'Basketball',
-        },
-        {
-          img: '/img2.JPG',
-          title: 'Fern',
-        },
-        {
-          img: '/img2.JPG',
-          title: 'Mushrooms',
-          rows: 2,
-          cols: 2,
-        },
-        {
-          img: '/img2.JPG',
-          title: 'Tomato basil',
-        },
-        {
-          img: '/img3.JPG',
-          title: 'Sea star',
-        },
-        {
-          img: '/img2.JPG',
-          title: 'Bike',
-          cols: 2,
-        },
-        {
-          img: '/img1.JPG',
-          title: 'Sea star',
-        },
-        {
-          img: '/img2.JPG',
-          title: 'Bike',
-          cols: 2,
-        },
-        {
-          img: '/img3.JPG',
-          title: 'Sea star',
-        },
-        {
-          img: '/img1.JPG',
-          title: 'Bike',
-          cols: 2,
-        },
+      {
+        img: 'T1/img1.jpg',
+        title: 'Breakfast',
+        rows: 2,
+        cols: 2,
+      },
+      {
+        img: 'T1/img2.jpg',
+        title: 'Burger',
+      },
+      {
+        img: 'T1/img3.jpg',
+        title: 'Camera',
+      },
+      {
+        img: 'T1/img4.jpg',
+        title: 'Coffee',
+        cols: 2,
+      },
+      {
+        img: 'T1/img5.jpg',
+        title: 'Hats',
+        cols: 2,
+      },
+      {
+        img: 'T1/img6.jpg',
+        title: 'Honey',
+        author: '@arwinneil',
+        rows: 2,
+        cols: 2,
+      },
+      {
+        img: 'T1/img7.jpg',
+        title: 'Basketball',
+      },
+      {
+        img: 'T1/img1.jpg',
+        title: 'Fern',
+      },
+      {
+        img: 'T1/img8.jpg',
+        title: 'Mushrooms',
+        rows: 2,
+        cols: 2,
+      },
+      {
+        img: 'T1/img9.jpg',
+        title: 'Tomato basil',
+      },
+      {
+        img: 'T1/img10.jpg',
+        title: 'Sea star',
+      },
       ];
 
   function srcset(image, size, rows = 1, cols = 1) {

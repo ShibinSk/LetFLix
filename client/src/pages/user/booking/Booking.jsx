@@ -38,7 +38,7 @@ const Booking = () => {
     <div >
       BOOKING
       <Navbar />
-      <div className="container-fluid bg-light py-6 my-6 mt-0">
+      <div className="container-fluid  py-6 my-6 mt-0">
         <div className="container text-center animated bounceInDown">
           <h1 className="display-1 mb-4">Booking</h1>
           <ol className="breadcrumb justify-content-center mb-0 animated bounceInDown">
@@ -69,9 +69,9 @@ const Booking = () => {
               />
             </div>
             <div className="col-10">
-              <div className="border-bottom border-top border-primary bg-light py-5 px-4">
+              <div className="border-bottom border-top border-primary py-5 px-4">
                 <div className="text-center">
-                  <small className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-3">
+                  <small className="d-inline-block fw-bold text-dark text-uppercase border border-primary rounded-pill px-4 py-1 mb-3">
                     Book Us
                   </small>
                   <h1 className="display-5 mb-5">

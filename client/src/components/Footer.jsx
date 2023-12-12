@@ -5,7 +5,7 @@ function Footer() {
   return (
     <>
       <div
-        className="container-fluid footer py- my-6 mb-0 bg-light wow bounceInUp"
+        className="container-fluid footer py- my-6 mb-0  wow bounceInUp"
         data-wow-delay="0.1s"
       >
        

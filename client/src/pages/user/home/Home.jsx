@@ -7,11 +7,11 @@ const Home = () => {
     <>
       <Navbar />
       <Carousels />
-      <div className="container-fluid bg-light py-6 my-6 mt-0">
+      <div className="container-fluid py-6 my-6 mt-0">
         <div className="container">
           <div className="row g-5 align-items-center">
             <div className="col-lg-7 col-md-12">
-              {/* <small className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown">
+              {/* <small className="d-inline-block fw-bold text-dark text-uppercase border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown">
                 Welcome toletzFlix
               </small> */}
               {/* <h1 className="display-1 mb-4 animated bounceInDown">
@@ -62,7 +62,7 @@ const Home = () => {
               </div>
               <br />
               <div className="col-lg-7 wow bounceInUp" data-wow-delay="0.3s">
-                <small className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-3">
+                <small className="d-inline-block fw-bold text-dark text-uppercase border border-primary rounded-pill px-4 py-1 mb-3">
                   About Us
                 </small>
                 <h1 className="display-5 mb-4">

@@ -190,7 +190,7 @@ const SlotCheck = () => {
             </Grid>
             {/* <a
               href=""
-              className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
+              className="d-inline-block fw-bold text-dark text-uppercase  border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
             >
               <BottomNavigation
                 showLabels
@@ -210,7 +210,7 @@ const SlotCheck = () => {
             <Grid container spacing={2}>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Button
-                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
+                  className="d-inline-block fw-bold text-dark text-uppercase  border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
                   style={{ height: "60%", width: "20vh" }}
                   onClick={() => setSlot("1")}
                   variant="outlined"
@@ -221,7 +221,7 @@ const SlotCheck = () => {
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Button
-                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
+                  className="d-inline-block fw-bold text-dark text-uppercase  border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
                   style={{ height: "60%", width: "20vh" }}
                   onClick={() => setSlot("2")}
                   variant="outlined"
@@ -232,7 +232,7 @@ const SlotCheck = () => {
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Button
-                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
+                  className="d-inline-block fw-bold text-dark text-uppercase  border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
                   style={{ height: "60%", width: "20vh" }}
                   onClick={() => setSlot("3")}
                   variant="outlined"
@@ -244,7 +244,7 @@ const SlotCheck = () => {
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Grid item lg></Grid>
                 <Button
-                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
+                  className="d-inline-block fw-bold text-dark text-uppercase  border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
                   style={{ height: "60%", width: "20vh" }}
                   onClick={() => setSlot("4")}
                   variant="outlined"
@@ -255,7 +255,7 @@ const SlotCheck = () => {
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Button
-                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
+                  className="d-inline-block fw-bold text-dark text-uppercase  border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
                   style={{ height: "60%", width: "20vh" }}
                   onClick={() => setSlot("5")}
                   variant="outlined"

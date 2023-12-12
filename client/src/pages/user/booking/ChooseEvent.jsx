@@ -101,7 +101,7 @@ const ChooseEvent = () => {
       >
         {/* <Grid className="container"> */}
          <Container>
-         <div className="border-bottom border-top border-primary bg-light py-3 px-3">
+         <div className="border-bottom border-top border-primary  py-3 px-3">
             <div>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={4} md={4}>

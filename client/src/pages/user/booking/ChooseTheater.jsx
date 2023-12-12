@@ -2,7 +2,11 @@ import React, { useContext, useState } from "react";
 import Navbar from "../../../components/NavBar";
 import Footer from "../../../components/Footer";
 import { Link } from "react-router-dom";
-
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 // import Card from "@mui/material/Card";
 // import CardContent from "@mui/material/CardContent";
 // import CardMedia from "@mui/material/CardMedia";
@@ -27,6 +31,31 @@ import { amountContext } from "../../../common/ContextApi.jsx";
 const ChooseTheater = () => {
   const { amount, setAmount } = useContext(amountContext);
   const [selectedDate, setSelectedDate] = useState("");
+  const [ppl, setPpl] = React.useState("");
+  const [initialAmount] = useState(1900);
+  useState(() => {
+    setAmount(initialAmount);
+  }, [setAmount, initialAmount]);
+  const handleChange = (event) => {
+
+    const selectedValue = event.target.value;
+    setPpl(selectedValue);
+    setAmount((prev) => {
+      if (selectedValue === 5) {
+        return 2100;
+      } else if (selectedValue === 6) {
+        return 2300;
+      } else if (selectedValue==7){
+        return 2500;
+      }else if (selectedValue==8) {
+        return 2700;
+      }else if (selectedValue === '') {
+        return 1900;
+      }
+      return prev;
+    });
+  };
+
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
   };
@@ -43,9 +72,13 @@ const ChooseTheater = () => {
     },
   ];
 
+  const T1Head = ` Theatre MAX`;
+
+  const T2Head = ` Theatre LaLaLand`;
   return (
     <div>
       Choose
+     
       <Navbar />
       <div className="container-fluid bg-light py-6 my-6 mt-0">
         <div className="container text-center animated bounceInDown">
@@ -102,7 +135,7 @@ const ChooseTheater = () => {
                   <div className="col-12 text-center">
                     <Grid container spacing={2} justifyContent="center">
                       <Grid item xs={12} sm={6} md={4}>
-                        <Card sx={{ maxWidth: 345 }}>
+                        <Card sx={{ maxWidth: 345, height: "79vh" }}>
                           <Typography variant={"h5"} sx={{ color: "#d4a762" }}>
                             Theatre Max
                           </Typography>
@@ -111,7 +144,7 @@ const ChooseTheater = () => {
                               <CardMedia
                                 component="img"
                                 height="225"
-                                image="/20231102033453__MG_5380.JPG"
+                                image="/_MG_7231.JPG"
                                 alt="green iguana"
                               />
                             </Link>
@@ -129,10 +162,11 @@ const ChooseTheater = () => {
                                 sx={{ fontSize: "15px" }}
                                 color="text.primary"
                               >
-                                Experience the magic for just ₹ 2100 (5ppl, 2.5
-                                hrs) with standard decoration.
-                              Additional guests 5, Rs. 200 each (Sofa seating)
-                              Max capacity: 8 persons.
+                                ₹ 1900 for 4 people & 2.5hrs with decor
+                                <br />
+                                ₹ 200 each for additional guests 4
+                                <br />
+                                Max capacity: 8 person
                               </Typography>{" "}
                               <Typography
                                 gutterBottom
@@ -146,52 +180,75 @@ const ChooseTheater = () => {
                           </CardActionArea>
                           <CardActions>
                             <Grid tem xs={12} sm={6} md={12}>
+                              <Box sx={{ width: "100px", marginLeft: "35%" }}>
+                                <FormControl fullWidth>
+                                  {/* <InputLabel>Peoples</InputLabel> */}
+
+                                  <PeopleIcon sx={{ paddingLeft: "3px" }} />
+                                  <Select
+                                    value={ppl}
+                                    onChange={handleChange}
+                                    displayEmpty
+                                    inputProps={{
+                                      "aria-label": "Without label",
+                                    }}
+                                  >
+                                    <MenuItem value="">
+                                      <em>Select</em>
+                                    </MenuItem>
+                                    <MenuItem value={5}>5</MenuItem>
+                                    <MenuItem value={6}>6</MenuItem>
+                                    <MenuItem value={7}>7</MenuItem>
+                                    <MenuItem value={8}>8</MenuItem>
+                                    
+                                  </Select>
+                                </FormControl>
+                              </Box>
+                              <br />
+                              <Typography>Price : ₹ {amount}</Typography>
+
                               <BottomNavigation
                                 showLabels
                                 value={0}
-                                style={{ backgroundColor: "transparent" }}
-                              >
-                                <BottomNavigationAction
-                                  // label="Check Slot"
-                                  icon={
-                                    <Button
-                                      variant="contained"
-                                      color="primary" // Set the color you desire
-                                      component={Link}
-                                      to="/checkSlot"
-                                      className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
-                                      style={{ height: "93%" }}
-                                      onClick={() => {
-                                        setAmount(1699);
-                                      }}
-                                    >
-                                      Check Slot
-                                    </Button>
-                                  }
-                                />
-                              </BottomNavigation>
-
-                              <Typography
-                                sx={{
-                                  fontSize: "13px",
-                                  color: "black",
-                                  fontWeight: "700px",
-                                  paddingLeft: "5px",
+                                style={{
+                                  backgroundColor: "transparent",
+                                  paddingTop: "10px",
                                 }}
-                                variant={"h5"}
                               >
-                                2 - 6 Peoples
-                              </Typography>
-                              <PeopleIcon sx={{ paddingLeft: "3px" }} />
+                                <Link to={`/checkSlot/${T1Head}/`}>
+                                  <BottomNavigationAction
+                                    // label="Check Slot"
+                                    icon={
+                                      // <Link >
+                                      <Button
+                                    
+                                        variant="contained"
+                                        color="primary" // Set the color you desire
+                                        // component={Link}
+                                        // to="/checkSlot"
+                                        sx={{backgroundColor:'#ffcc00'}}
+                                        className="btn btn-primary border-0 rounded-pill py-1 px-3 px-md-2 animated bounceInLeft"
+                                        style={{ height: "93%" }}
+                                        onClick={() => {
+                                          setAmount(1699);
+                                        }}
+                                      >
+                                        Check Slot
+                                      </Button>
+                                    }
+                                  />
+                                </Link>
+                              </BottomNavigation>
                             </Grid>
                           </CardActions>
                         </Card>
                       </Grid>
+
                       <Grid item xs={12} sm={6} md={4}>
-                        <Card sx={{ maxWidth: 345 }}>
+                        <Card sx={{ maxWidth: 345, height: "79vh" }}>
                           <Typography variant={"h5"} sx={{ color: "#d4a762" }}>
                             {" "}
-                            Theatre La la land
+                            Theatre LaLaLand
                           </Typography>
                           <CardActionArea>
                             <Link to="/T2Gallery">
@@ -199,7 +256,7 @@ const ChooseTheater = () => {
                                 component="img"
                                 // height="auto"
                                 height="225"
-                                image="/_MG_5661.JPG"
+                                image="/_MG_7884 (1).JPG"
                                 alt="green iguana"
                               />
                             </Link>
@@ -209,11 +266,11 @@ const ChooseTheater = () => {
                                 sx={{ fontSize: "15px" }}
                                 color="text.primary"
                               >
-                                ₹ 1800 with Fairytale Theme Decoration A snug
-                                cuddle Recliner for two and a canopy over you.
-                                Grand 150-inch Screen Bose Atmos + Onkyo
-                                theatre speakers
+                                ₹ 1800 with Fairytale Theme Decor
+                                <br />
+                                Max capacity: 2 person
                               </Typography>
+                              <br />
                               <Typography
                                 gutterBottom
                                 variant="h6"
@@ -224,51 +281,66 @@ const ChooseTheater = () => {
                               </Typography>
                             </CardContent>
                           </CardActionArea>
-                          <CardActions>
-                            <Grid item xs={12} sm={6} md={12}>
-                              <BottomNavigation
-                                showLabels
-                                value={0}
-                                style={{ backgroundColor: "transparent" }}
-                              >
-                                <BottomNavigationAction
-                                  // label="Check Slot"
-                                  icon={
+                          <br />
+                          {/* <br /> */}
+                          <PeopleIcon sx={{ paddingLeft: "3px" }} />
+                          <Typography
+                            sx={{
+                              fontSize: "13px",
+                              color: "black",
+                              fontWeight: "700px",
+                              paddingLeft: "5px",
+                              // color:'blue'
+                            }}
+                            variant={"h5"}
+                          >
+                            2 Person
+                            <br />
+                            only
+                          </Typography>
+
+                          <br />
+                          <Typography>Price : ₹ 1800</Typography>
+                          {/* <CardActions> */}
+                          <Grid item xs={12} sm={6} md={12}>
+                            <BottomNavigation
+                              showLabels
+                              value={0}
+                              style={{
+                                backgroundColor: "transparent",
+                                paddingTop: "15px",
+                              }}
+                            >
+                              <BottomNavigationAction
+                                // label="Check Slot"
+                                icon={
+                                  // <Link  >
+                                  <Link to={`/checkSlot/${T2Head}/`}>
                                     <Button
                                       onClick={() => {
                                         setAmount(1000);
                                       }}
-                                      className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
-                                      style={{ height: "93%" }}
+                                      className="btn btn-primary border-0 rounded-pill py-3 px-4 px-md-2 animated bounceInLeft"
+                                      style={{ height: "60%" }}
                                       variant="contained"
+                                      sx={{backgroundColor:'#ffcc00'}}
                                       color="primary" // Set the color you desire
-                                      component={Link}
-                                      // to={{
-                                      //   pathname: '/checkSlot',
-                                      //   state: { isNaN: 'Hello from the button!' }
-                                      // }}
-                                      to="/checkSlot"
+                                      // component={Link}
+                                      // // to={{
+                                      // //   pathname: '/checkSlot',
+                                      // //   state: { isNaN: 'Hello from the button!' }
+                                      // // }}
+                                      // to="/checkSlot"
                                     >
                                       Check Slot
                                     </Button>
-                                  }
-                                />
-                              </BottomNavigation>
-                              <Typography
-                                sx={{
-                                  fontSize: "13px",
-                                  color: "black",
-                                  fontWeight: "700px",
-                                  paddingLeft: "5px",
-                                  // color:'blue'
-                                }}
-                                variant={"h5"}
-                              >
-                                2 Peoples only
-                              </Typography>
-                              <PeopleIcon sx={{ paddingLeft: "3px" }} />
-                            </Grid>
-                          </CardActions>
+                                  </Link>
+                                }
+                              />
+                              <br />
+                            </BottomNavigation>
+                          </Grid>
+                          {/* </CardActions> */}
                         </Card>
                       </Grid>
                     </Grid>

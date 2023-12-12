@@ -1,65 +1,122 @@
-import Razorpay from "razorpay";
-import crypto from 'crypto';
+import crypto from "crypto";
+import axios from "axios";
+import dotenv from 'dotenv';
+dotenv.config();
 
-const instance = new Razorpay({
-  key_id: "rzp_test_RF0nTXmxHqKSxA",
-  key_secret: "r7g6b2ScrJedg3CddhpF3v9x",
-});
-export const checkout = async (req, res) => {
+
+const salt_key = process.env.SALT_KEY;
+const merchant_id = process.env.MUID;
+export const newPayment = async (req, res) => {
   try {
     console.log(req.body);
+    const merchantTransactionId = req.body.transactionId;
+    const data = {
+      merchantId: merchant_id,
+      merchantTransactionId: merchantTransactionId,
+      merchantUserId: req.body.MUID,
+      name: req.body.name,
+      amount: req.body.amount * 100,
+      redirectUrl: `http://localhost:8080/status/${merchantTransactionId}`,
+      redirectMode: "POST",
+      mobileNumber: req.body.number,
+      paymentInstrument: {
+        type: "PAY_PAGE",
+      },
+    };
+    const payload = JSON.stringify(data);
+    const payloadMain = Buffer.from(payload).toString("base64");
+    const keyIndex = 1;
+    const string = payloadMain + "/pg/v1/pay" + salt_key;
+    const sha256 = crypto.createHash("sha256").update(string).digest("hex");
+    const checksum = sha256 + "###" + keyIndex;
+
+    const prod_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
     const options = {
-      amount: Number(req.body.amount * 100),
-      currency: "INR",
+      method: "POST",
+      url: prod_URL,
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+        "X-VERIFY": checksum,
+      },
+      data: {
+        request: payloadMain,
+      },
     };
 
-    const order = await instance.orders.create(options);
-
-    res.sendStandardResponse("OK", {
-      data: { success: true, order },
-      message: "checkOut success",
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data, "dtaaaa");
+        return res.redirect(
+          response.data.data.instrumentResponse.redirectInfo.url
+        );
+        //     res.sendStandardResponse("OK", {
+        //         data: response.data.data.instrumentResponse.redirectInfo.url,
+        //         message: "checkOut success",
+        //       });
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  } catch (error) {
+    res.status(500).send({
+      message: error.message,
+      success: false,
     });
-  } catch (err) {
-    console.log(err);
   }
 };
 
-export const verify = async (req, res) => {
-  try {
-   
-    const {razorpay_order_id,razorpay_payment_id,razorpay_signature}=req.body;
-    const body =razorpay_order_id + "|" + razorpay_payment_id;
-    const expectedsgnature =crypto.createHmac('sha256',process.env.key_secret).update(body.toString()).digest('hex')
-    const isauth = expectedsgnature ===razorpay_signature;
+export const checkStatus = async (req, res) => {
+  const merchantTransactionId = res.req.body.transactionId;
+  const merchantId = res.req.body.merchantId;
 
-    if(isauth){
-        await Payment.create({
-            razorpay_order_id,razorpay_payment_id,razorpay_signature 
-        })
-        res.redirect(`http://localhost:5173/paymentsuccess?reference=${razorpay_payment_id}`)
+  const keyIndex = 1;
+  const string =
+    `/pg/v1/status/${merchantId}/${merchantTransactionId}` + salt_key;
+  const sha256 = crypto.createHash("sha256").update(string).digest("hex");
+  const checksum = sha256 + "###" + keyIndex;
 
-    }else{
+  const options = {
+    method: "GET",
+    url: `https://api.phonepe.com/apis/hermes/pg/v1/status/${merchantId}/${merchantTransactionId}`,
+    headers: {
+      accept: "application/json",
+      "Content-Type": "application/json",
+      "X-VERIFY": checksum,
+      "X-MERCHANT-ID": `${merchantId}`,
+    },
+  };
 
-        res.sendStandardResponse("OK", {
-          data: {success:false},
-          message: "Collection point analysis",
-        });
-    }
-
-  } catch (err) {
-    console.log(err);
-  }
+  // CHECK PAYMENT TATUS
+  axios
+    .request(options)
+    .then(async (response) => {
+      if (
+        req.body.code == "PAYMENT_SUCCESS" &&
+        req.body.merchantId &&
+        req.body.transactionId &&
+        req.body.providerReferenceId
+      ) {
+        if (req.body.transactionId) {
+          if (response.data.success === true) {
+            console.log(response);
+            const url = `http://localhost:5173/success`;
+            return res.redirect(url);
+          } else {
+            const url = `http://localhost:5173/failure`;
+            return res.redirect(url);
+          }
+        } else {
+          const url = `http://localhost:5173/failure`;
+          return res.redirect(url);
+        }
+      } else {
+        const url = `http://localhost:5173/failure`;
+        return res.redirect(url);
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
-
-export const getKey =async (req,res)=>{
-    try {
-        return res.sendStandardResponse("OK", {
-            data: {key:process.env.key_secret},
-            message: "Key gat",
-          });
-        
-    } catch (error) {
-        
-    }
-
-}

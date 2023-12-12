@@ -28,35 +28,36 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import BookingService from "./BookingService";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 import { useLocation } from "react-router-dom";
 import { amountContext } from "../../../common/ContextApi";
-import ReactPlayer from 'react-player'
+import ReactPlayer from "react-player";
+
+import "react-calendar/dist/Calendar.css";
+// import Calendar from 'react-calendar';
 
 const SlotCheck = () => {
+  const { T1Head, T2Head } = useParams();
+  console.log(useParams());
   const navigate = useNavigate();
   const images = [
     {
       label: "San Francisco – Oakland Bay Bridge, United States",
-      imgPath:
-        "/img2.JPG",
+      imgPath: "/img2.JPG",
     },
     {
       label: "Bird",
-      imgPath:
-        "/img1.JPG",
+      imgPath: "/img1.JPG",
     },
     {
       label: "Bali, Indonesia",
-      imgPath:
-        "/img3.JPG",
+      imgPath: "/img3.JPG",
     },
     {
       label: "Goč, Serbia",
-      imgPath:
-        "/img2.JPG",
+      imgPath: "/img2.JPG",
     },
   ];
 
@@ -65,7 +66,8 @@ const SlotCheck = () => {
   const [value, setValue] = React.useState(dayjs());
   const [slot, setSlot] = useState("");
   const maxSteps = images.length;
-  
+  const [date, setDate] = useState(new Date());
+
   const { amount, setAmount } = useContext(amountContext);
   //   const [value, onChange] = useState(new Date());
   console.log(slot);
@@ -103,8 +105,9 @@ const SlotCheck = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
             <Typography variant="h5" sx={{ textAlign: "center" }}>
-              Standard theater In Hennur
+              {/* {  T1Head } */}
             </Typography>
+            <br />
             <Paper
               square
               elevation={0}
@@ -116,32 +119,43 @@ const SlotCheck = () => {
               }}
             >
               <Typography sx={{ textAlign: "center", paddingLeft: "13%" }}>
-                ₹999 for 4 or fewer people including taxes (Rs 200 per extra
-                person)
+                { T1Head?? T2Head}
               </Typography>
             </Paper>
-           
-            <Grid item xs={12} md={6} style={{ position: 'relative', paddingTop: '56.25%' }}>
-      <ReactPlayer
-        url='https://youtube.com/shorts/xMl-RLSW96g?si=Ta5lZrT0uh9odpfX'
-        style={{ position: 'absolute', top: 0, left: 0 }}
-        width='100%'
-        height='100%'
-      
-      />
-    </Grid>
-          
-            <Box sx={{ paddingLeft: "13%" }}>
-              <Typography> -  5 cozy Recliners </Typography>
-              <Typography> - Captivating 4K projection</Typography>
-              <Typography> - Large 150-inch Screen</Typography>
-              <Typography> - Immersive Dolby Atmos audio</Typography>
-              <Typography>
 
-                {" "}
-               - 8 world class Speakers : Jamo Denmark + Bose Atmos speakers
-              </Typography>
-            </Box>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              style={{ position: "relative", paddingTop: "56.25%" }}
+            >
+              <ReactPlayer
+                url="https://youtube.com/shorts/xMl-RLSW96g?si=Ta5lZrT0uh9odpfX"
+                style={{ position: "absolute", top: 0, left: 0 }}
+                width="100%"
+                height="100%"
+              />
+            </Grid>
+              {T2Head}
+              {T1Head === "Theatre MAX" ? (
+  <Box sx={{ paddingLeft: "13%" }}>
+    <Typography> - 5 cozy Recliners </Typography>
+    <Typography> - Captivating 4K projection</Typography>
+    <Typography> - Large 150-inch Screen</Typography>
+    <Typography> - Immersive Dolby Atmos audio</Typography>
+    <Typography>
+      {" "}
+      - 8 world class Speakers: Jamo Denmark + Bose Atmos speakers
+    </Typography>
+  </Box>
+) : (
+  <Box sx={{ paddingLeft: "13%" }}>
+    <Typography> - A snug cuddle Recliner for two and a canopy over you. </Typography>
+    <Typography> - Grand 150-inch Screen</Typography>
+    <Typography> - Bose Atmos + Onkyo theatre speakers</Typography>
+  </Box>
+)}
+
           </Grid>
           <Grid item xs={12} md={6}>
             <Grid container spacing={2}>
@@ -154,12 +168,23 @@ const SlotCheck = () => {
                   alignItems: "center",
                 }}
               >
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <div className="app">
+                  <h1 className="text-center"> Calendar</h1>
+                  <div className="calendar-container">
+                    <Calendar onChange={setDate} value={date} />
+                  </div>
+                  <p className="text-center">
+                    <span className="bold">Selected Date:</span>{" "}
+                    {date.toDateString()}
+                  </p>
+                </div>
+
+                {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DateCalendar
                     value={value}
                     onChange={(newValue) => setValue(newValue)}
                   />
-                </LocalizationProvider>
+                </LocalizationProvider> */}
                 {/* <Calendar onChange={onChange} value={value} /> */}
               </Grid>
             </Grid>
@@ -181,65 +206,69 @@ const SlotCheck = () => {
 
               <h6> 11.00 am to 01.30 pm</h6>
             </a> */}
+
             <Grid container spacing={2}>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Button
-               
-                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
-                  // style={{ backgroundColor: 'transparent',height:'50',width:'50px',paddingBottom:'5px' }}
+                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
+                  style={{ height: "60%", width: "20vh" }}
                   onClick={() => setSlot("1")}
                   variant="outlined"
                   fullWidth
                 >
-                  <h6>11.00 am to 01.30 pm</h6>
+                  <h6>11.00am 01.30pm</h6>
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Button
-                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
+                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
+                  style={{ height: "60%", width: "20vh" }}
                   onClick={() => setSlot("2")}
                   variant="outlined"
                   fullWidth
                 >
-                  <h6> 02.00 pm to 04.30 pm</h6>
+                  <h6> 02.00pm 04.30pm</h6>
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Button
-                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
+                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
+                  style={{ height: "60%", width: "20vh" }}
                   onClick={() => setSlot("3")}
                   variant="outlined"
                   fullWidth
                 >
-                  <h6>05.00 pm to 07.30 pm</h6>
+                  <h6>05.00pm 07.30pm</h6>
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Grid item lg></Grid>
                 <Button
-                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
+                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
+                  style={{ height: "60%", width: "20vh" }}
                   onClick={() => setSlot("4")}
                   variant="outlined"
                   fullWidth
                 >
-                  <h6>08.00 pm to 10.30 pm</h6>
+                  <h6>08.00pm 10.30pm</h6>
                 </Button>
               </Grid>
               <Grid item xs={6} sm={6} md={4} lg={4}>
                 <Button
-                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
+                  className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-2 py-1 mb-4 animated bounceInDown"
+                  style={{ height: "60%", width: "20vh" }}
                   onClick={() => setSlot("5")}
                   variant="outlined"
                   fullWidth
                 >
-                  <h6> 11.00 am to 01.30 pm</h6>
+                  <h6> 11.00am 01.30pm</h6>
                 </Button>
               </Grid>
               <Grid item lg></Grid>
             </Grid>
             <br />
             <br />
-            <Grid container spacing={2}>
+            {/* <Grid container spacing={2}>
               <Grid item xs={6} sm={4} style={{ display: "flex" }}>
                 <Box
                   sx={{
@@ -266,17 +295,17 @@ const SlotCheck = () => {
 
                 <span style={{ color: "red" }}>Not Available</span>
               </Grid>
-            </Grid>
+            </Grid> */}
             <br />
             <br />
             {slot.length > 0 && (
               // <Link to={"/decoration"}>
-              <Link to={`/decoration/${slot}/${value}`}>
+              <Link to={`/decoration`}>
                 <Button
                   // onClick={handleClick}
                   sx={{ width: "100%", height: "10%" }}
                   variant="contained"
-                  style={{backgroundColor:'#ffc107'}}
+                  style={{ backgroundColor: "#ffc107" }}
                   className="btn btn-primary border-0 rounded-pill py-3 px-4 px-md-5 me-4 animated bounceInLeft"
                 >
                   Book Now

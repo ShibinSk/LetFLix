@@ -8,56 +8,56 @@ import Footer from "./Footer";
 const T2Gallery = () => {
     const itemData = [
       {
-        img: 'T2/img1.jpg',
+        img: 'T1/img1.jpg',
         title: 'Breakfast',
         rows: 2,
         cols: 2,
       },
       {
-        img: 'T2/img2.jpg',
+        img: 'T1/img2.jpg',
         title: 'Burger',
       },
       {
-        img: 'T2/img3.jpg',
+        img: 'T1/img3.jpg',
         title: 'Camera',
       },
       {
-        img: 'T2/img4.jpg',
+        img: 'T1/img4.jpg',
         title: 'Coffee',
         cols: 2,
       },
       {
-        img: 'T2/img5.jpg',
+        img: 'T1/img5.jpg',
         title: 'Hats',
         cols: 2,
       },
       {
-        img: 'T2/img6.jpg',
+        img: 'T1/img6.jpg',
         title: 'Honey',
         author: '@arwinneil',
         rows: 2,
         cols: 2,
       },
       {
-        img: 'T2/img7.jpg',
+        img: 'T1/img7.jpg',
         title: 'Basketball',
       },
       {
-        img: 'T2/img1.jpg',
+        img: 'T1/img1.jpg',
         title: 'Fern',
       },
       {
-        img: 'T2/img8.jpg',
+        img: 'T1/img8.jpg',
         title: 'Mushrooms',
         rows: 2,
         cols: 2,
       },
       {
-        img: 'T2/img9.jpg',
+        img: 'T1/img9.jpg',
         title: 'Tomato basil',
       },
       {
-        img: 'T2/img10.jpg',
+        img: 'T1/img10.jpg',
         title: 'Sea star',
       },
 

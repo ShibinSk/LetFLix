@@ -40,7 +40,7 @@ const Home = () => {
             </div>
             <div className="col-lg-5 col-md-12">
               <img
-                src="/img2.JPG"
+                src="T1/img7.jpg"
                 className="img-fluid rounded animated zoomIn"
                 style={{ height: "auto", width: "50vh" }}
                 alt=""

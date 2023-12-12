@@ -5,7 +5,7 @@ export const test = async (req, res) => {
     console.log("TEST MODE");
     res.sendStandardResponse('OK', {
       data: "DATA",
-      message: 'Collection point analysis',
+      message: 'eeeeeeeeeeeeeeeeee',
     });
   } catch (err) {
     console.log(err);

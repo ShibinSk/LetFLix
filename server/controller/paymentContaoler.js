@@ -49,20 +49,15 @@ export const newPayment = async (req, res) => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data.data.instrumentResponse.redirectInfo.url, "dtaaaa");
-        // return res.redirect(
-        //   response.data.data.instrumentResponse.redirectInfo.url
-        // );
-        //     res.sendStandardResponse("OK", {
-        //         data: response.data.data.instrumentResponse.redirectInfo.url,
-        //         message: "checkOut success",
-        //       });
-           
-    res.sendStandardResponse("OK", {
-      data: response.data.data.instrumentResponse.redirectInfo.url,
-      message: "checkOut success",
-    });
-      })
+        console.log(response.data, "data");
+        res.redirect(response.data.data.instrumentResponse.redirectInfo.url);   
+    // res.sendStandardResponse("OK", {
+    //   data: response.data,
+    //   message: "checkOut success",
+    // });
+        // return res.redirect(response.data.data.instrumentResponse.redirectInfo.url);
+      }
+      )
       .catch(function (error) {
         console.error(error);
       });

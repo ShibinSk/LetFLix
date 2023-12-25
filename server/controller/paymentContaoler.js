@@ -50,13 +50,18 @@ export const newPayment = async (req, res) => {
       .request(options)
       .then(function (response) {
         console.log(response.data.data.instrumentResponse.redirectInfo.url, "dtaaaa");
-        return res.redirect(
-          response.data.data.instrumentResponse.redirectInfo.url
-        );
+        // return res.redirect(
+        //   response.data.data.instrumentResponse.redirectInfo.url
+        // );
         //     res.sendStandardResponse("OK", {
         //         data: response.data.data.instrumentResponse.redirectInfo.url,
         //         message: "checkOut success",
         //       });
+           
+    res.sendStandardResponse("OK", {
+      data: response.data.data.instrumentResponse.redirectInfo.url,
+      message: "checkOut success",
+    });
       })
       .catch(function (error) {
         console.error(error);

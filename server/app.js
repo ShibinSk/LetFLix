@@ -24,7 +24,7 @@ dotenv.config();
 // });
 
 app.use(cors({
-  origin: '*'
+  origin: '*',
 }));
 
 // view engine setup

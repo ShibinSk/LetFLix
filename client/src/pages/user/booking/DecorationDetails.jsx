@@ -252,7 +252,7 @@ function DecorationDetails() {
       .post("/payment", { ...data })
       .then((res) => {
         console.log(res.data.data, "fromdata");
-        window.location.href=res.data.data
+        // window.location.href=res.data.data
 
         setTimeout(() => {
           setLoading2(false);

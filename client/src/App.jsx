@@ -22,8 +22,8 @@ const App = () => {
   // Encode the phone number and message
   const encodedPhoneNumber = encodeURIComponent(phoneNumber);
   const encodedMessage = encodeURIComponent(customMessage);
-  const serverURL =`http://13.234.228.135:8080`;
-  // const serverURL = window.location.hostname.startsWith('letzflix') ? 'https://letzflix.in/' : `http://${window.location.hostname}:8080`;
+  // const serverURL =`http://13.234.228.135:8080`;
+  const serverURL = window.location.hostname.startsWith('letzflix') ? 'https://letzflix.in/' : `http://${window.location.hostname}:8080`;
 
   axios.defaults.baseURL = serverURL;
 

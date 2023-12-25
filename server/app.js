@@ -13,7 +13,6 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 
-
 const app = express();
 dotenv.config();
 // app.use((req, res, next) => {
@@ -22,7 +21,9 @@ dotenv.config();
 //   res.header('Access-Control-Allow-Headers', 'Content-Type');
 //   next();
 // });
-
+const _dirname=path.dirname("")
+const buildpath = path.join(_dirname,"../client/dist")
+app.use(express.static(buildpath));
 app.use(cors({
   origin: '*',
 }));

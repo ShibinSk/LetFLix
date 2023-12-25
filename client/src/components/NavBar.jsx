@@ -11,15 +11,15 @@ const Navbar = () => {
       <div className="container-fluid nav-bar">
         <div className="container">
           <nav className="navbar navbar-light navbar-expand-lg py-4">
-            <Grid  className="navbar-brand" item xs={4} sm={4} md={12}>
+            <Grid className="navbar-brand" item xs={4} sm={4} md={12}>
               <Link to={"/"}>
                 <img
-                   style={{
-                    width: '90%', // Set width to 100% for responsiveness
-                    height: 'auto', // Maintain aspect ratio
-                    maxWidth: '35vh', // Set maximum width if needed
-                    maxHeight: '18vh', // Set maximum height if needed
-                 paddingLeft:'30px'
+                  style={{
+                    width: "90%", // Set width to 100% for responsiveness
+                    height: "auto", // Maintain aspect ratio
+                    maxWidth: "35vh", // Set maximum width if needed
+                    maxHeight: "18vh", // Set maximum height if needed
+                    paddingLeft: "30px",
                   }}
                   src="/ezgif.com-crop (2).gif"
                   alt="Loding.."
@@ -50,7 +50,7 @@ const Navbar = () => {
                       className="nav-item nav-link active"
                     >
                       <BottomNavigationAction
-                        style={{ color: "rgba(0,0,0,.55",fontWeight:'200'  }}
+                        style={{ color: "rgba(0,0,0,.55", fontWeight: "200" }}
                         label="Home"
                         component={Link}
                         to="/"
@@ -78,10 +78,10 @@ const Navbar = () => {
                       className="nav-item nav-link active"
                     >
                       <BottomNavigationAction
-                        style={{ color: "rgba(0,0,0,.55" ,fontWeight:'200' }}
+                        style={{ color: "rgba(0,0,0,.55", fontWeight: "200" }}
                         label="Gallery"
                         component={Link}
-                        to="/gallery"
+                        to="/chooseEvent"
                       />
                     </BottomNavigation>
                   </Grid>
@@ -92,7 +92,7 @@ const Navbar = () => {
                       className="nav-item nav-link active"
                     >
                       <BottomNavigationAction
-                        style={{ color: "rgba(0,0,0,.55",fontWeight:'200' }}
+                        style={{ color: "rgba(0,0,0,.55", fontWeight: "200" }}
                         label="Refund Policy"
                         component={Link}
                         to="/RefundPolicy"
@@ -106,11 +106,11 @@ const Navbar = () => {
                       className="nav-item nav-link active"
                     >
                       <BottomNavigationAction
-                        style={{ color: "rgba(0,0,0,.55",fontWeight:'200'  }}
+                        style={{ color: "rgba(0,0,0,.55", fontWeight: "200" }}
                         label="Terms & Conditions"
                         component={Link}
                         to="/privacypolicy"
-                      /> 
+                      />
                     </BottomNavigation>
                   </Grid>
                   {/* <Grid item xs={12} sm={6} md={2}>
@@ -180,12 +180,18 @@ const Navbar = () => {
               >
                 <i className="fas fa-search"></i>
               </button> */}
-            <a
+              {/* <a
                 href="/chooseEvent"
                 className="btn btn-primary border-0 rounded-pill py-3 px-4 px-md-5 me-4 animated bounceInLeft"
               >
                 Book Now
-              </a>
+              </a> */}
+              <Link to={'/chooseEvent'}>
+
+              <button className="btn btn-primary border-0 rounded-pill py-3 px-4 px-md-5 me-4 animated bounceInLeft">
+                Book Now
+              </button>
+              </Link>
             </div>
           </nav>
         </div>

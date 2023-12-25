@@ -22,7 +22,9 @@ const App = () => {
   // Encode the phone number and message
   const encodedPhoneNumber = encodeURIComponent(phoneNumber);
   const encodedMessage = encodeURIComponent(customMessage);
-  const serverURL =`http://${window.location.hostname}:8080`;
+  // const serverURL =`http://3.109.155.147`;
+  const serverURL = window.location.hostname.startsWith('letzflix') ? 'https://letzflix.in/' : `http://${window.location.hostname}:8080`;
+
   axios.defaults.baseURL = serverURL;
 
   const whatsappLink = `https://wa.me/${encodedPhoneNumber}?text=${encodedMessage}`;

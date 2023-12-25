@@ -6,6 +6,8 @@ dotenv.config();
 
 const salt_key = process.env.SALT_KEY;
 const merchant_id = process.env.MUID;
+
+
 export const newPayment = async (req, res) => {
   try {
     console.log(req.body);
@@ -16,7 +18,7 @@ export const newPayment = async (req, res) => {
       merchantUserId: req.body.MUID,
       name: req.body.name,
       amount: req.body.amount * 100,
-      redirectUrl: `http://localhost:8080/status/${merchantTransactionId}`,
+      redirectUrl: `http://13.234.228.135:8080/status/${merchantTransactionId}`,
       redirectMode: "POST",
       mobileNumber: req.body.number,
       paymentInstrument: {
@@ -47,7 +49,7 @@ export const newPayment = async (req, res) => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data, "dtaaaa");
+        console.log(response.data.data.instrumentResponse.redirectInfo.url, "dtaaaa");
         return res.redirect(
           response.data.data.instrumentResponse.redirectInfo.url
         );
@@ -119,4 +121,10 @@ export const checkStatus = async (req, res) => {
     .catch((error) => {
       console.error(error);
     });
+
+    
+     
+    
 };
+
+

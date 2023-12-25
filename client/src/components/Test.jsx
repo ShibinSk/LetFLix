@@ -1,363 +1,155 @@
-import React, { useState } from "react";
+import React from 'react'
 
-function Test() {
-  const [discordChecked, setDiscordChecked] = useState(true);
-  const [framerChecked, setFramerChecked] = useState(true);
-  // Add similar state variables for other checkboxes...
-
+const Test = () => {
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%,-50%)",
-      }}
-    >
-      <fieldset className="checkbox-group">
-        <legend className="checkbox-group-legend">Choose your favorites</legend>
-
-        <div
-          style={{
-            border: `2px solid ${discordChecked ? "blue" : "black"}`,
-            display: "inline-block",
-            margin: "8px",
-            padding: "10px",
-            borderRadius: "12px",
-            position: "relative", // Add position relative to the container
-            overflow: "hidden", // Hide the checkbox overflow
-            backgroundColor: discordChecked ? "#e6f7ff" : "white", // Optional background color change
-            transition: "border 0.3s, background-color 0.3s",
-          }}
-        >
-          <label
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-              position: "relative",
-            }}
-          >
-            <input
-              type="checkbox"
-              style={{
-                width: "20px",
-                height: "20px",
-                position: "absolute",
-                top: "5px",
-                left: "5px",
-                cursor: "pointer",
-              }}
-              checked={discordChecked}
-              onChange={() => setDiscordChecked(!discordChecked)}
-            />
-            <span
-              className="checkbox-tile"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <span className="checkbox-icon" style={{ marginBottom: "5px" }}>
-                {/* You can replace this with an SVG for Discord */}
-                <br />
-              </span>
-              <img
-                style={{ width: "100px", height: "90px", borderRadius: "8px" }}
-                src="/img2.JPG"
-                alt=""
-              />
-              {/* Uncomment the line below if you want to add a label */}
-              {/* <span className="checkbox-label">Discord</span> */}
-            </span>
-          </label>
+    <div class="container-fluid menu py-6">
+    <div class="container">
+        <div class="text-center wow bounceInUp" data-wow-delay="0.1s">
+            <small class="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-3">Our Menu</small>
+            <h1 class="display-5 mb-5">Most Popular Food in the World</h1>
         </div>
-        <div
-          style={{
-            border: `2px solid ${discordChecked ? "blue" : "black"}`,
-            display: "inline-block",
-            margin: "8px",
-            padding: "10px",
-            borderRadius: "12px",
-            position: "relative", // Add position relative to the container
-            overflow: "hidden", // Hide the checkbox overflow
-            backgroundColor: discordChecked ? "#e6f7ff" : "white", // Optional background color change
-            transition: "border 0.3s, background-color 0.3s",
-          }}
-        >
-          <label
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-              position: "relative",
-            }}
-          >
-            <input
-              type="checkbox"
-              style={{
-                width: "20px",
-                height: "20px",
-                position: "absolute",
-                top: "5px",
-                left: "5px",
-                cursor: "pointer",
-              }}
-              checked={discordChecked}
-              onChange={() => setDiscordChecked(!discordChecked)}
-            />
-            <span
-              className="checkbox-tile"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <span className="checkbox-icon" style={{ marginBottom: "5px" }}>
-                {/* You can replace this with an SVG for Discord */}
-                <br />
-              </span>
-              <img
-                style={{ width: "100px", height: "90px", borderRadius: "8px" }}
-                src="/img2.JPG"
-                alt=""
-              />
-              {/* Uncomment the line below if you want to add a label */}
-              {/* <span className="checkbox-label">Discord</span> */}
-            </span>
-          </label>
+        <div class="tab-class text-center">
+            <ul class="nav nav-pills d-inline-flex justify-content-center mb-5 wow bounceInUp" data-wow-delay="0.1s">
+                <li class="nav-item p-2">
+                    {/* <a class="d-flex py-2 mx-2 border border-primary bg-white rounded-pill active" data-bs-toggle="pill" href="#tab-6">
+                        <span class="text-dark"   >Starter</span>
+                    </a> */}
+                </li>
+                <li class="nav-item p-2">
+                    {/* <a class="d-flex py-2 mx-2 border border-primary bg-white rounded-pill" data-bs-toggle="pill" href="#tab-7">
+                        <span class="text-dark">Main Course</span>
+                    </a> */}
+                </li>
+                <li class="nav-item p-2">
+                    {/* <a class="d-flex py-2 mx-2 border border-primary bg-white rounded-pill" data-bs-toggle="pill" href="#tab-8">
+                        <span class="text-dark">Drinks</span>
+                    </a> */}
+                </li>
+                <li class="nav-item p-2">
+                    {/* <a class="d-flex py-2 mx-2 border border-primary bg-white rounded-pill" data-bs-toggle="pill" href="#tab-9">
+                        <span class="text-dark">Offers</span>
+                    </a> */}
+                </li>
+                <li class="nav-item p-2">
+                    {/* <a class="d-flex py-2 mx-2 border border-primary bg-white rounded-pill" data-bs-toggle="pill" href="#tab-10">
+                        <span class="text-dark">Our Spesial</span>
+                    </a> */}
+                </li>
+            </ul>
+            <div id="tab-7" class="tab-pane fade show p-0">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                        
+                            <div class="menu-item d-flex align-items-center">
+                              
+                                {/* <img class="flex-shrink-0 img-fluid rounded-circle" src="img/menu-01.jpg" alt=""> */}
+                                <img class="flex-shrink-0 img-fluid rounded-circle" src="http://192.168.1.108:5500/img/menu-01.jpg" alt="" />
+                                <div class="w-100 d-flex flex-column text-start ps-4">
+                                    <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
+                                        <h4>Argentinian</h4>
+                                        <h4 class="text-primary">$90</h4>
+                                    </div>
+                                    <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex align-items-center">
+                                {/* <img class="flex-shrink-0 img-fluid rounded-circle" src="img/menu-03.jpg" alt=""> */}
+                                <img class="flex-shrink-0 img-fluid rounded-circle" src="http://192.168.1.108:5500/img/menu-01.jpg" alt="" />
+                                <div class="w-100 d-flex flex-column text-start ps-4">
+                                    <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
+                                        <h4>Crispy</h4>
+                                        <h4 class="text-primary">$90</h4>
+                                    </div>
+                                    <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex align-items-center">
+                                {/* <img class="flex-shrink-0 img-fluid rounded-circle" src="img/menu-05.jpg" alt=""> */}
+                                <img class="flex-shrink-0 img-fluid rounded-circle" src="http://192.168.1.108:5500/img/menu-01.jpg" alt="" />
+                                <div class="w-100 d-flex flex-column text-start ps-4">
+                                    <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
+                                        <h4>Sabudana Tikki</h4>
+                                        <h4 class="text-primary">$90</h4>
+                                    </div>
+                                    <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex align-items-center">
+                                {/* <img class="flex-shrink-0 img-fluid rounded-circle" src="img/menu-07.jpg" alt=""> */}
+                                <img class="flex-shrink-0 img-fluid rounded-circle" src="http://192.168.1.108:5500/img/menu-01.jpg" alt="" />
+                                <div class="w-100 d-flex flex-column text-start ps-4">
+                                    <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
+                                        <h4>Blooming</h4>
+                                        <h4 class="text-primary">$90</h4>
+                                    </div>
+                                    <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex align-items-center">
+                                {/* <img class="flex-shrink-0 img-fluid rounded-circle" src="img/menu-08.jpg" alt=""> */}
+                                <img class="flex-shrink-0 img-fluid rounded-circle" src="http://192.168.1.108:5500/img/menu-01.jpg" alt="" />
+                                <div class="w-100 d-flex flex-column text-start ps-4">
+                                    <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
+                                        <h4>Argentinian</h4>
+                                        <h4 class="text-primary">$90</h4>
+                                    </div>
+                                    <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex align-items-center">
+                                {/* <img class="flex-shrink-0 img-fluid rounded-circle" src="img/menu-03.jpg" alt=""> */}
+                                <img class="flex-shrink-0 img-fluid rounded-circle" src="http://192.168.1.108:5500/img/menu-01.jpg" alt="" />
+                                <div class="w-100 d-flex flex-column text-start ps-4">
+                                    <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
+                                        <h4>Lemon</h4>
+                                        <h4 class="text-primary">$90</h4>
+                                    </div>
+                                    <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex align-items-center">
+                                {/* <img class="flex-shrink-0 img-fluid rounded-circle" src="img/menu-02.jpg" alt=""> */}
+                                <img class="flex-shrink-0 img-fluid rounded-circle" src="http://192.168.1.108:5500/img/menu-01.jpg" alt="" />
+                                <div class="w-100 d-flex flex-column text-start ps-4">
+                                    <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
+                                        <h4>Water Drink</h4>
+                                        <h4 class="text-primary">$90</h4>
+                                    </div>
+                                    <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="menu-item d-flex align-items-center">
+                                {/* <img class="flex-shrink-0 img-fluid rounded-circle" src="img/menu-01.jpg" alt=""> */}
+                                <img class="flex-shrink-0 img-fluid rounded-circle" src="http://192.168.1.108:5500/img/menu-01.jpg" alt="" />
+                                <div class="w-100 d-flex flex-column text-start ps-4">
+                                    <div class="d-flex justify-content-between border-bottom border-primary pb-2 mb-2">
+                                        <h4>Salty lemon</h4>
+                                        <h4 class="text-primary">$90</h4>
+                                    </div>
+                                    <p class="mb-0">Consectetur adipiscing elit sed dwso eiusmod tempor incididunt ut labore.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
-        <div
-          style={{
-            border: `2px solid ${discordChecked ? "blue" : "black"}`,
-            display: "inline-block",
-            margin: "8px",
-            padding: "10px",
-            borderRadius: "12px",
-            position: "relative", // Add position relative to the container
-            overflow: "hidden", // Hide the checkbox overflow
-            backgroundColor: discordChecked ? "#e6f7ff" : "white", // Optional background color change
-            transition: "border 0.3s, background-color 0.3s",
-          }}
-        >
-          <label
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-              position: "relative",
-            }}
-          >
-            <input
-              type="checkbox"
-              style={{
-                width: "20px",
-                height: "20px",
-                position: "absolute",
-                top: "5px",
-                left: "5px",
-                cursor: "pointer",
-              }}
-              checked={discordChecked}
-              onChange={() => setDiscordChecked(!discordChecked)}
-            />
-            <span
-              className="checkbox-tile"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <span className="checkbox-icon" style={{ marginBottom: "5px" }}>
-                {/* You can replace this with an SVG for Discord */}
-                <br />
-              </span>
-              <img
-                style={{ width: "100px", height: "90px", borderRadius: "8px" }}
-                src="/img2.JPG"
-                alt=""
-              />
-              {/* Uncomment the line below if you want to add a label */}
-              {/* <span className="checkbox-label">Discord</span> */}
-            </span>
-          </label>
-        </div>
-        <div
-          style={{
-            border: `2px solid ${discordChecked ? "blue" : "black"}`,
-            display: "inline-block",
-            margin: "8px",
-            padding: "10px",
-            borderRadius: "12px",
-            position: "relative", // Add position relative to the container
-            overflow: "hidden", // Hide the checkbox overflow
-            backgroundColor: discordChecked ? "#e6f7ff" : "white", // Optional background color change
-            transition: "border 0.3s, background-color 0.3s",
-          }}
-        >
-          <label
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-              position: "relative",
-            }}
-          >
-            <input
-              type="checkbox"
-              style={{
-                width: "20px",
-                height: "20px",
-                position: "absolute",
-                top: "5px",
-                left: "5px",
-                cursor: "pointer",
-              }}
-              checked={discordChecked}
-              onChange={() => setDiscordChecked(!discordChecked)}
-            />
-            <span
-              className="checkbox-tile"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <span className="checkbox-icon" style={{ marginBottom: "5px" }}>
-                {/* You can replace this with an SVG for Discord */}
-                <br />
-              </span>
-              <img
-                style={{ width: "100px", height: "90px", borderRadius: "8px" }}
-                src="/img2.JPG"
-                alt=""
-              />
-              {/* Uncomment the line below if you want to add a label */}
-              {/* <span className="checkbox-label">Discord</span> */}
-            </span>
-          </label>
-        </div>
-        <div
-          style={{
-            border: `2px solid ${discordChecked ? "blue" : "black"}`,
-            display: "inline-block",
-            margin: "8px",
-            padding: "10px",
-            borderRadius: "12px",
-            position: "relative", // Add position relative to the container
-            overflow: "hidden", // Hide the checkbox overflow
-            backgroundColor: discordChecked ? "#e6f7ff" : "white", // Optional background color change
-            transition: "border 0.3s, background-color 0.3s",
-          }}
-        >
-          <label
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-              position: "relative",
-            }}
-          >
-            <input
-              type="checkbox"
-              style={{
-                width: "20px",
-                height: "20px",
-                position: "absolute",
-                top: "5px",
-                left: "5px",
-                cursor: "pointer",
-              }}
-              checked={discordChecked}
-              onChange={() => setDiscordChecked(!discordChecked)}
-            />
-            <span
-              className="checkbox-tile"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <span className="checkbox-icon" style={{ marginBottom: "5px" }}>
-                {/* You can replace this with an SVG for Discord */}
-                <br />
-              </span>
-              <img
-                style={{ width: "100px", height: "90px", borderRadius: "8px" }}
-                src="/img2.JPG"
-                alt=""
-              />
-              {/* Uncomment the line below if you want to add a label */}
-              {/* <span className="checkbox-label">Discord</span> */}
-            </span>
-          </label>
-        </div>
-        <div
-          style={{
-            border: `2px solid ${discordChecked ? "blue" : "black"}`,
-            display: "inline-block",
-            margin: "8px",
-            padding: "10px",
-            borderRadius: "12px",
-            position: "relative", // Add position relative to the container
-            overflow: "hidden", // Hide the checkbox overflow
-            backgroundColor: discordChecked ? "#e6f7ff" : "white", // Optional background color change
-            transition: "border 0.3s, background-color 0.3s",
-          }}
-        >
-          <label
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-              position: "relative",
-            }}
-          >
-            <input
-              type="checkbox"
-              style={{
-                width: "20px",
-                height: "20px",
-                position: "absolute",
-                top: "5px",
-                left: "5px",
-                cursor: "pointer",
-              }}
-              checked={discordChecked}
-              onChange={() => setDiscordChecked(!discordChecked)}
-            />
-            <span
-              className="checkbox-tile"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <span className="checkbox-icon" style={{ marginBottom: "5px" }}>
-                {/* You can replace this with an SVG for Discord */}
-                <br />
-              </span>
-              <img
-                style={{ width: "100px", height: "90px", borderRadius: "8px" }}
-                src="/img2.JPG"
-                alt=""
-              />
-              {/* Uncomment the line below if you want to add a label */}
-              {/* <span className="checkbox-label">Discord</span> */}
-            </span>
-          </label>
-        </div>
-
-        
-      </fieldset>
     </div>
+</div>
   );
 }
 
-export default Test;
+export default Test

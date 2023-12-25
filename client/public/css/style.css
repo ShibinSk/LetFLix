@@ -98,7 +98,8 @@ h4, h5, h6, .h4, .h5, .h6 {
 
 /*** Navbar Start ***/
 .nav-bar {
-    background: var(--bs-light);
+    /* background: var(--bs-light); */
+    background-color:#FFFFFF ;
     border-bottom: 1px solid rgba(0, 0, 0, .05);
 }
 

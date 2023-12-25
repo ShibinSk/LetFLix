@@ -15,13 +15,13 @@ const Navbar = () => {
               <Link to={"/"}>
                 <img
                    style={{
-                    width: '100%', // Set width to 100% for responsiveness
+                    width: '90%', // Set width to 100% for responsiveness
                     height: 'auto', // Maintain aspect ratio
                     maxWidth: '35vh', // Set maximum width if needed
                     maxHeight: '18vh', // Set maximum height if needed
                  paddingLeft:'30px'
                   }}
-                  src="/LetzFlix_Yellow_no_background_highres.png"
+                  src="/ezgif.com-crop (2).gif"
                   alt="Loding.."
                 />
               </Link>
@@ -180,24 +180,11 @@ const Navbar = () => {
               >
                 <i className="fas fa-search"></i>
               </button> */}
-              <a
-                href=""
-                className="d-inline-block fw-bold text-dark text-uppercase bg-light border border-primary rounded-pill px-4 py-1 mb-4 animated bounceInDown"
+            <a
+                href="/chooseEvent"
+                className="btn btn-primary border-0 rounded-pill py-3 px-4 px-md-5 me-4 animated bounceInLeft"
               >
-                <BottomNavigation
-                  showLabels
-                  value={0}
-                  className="nav-item nav-link active"
-                  style={{ backgroundColor: "transparent" }}
-                >
-                  <BottomNavigationAction
-                    style={{ color: "rgba(0,0,0,.55"}}
-                    label="Book Now"
-                    component={Link}
-                    to="/chooseTheater"
-                  />
-                </BottomNavigation>
-                {/* Book Now */}
+                Book Now
               </a>
             </div>
           </nav>

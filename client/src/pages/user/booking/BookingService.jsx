@@ -8,6 +8,8 @@ export default{
 
     checkout: (data) => getStandardResponse(axios.post('/payment',{data})),
 
+    Book: (data) => getStandardResponse(axios.post('/bookNow',{data})),
+
 
 
     Checksum: () => getStandardResponse(axios.post('/generateChecksum')),

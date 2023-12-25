@@ -30,54 +30,15 @@ import PeopleIcon from "@mui/icons-material/People";
 import { amountContext } from "../../../common/ContextApi.jsx";
 
 const ChooseEvent = () => {
-  const { amount, setAmount } = useContext(amountContext);
-  const [selectedDate, setSelectedDate] = useState("");
-  const [ppl, setPpl] = React.useState("");
-  const [initialAmount] = useState(1900);
-  useState(() => {
-    setAmount(initialAmount);
-  }, [setAmount, initialAmount]);
-  const handleChange = (event) => {
-    const selectedValue = event.target.value;
-    setPpl(selectedValue);
-    setAmount((prev) => {
-      if (selectedValue === 5) {
-        return 2100;
-      } else if (selectedValue === 6) {
-        return 2300;
-      } else if (selectedValue == 7) {
-        return 2500;
-      } else if (selectedValue == 8) {
-        return 2700;
-      } else if (selectedValue === "") {
-        return 1900;
-      }
-      return prev;
-    });
+  const {evType, setEvType } = useContext(amountContext);
+  
+
+  const handleOptionSelect = (option) => {
+   setEvType(option)
   };
 
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-  };
-  const cardsData = [
-    {
-      title: "Hennur",
-      description: "0 slots available on 24/10/2023.",
-      image: "/2023-09-26.jpg",
-    },
-    {
-      title: "Romantic Theatre",
-      description: "0 slots available on 24/10/2023.",
-      image: "/2023-09-26.jpg",
-    },
-  ];
-
-  const T1Head = ` Theatre MAX`;
-
-  const T2Head = ` Theatre LaLaLand`;
   return (
     <div>
-      Choose
       <Navbar />
       <div className="container-fluid bg-light py-6 my-6 mt-0">
         <div className="container text-center animated bounceInDown">
@@ -105,88 +66,135 @@ const ChooseEvent = () => {
             <div>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={4} md={4}>
+                  <Link to={`/chooseTheater`} >
                   <div class="article-card">
                     <div class="content">
-                      <p class="date">Jan 1, 2022</p>
-                      <p class="title">Article Title Goes Here</p>
+                      {/* <p class="date">Jan 1, 2022</p> */}
+                      {/* <p class="title">BirthDay</p> */}
+                      
                     </div>
                     <img
-                      src="https://images.unsplash.com/photo-1482877346909-048fb6477632?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=958&q=80"
+                      onClick={() => handleOptionSelect("BirthDay")}
+                      src="T1/HAPPY BR.jpg"
                       alt="article-cover"
                     />
                   </div>
+                  </Link>
+                  
                 </Grid>
                 <Grid item xs={12} sm={4} md={4}>
+                  <Link to={`/chooseTheater`}>
                   <div class="article-card">
                     <div class="content">
-                      <p class="date">Jan 1, 2022</p>
-                      <p class="title">Article Title Goes Here</p>
+                      {/* <p class="date">Jan 1, 2022</p>
+                      <p class="title">Article Title Goes Here</p> */}
                     </div>
                     <img
-                      src="https://images.unsplash.com/photo-1482877346909-048fb6477632?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=958&q=80"
+                      src="T1/ANNIVESSARY.jpg"
                       alt="article-cover"
+                      onClick={() => handleOptionSelect("Anniversary")}
                     />
                   </div>
+                  
+                  </Link>
                 </Grid>
                 <Grid item xs={12} sm={4} md={4}>
+              <Link to={`/chooseTheater`} >
+
                   <div class="article-card">
                     <div class="content">
-                      <p class="date">Jan 1, 2022</p>
-                      <p class="title">Article Title Goes Here</p>
+                      {/* <p class="date">Jan 1, 2022</p> */}
+                      {/* <p class="title">BrideToBe</p> */}
                     </div>
                     <img
-                      src="https://images.unsplash.com/photo-1482877346909-048fb6477632?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=958&q=80"
+                      src="T1/BRIDE TO BE.jpg"
                       alt="article-cover"
+                      onClick={() => handleOptionSelect("BrideToBe")}
                     />
                   </div>
+              </Link>
+                  
                 </Grid>
                 <Grid item xs={12} sm={4} md={4}>
+                  <Link to={`/chooseTheater`}>
+
                   <div class="article-card">
                     <div class="content">
-                      <p class="date">Jan 1, 2022</p>
-                      <p class="title">Article Title Goes Here</p>
+                      {/* <p class="date">Jan 1, 2022</p> */}
+                      {/* <p class="title">Article Title Goes Here</p>  */}
                     </div>
                     <img
-                      src="https://images.unsplash.com/photo-1482877346909-048fb6477632?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=958&q=80"
+                      src="T1/FAREWELL.jpg"
                       alt="article-cover"
+                      onClick={() => handleOptionSelect("Farewell")}
                     />
                   </div>
+                  </Link>
                 </Grid>
                 <Grid item xs={12} sm={4} md={4}>
+                  <Link to={`/chooseTheater`}>
+                  
                   <div class="article-card">
                     <div class="content">
-                      <p class="date">Jan 1, 2022</p>
-                      <p class="title">Article Title Goes Here</p>
+                      {/* <p class="date">Jan 1, 2022</p> */}
+                      {/* <p class="title">Bride to be</p> */}
                     </div>
                     <img
-                      src="https://images.unsplash.com/photo-1482877346909-048fb6477632?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=958&q=80"
+                      src="T1/PROPSEL.jpg"
                       alt="article-cover"
+                      onClick={() => handleOptionSelect("proposal")}
                     />
                   </div>
+                  </Link>
                 </Grid>
                 <Grid item xs={12} sm={4} md={4}>
+                  <Link to={`/chooseTheater`}>
+                  
                   <div class="article-card">
                     <div class="content">
-                      <p class="date">Jan 1, 2022</p>
-                      <p class="title">Article Title Goes Here</p>
+                      {/* <p class="date">Jan 1, 2022</p> */}
+                      {/* <p class="title">Article Title Goes Here</p> */}
                     </div>
                     <img
-                      src="https://images.unsplash.com/photo-1482877346909-048fb6477632?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=958&q=80"
+                      src="T1/LIVE.jpg"
                       alt="article-cover"
+                      onClick={() => handleOptionSelect("LiveMatch")}
+
                     />
                   </div>
+                  </Link>
                 </Grid>
                 <Grid item xs={12} sm={4} md={4}>
+                  <Link to={`/chooseTheater`}>
+
                   <div class="article-card">
                     <div class="content">
-                      <p class="date">Jan 1, 2022</p>
-                      <p class="title">Article Title Goes Here</p>
+                      {/* <p class="date">Jan 1, 2022</p> */}
+                      {/* <p class="title">Bespoke Date</p> */}
                     </div>
                     <img
-                      src="https://images.unsplash.com/photo-1482877346909-048fb6477632?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=958&q=80"
+                      src="T1/dates.jpg"
                       alt="article-cover"
+                      onClick={() => handleOptionSelect("BespokeDate")}
                     />
                   </div>
+                  </Link>
+                </Grid>
+                <Grid item xs={12} sm={4} md={4}>
+                  <Link to={`/chooseTheater`}>
+                  
+                  <div class="article-card">
+                    <div class="content">
+                      {/* <p class="date">Jan 1, 2022</p> */}
+                      {/* <p class="title">Movie Marathon</p> */}
+                    </div>
+                    <img
+                      src="T1/movie marathon.jpg"
+                      alt="article-cover"
+                      onClick={() => handleOptionSelect("MovieMarathon")}
+                    />
+                  </div>
+                  </Link>
                 </Grid>
               </Grid>
             </div>

@@ -26,7 +26,7 @@ const Home = () => {
                  Our Screen
               </h1>
               <a
-                href="/chooseTheater"
+                href="/chooseEvent"
                 className="btn btn-primary border-0 rounded-pill py-3 px-4 px-md-5 me-4 animated bounceInLeft"
               >
                 Book Now
@@ -40,9 +40,9 @@ const Home = () => {
             </div>
             <div className="col-lg-5 col-md-12">
               <img
-                src="T1/img7.jpg"
+                src="/hero3.jpg"
                 className="img-fluid rounded animated zoomIn"
-                style={{ height: "auto", width: "50vh" }}
+                style={{ height: "auto", width: "80vh",paddingTop:"30px" }}
                 alt=""
               />
             </div>

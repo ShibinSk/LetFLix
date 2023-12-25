@@ -5,6 +5,8 @@ import T2Gallery from '../../../components/T2Gallery';
 import Test from '../../../components/Test';
 import Failure from '../../../components/failure';
 import Success from '../../../components/success';
+import AdminLogin from '../../admin/AdminLogin/AdminLogin';
+import Dashboard from '../../admin/Dashboard';
 import About from '../About';
 import Contact from '../Contact';
 import Faq from '../Faq';
@@ -35,11 +37,11 @@ export default [
   { path: '/booking', element: <Booking /> },
   { path: '/chooseTheater', element: <ChooseTheater /> },
   // { path: '/chooseTheater', element: <CommingSoon/> },
-  { path: '/checkSlot/:T1Head', element: <SlotCheck /> },
+  { path: '/checkSlot', element: <SlotCheck /> },
   // { path: '/checkSlot', element: <CommingSoon/> },
   { path: '/login', element: <Login /> },
   { path: '/bookingDetails', element: <BookingDetails /> },
-  { path: '/decoration', element: <DecorationDetails /> },
+  { path: '/decoration/:date/:slot', element: <DecorationDetails /> },
   { path: '/paymentSuccess', element: <PaymentSuccess /> },
   { path: '/T1Gallery', element: <T1Gallery /> },
   { path: '/T2Gallery', element: <T2Gallery/> },
@@ -49,7 +51,11 @@ export default [
   { path: '/failure', element: <Failure/> },
   { path: '/chooseEvent', element: <ChooseEvent/> },
 
- 
+//  Admin routes
+{ path: '/admin', element: <AdminLogin/> },
+{ path: '/dashBoard', element: <Dashboard/> },
+
+
 
  
 

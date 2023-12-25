@@ -48,6 +48,7 @@ function DecorationDetails() {
   const [step, setStep] = useState("0");
   const [order, setOrder] = useState("0");
   const { amount, setAmount } = useContext(amountContext);
+  const { evType, setEvType, tName, setTname } = useContext(amountContext);
   const [OTP, setOTP] = useState("");
   const [ph, setPh] = useState("");
   const [ShowOtp, setSHowOtp] = useState(false);
@@ -57,7 +58,8 @@ function DecorationDetails() {
   // const [loading, setLoading] = useState(false);
 
   useEffect(() => {}, []);
-  const { slot, value } = useParams();
+  const { date, slot } = useParams();
+  console.log(slot);
   const otp = {
     loop: true,
     autoplay: true,
@@ -75,33 +77,47 @@ function DecorationDetails() {
   const [isUploading, setIsUploading] = useState(false);
   const [auctions, setAuctions] = useState(null);
   // const [availableSlots, setAvailableSlots] = useState(1, 2, 3);
-
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const [bookingDetails, setBookingDetails] = useState({
     slot: slot,
-    bookedDate: value,
+    theater: tName,
+    bookedDate: date,
     amount: amount,
-    cake: null,
-    type: null,
+    cake: [],
+    type: evType,
     namingDetails: {
-      name: null,
-      partnerName: null,
-      singleName: null,
+      name: "",
+      partnerName: "",
+      singleName: "",
     },
     userDetails: {
       userName: "",
       phone: "",
       numberOfPeoples: "",
-      wantDec: false,
     },
-    adons: []
+    adons: [],
+    ledName: "",
+    ledNo: null,
+    musicLink: "",
   });
-  console.log(bookingDetails, "s");
+  console.log(amount, "s");
+  // useEffect(async ()=>{
+  //  await axios
+  //   .post("/book", {bookingDetails })
+  //   .then((res) => {
+  //     console.log(res.data, "fromdata");
+  //   })
+  //   .catch((error) => {
+  //     console.error(error);
+  //   });
+
+  // },[])
 
   // const [showOTP, setShowOTP] = useState(false);
   // const [user, setUser] = useState(null);
   const [loading2, setLoading2] = useState(false);
-  
-  console.log({ value }, { slot });
+
+  // console.log({ value }, { slot });
   const handleOptionSelect = (option) => {
     // setSelectedOption(option);
     setBookingDetails((prevBookingDetails) => ({
@@ -112,34 +128,75 @@ function DecorationDetails() {
   const handleCakeSelect = (option) => {
     console.log("Current amount:", amount);
     console.log(option);
-    if (option === "Cake1") {
-      setAmount((prev) => prev + 200);
-    } else if (option === "Cake2") {
-      setAmount((prev) => prev + 3000);
-    } else if (option === "Cake3") {
-      setAmount((prev) => prev + 400);
-    } else if (option === "Cake4") {
-      setAmount((prev) => prev + 300);
-    } else if (option === "Cake5") {
-      setAmount((prev) => prev + 599);
-    } else if (option === "Cake6") {
-      setAmount((prev) => prev + 699);
-    } else if (option === "Cake7") {
-      setAmount((prev) => prev + 488);
-    } else if (option === "Cake8") {
-      setAmount((prev) => prev + 1);
-    }
 
-    // setSelecteCake(option);
-    setBookingDetails((prev) => ({
-      ...prev,
-      cake: option,
-    }));
+    // Check if the option is already selected
+    if (bookingDetails.cake.includes(option)) {
+      // If selected, remove it from the array and subtract its amount
+      setBookingDetails((prev) => ({
+        ...prev,
+        cake: prev.cake.filter((item) => item !== option),
+      }));
+      updateAmount(option, "subtract");
+    } else {
+      // If not selected, add it to the array and add its amount
+      setBookingDetails((prev) => ({
+        ...prev,
+        cake: [...prev.cake, option],
+      }));
+      updateAmountt(option, "add");
+    }
   };
+  
+  const updateAmountt = (option, action) => {
+    // Define the amount for each option
+    const amountMap = {
+      Cake1: 200,
+      Cake2: 50,
+      Cake3: 100,
+      Cake4: 250,
+      Cake5: 250,
+      Cake6: 550,
+      Cake7: 600,
+      Cake8:800,
+      // Add more options as needed
+    };
+  
+    // Calculate the amount based on the action (add or subtract)
+    const optionAmount = amountMap[option];
+    const updatedAmount =
+      action === "add" ? amount + optionAmount : amount - optionAmount;
+
+    // Update the total amount
+    setAmount(updatedAmount);
+  };
+
+  const getPriceForOption = (option) => {
+    switch (option) {
+      case "Cake1":
+        return 100;
+      case "Cake2":
+        return 100;
+      case "Cake3":
+        return 100;
+      case "Cake4":
+        return 100;
+      case "Cake5":
+        return 100;
+      case "Cake6":
+        return 699;
+      case "Cake7":
+        return 488;
+      case "Cake8":
+        return 1;
+      default:
+        return 0;
+    }
+  };
+
   const handleExtraDec = (option) => {
     console.log("Current selected options:", bookingDetails.adons);
     console.log("Option selected:", option);
-  
+
     // Check if the option is already selected
     if (bookingDetails.adons.includes(option)) {
       // If selected, remove it from the array and subtract its amount
@@ -157,7 +214,7 @@ function DecorationDetails() {
       updateAmount(option, "add");
     }
   };
-  
+
   const updateAmount = (option, action) => {
     // Define the amount for each option
     const amountMap = {
@@ -171,48 +228,54 @@ function DecorationDetails() {
       EntryMusic: 0,
       // Add more options as needed
     };
-  
+
     // Calculate the amount based on the action (add or subtract)
     const optionAmount = amountMap[option];
     const updatedAmount =
-      action === "add"
-        ? amount + optionAmount
-        : amount - optionAmount;
-  
+      action === "add" ? amount + optionAmount : amount - optionAmount;
+
     // Update the total amount
     setAmount(updatedAmount);
-
   };
-  
 
-  console.log(ph);
-
-  console.log(OTP);
-
-
-  const data ={
-    name: 'shibin',
+  const data = {
+    name: "shibin",
     amount: 1,
-    number: '7034928633',
+    number: "7034928633",
     MUID: "MUID" + Date.now(),
-    transactionId: 'T' + Date.now(),
-}
-  const handlePayment = (e)=>{
+    transactionId: "T" + Date.now(),
+  };
+  const handlePayment = (e) => {
     e.preventDefault();
     setLoading2(true);
-    axios.post('/payment',{...data}).then((res) => { 
-      console.log(res.data.data,'fromdata'); 
-      // window.location.href=res.data.data
-  
-    setTimeout(() => {
+    axios
+      .post("/payment", { ...data })
+      .then((res) => {
+        console.log(res.data.data, "fromdata");
+        // window.location.href=res.data.data
+
+        setTimeout(() => {
+          setLoading2(false);
+        }, 1500);
+      })
+      .catch((error) => {
         setLoading2(false);
-    }, 1500);
-    })
-    .catch(error => {
-        setLoading2(false)
         console.error(error);
-    });   
-}
+      });
+  };
+  const handleBook = async (e) => {
+    BookingService.Book(bookingDetails).then((res) => {
+      console.log(res.data);
+    });
+    // await axios
+    //     .post("/bookNow", { data })
+    //     .then((res) => {
+    //       console.log(res.data, "fromdata");
+    //     })
+    // .catch((error) => {
+    //   console.error(error);
+    // });
+  };
 
   const initiatePaytmPayment = (orderID, checksum) => {
     console.log("inn");
@@ -284,7 +347,7 @@ function DecorationDetails() {
   return (
     <>
       <Navbar />
-      {/* <h1>{amount}</h1> */}
+      {/* <h1>{bookingDetails.type}</h1> */}
       <div
         style={{
           display: "flex",
@@ -296,7 +359,7 @@ function DecorationDetails() {
       >
         <Toaster toastOptions={{ duration: 4000 }} />
         <div id="recaptcha-container"></div>
-        {step === "0" && (
+        {/* {step === "0" && (
           <Card
             sx={{
               background: "white",
@@ -317,575 +380,16 @@ function DecorationDetails() {
               <Button
                 sx={{ mt: 2 }}
                 onClick={() => {
-                  setStep(1);
+                  // setStep(1);
                 }}
               >
                 <ArrowBackIcon />
               </Button>
             </Link>
             <Container sx={{ alignItems: "center", justifyContent: "center" }}>
-              <Grid container spacing={1} sx={{ justifyContent: "center" }}>
-                <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "black" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.type === "Birthday"}
-                      onChange={() => handleOptionSelect("Birthday")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
-                      >
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                        style={{
-                          width: "70%",
-                          borderRadius: "10%",
-                          height: "45%",
-                        }}
-                        src="/Bday.jpg"
-                        alt=""
-                      />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">BirthDay</h3>
-                    </span>
-                  </label>
-                </Grid>
+               
 
-                <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "12px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.type === "Anniversary"}
-                      onChange={() => handleOptionSelect("Anniversary")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
-                      >
-                        {/* You can replace this with an SVG for Discord */}
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                        style={{
-                          width: "70%",
-                          borderRadius: "12%",
-                          height: "45%",
-                        }}
-                        src="/anniversary.jpg"
-                        alt=""
-                      />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Anniversary</h3>
-                    </span>
-                  </label>
-                </Grid>
-
-                <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "12px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.type === "Romantic Date"}
-                      onChange={() => handleOptionSelect("Romantic Date")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
-                      >
-                        {/* You can replace this with an SVG for Discord */}
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                        style={{
-                          width: "70%",
-                          borderRadius: "12%",
-                          height: "45%",
-                        }}
-                        src="/romatic1.jpg"
-                        alt=""
-                      />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Bespoke Date</h3>
-                    </span>
-                  </label>
-                </Grid>
-
-                <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "12px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.type === "Bride to be"}
-                      onChange={() => handleOptionSelect("Bride to be")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
-                      >
-                        {/* You can replace this with an SVG for Discord */}
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                        style={{
-                          width: "70%",
-                          borderRadius: "12%",
-                          height: "45%",
-                        }}
-                        src="/bridToBe.JPG"
-                        alt=""
-                      />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Bride to be</h3>
-                    </span>
-                  </label>
-                </Grid>
-              </Grid>
-
-              <Grid
-                container
-                spacing={1}
-                sx={{ justifyContent: "center" }}
-              ></Grid>
-
-              <br />
-              <br />
-
-              <Grid container spacing={2} sx={{ justifyContent: "center" }}>
-                <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "12px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.type === "Farewell"}
-                      onChange={() => handleOptionSelect("Farewell")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
-                      >
-                        {/* You can replace this with an SVG for Discord */}
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                        style={{
-                          width: "70%",
-                          borderRadius: "12%",
-                          height: "45%",
-                        }}
-                        src="/farewell.JPG"
-                        alt=""
-                      />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Farewell</h3>
-                    </span>
-                  </label>
-                </Grid>
-                <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "12px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.type === "Congratulations"}
-                      onChange={() => handleOptionSelect("Congratulations")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
-                      >
-                        {/* You can replace this with an SVG for Discord */}
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                        style={{
-                          width: "70%",
-                          borderRadius: "12%",
-                          height: "45%",
-                        }}
-                        src="/product-jpeg.jpg"
-                        alt=""
-                      />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">
-                        Congratul <br /> ations
-                      </h3>
-                    </span>
-                  </label>
-                </Grid>
-                <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "12px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.type === "Baby Shower"}
-                      onChange={() => handleOptionSelect("Baby Shower")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
-                      >
-                        {/* You can replace this with an SVG for Discord */}
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                        style={{
-                          width: "70%",
-                          borderRadius: "8%",
-                          height: "45%",
-                        }}
-                        src="/product-jpeg.jpg"
-                        alt=""
-                      />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Baby Shower</h3>
-                    </span>
-                  </label>
-                </Grid>
-                <Grid
-                  item
-                  xs={4}
-                  sm={6}
-                  md={2}
-                  style={{
-                    // border: `2px solid ${discordChecked ? "blue" : "black"}`,
-                    display: "inline-block",
-                    margin: "8px",
-                    padding: "10px",
-                    borderRadius: "12px",
-                    position: "relative", // Add position relative to the container
-                    overflow: "hidden", // Hide the checkbox overflow
-                    backgroundColor: discordChecked ? "#FFFCF8" : "white", // Optional background color change
-                    transition: "border 0.3s, background-color 0.3s",
-                  }}
-                >
-                  <label
-                    style={{
-                      // display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-end",
-                      position: "relative",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                        position: "absolute",
-                        top: "5px",
-                        left: "5px",
-                        cursor: "pointer",
-                      }}
-                      checked={bookingDetails.type === "Marriage Proposal"}
-                      onChange={() => handleOptionSelect("Marriage Proposal")}
-                    />
-                    <span
-                      className="checkbox-tile"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        className="checkbox-icon"
-                        style={{ marginBottom: "5px" }}
-                      >
-                        {/* You can replace this with an SVG for Discord */}
-                        <br />
-                        <br />
-                      </span>
-                      <img
-                        style={{
-                          width: "70%",
-                          borderRadius: "12%",
-                          height: "45%",
-                        }}
-                        src="/proposal.JPG"
-                        alt=""
-                      />
-                      {/* Uncomment the line below if you want to add a label */}
-                      <h3 className="checkbox-label">Proposal</h3>
-                    </span>
-                  </label>
-                </Grid>
-              </Grid>
+           
             </Container>
 
             <Box sx={{ ml: 8, mr: 8, mt: 2 }}></Box>
@@ -1003,9 +507,7 @@ function DecorationDetails() {
               <Grid item sx={6}>
                 <Typography variant="h5">Total Cost: {amount}</Typography>
               </Grid>
-              {/* <Grid item sx={6}>
-                      <Typography variant="h5">Total Cost: 000</Typography>
-                    </Grid> */}
+             
               <br />
             </Grid>
 
@@ -1026,8 +528,8 @@ function DecorationDetails() {
             </Grid>
             <br />
           </Card>
-        )}
-        {step === "1" && (
+        )} */}
+        {step === "0" && (
           <Card
             sx={{
               background: "white",
@@ -1048,7 +550,7 @@ function DecorationDetails() {
               <Button
                 sx={{ mt: 2 }}
                 onClick={() => {
-                  setStep(0);
+                  setStep(1);
                 }}
               >
                 <ArrowBackIcon />
@@ -1129,7 +631,7 @@ function DecorationDetails() {
                         left: "5px",
                         cursor: "pointer",
                       }}
-                      checked={bookingDetails.cake === "Cake1"}
+                      checked={bookingDetails.cake.includes("Cake1")}
                       onChange={() => handleCakeSelect("Cake1")}
                     />
                     <span
@@ -1204,7 +706,7 @@ function DecorationDetails() {
                         left: "5px",
                         cursor: "pointer",
                       }}
-                      checked={bookingDetails.cake === "Cake2"}
+                      checked={bookingDetails.cake.includes("Cake2")}
                       onChange={() => handleCakeSelect("Cake2")}
                     />
                     <span
@@ -1279,7 +781,7 @@ function DecorationDetails() {
                         left: "5px",
                         cursor: "pointer",
                       }}
-                      checked={bookingDetails.cake === "Cake3"}
+                      checked={bookingDetails.cake.includes("Cake3")}
                       onChange={() => handleCakeSelect("Cake3")}
                     />
                     <span
@@ -1354,7 +856,7 @@ function DecorationDetails() {
                         left: "5px",
                         cursor: "pointer",
                       }}
-                      checked={bookingDetails.cake === "Cake4"}
+                      checked={bookingDetails.cake.includes("Cake4")}
                       onChange={() => handleCakeSelect("Cake4")}
                     />
                     <span
@@ -1429,7 +931,7 @@ function DecorationDetails() {
                         left: "5px",
                         cursor: "pointer",
                       }}
-                      checked={bookingDetails.cake === "Cake5"}
+                      checked={bookingDetails.cake.includes("Cake5")}
                       onChange={() => handleCakeSelect("Cake5")}
                     />
                     <span
@@ -1504,7 +1006,7 @@ function DecorationDetails() {
                         left: "5px",
                         cursor: "pointer",
                       }}
-                      checked={bookingDetails.cake === "Cake6"}
+                      checked={bookingDetails.cake.includes("Cake6")}
                       onChange={() => handleCakeSelect("Cake6")}
                     />
                     <span
@@ -1579,7 +1081,7 @@ function DecorationDetails() {
                         left: "5px",
                         cursor: "pointer",
                       }}
-                      checked={bookingDetails.cake === "Cake7"}
+                      checked={bookingDetails.cake.includes("Cake7")}
                       onChange={() => handleCakeSelect("Cake7")}
                     />
                     <span
@@ -1654,7 +1156,7 @@ function DecorationDetails() {
                         left: "5px",
                         cursor: "pointer",
                       }}
-                      checked={bookingDetails.cake === "Cake8"}
+                      checked={bookingDetails.cake.includes("Cake8")}
                       onChange={() => handleCakeSelect("Cake8")}
                     />
                     <span
@@ -1831,12 +1333,42 @@ function DecorationDetails() {
                       />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">LED Name</h3>
+                      {bookingDetails.adons.includes("LedName") && (
+                        <>
+                          <Grid item xs={12}>
+                            <InputLabel>Name</InputLabel>
+                            <InputBase
+                              type="Text"
+                              value={bookingDetails.l}
+                              onChange={(e) =>
+                                setBookingDetails({
+                                  ...bookingDetails,
+                                  ledName: e.target.value,
+                                })
+                              }
+                              placeholder="Name"
+                              sx={{
+                                background: "#f4f5f4",
+                                borderRadius: 50,
+                                // width:'100%',
+
+                                padding: 2,
+                              }}
+                              // disabled={loading}
+                              // fullWidth
+                              width={"30px"}
+                              required
+                            />
+                          </Grid>
+                          <p style={{ color: "red" }}>5 Letters ₹150</p>
+                        </>
+                      )}
                       <Typography
                         paddingLeft={"20%"}
                         paddingTop={"5px"}
                         variant="h6"
                       >
-                        ₹ 200
+                        ₹ 150
                       </Typography>
                     </span>
                   </label>
@@ -1906,6 +1438,39 @@ function DecorationDetails() {
                       />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">Led Numbers</h3>
+                      {bookingDetails.adons.includes("LedNumber") && (
+                        <>
+                          <Grid item xs={12}>
+                            <InputLabel>Age</InputLabel>
+                            <InputBase
+                              type="num"
+                              value={bookingDetails.ledNo}
+                              onChange={(e) =>
+                                setBookingDetails({
+                                  ...bookingDetails,
+                                    ledNo: e.target.value,
+                                  
+                                })
+                              }
+                              placeholder="Age"
+                              sx={{
+                                background: "#f4f5f4",
+                                borderRadius: 50,
+                                // width:'100%',
+
+                                padding: 2,
+                              }}
+                              // disabled={loading}
+                              // fullWidth
+                              width={"30px"}
+                              required
+                            />
+                          </Grid>
+                          {/* <p style={{ color: "red" }}>
+                            only take 8 latter name
+                          </p> */}
+                        </>
+                      )}
                       <Typography
                         paddingLeft={"20%"}
                         paddingTop={"5px"}
@@ -2056,6 +1621,16 @@ function DecorationDetails() {
                       />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">Photography</h3>
+                      {bookingDetails.adons.includes("Photography") && (
+                        <>
+                          {/* <p style={{ color: "red" }}>
+                            Aron for sale
+                          </p> */}
+                          <ul style={{ color: "red" }}>
+                            <li>15 mint</li>
+                          </ul>
+                        </>
+                      )}
                       <Typography
                         paddingLeft={"20%"}
                         paddingTop={"5px"}
@@ -2353,19 +1928,47 @@ function DecorationDetails() {
                       />
                       {/* Uncomment the line below if you want to add a label */}
                       <h3 className="checkbox-label">Entry Music</h3>
+                      {bookingDetails.adons.includes("EntryMusic") && (
+                        <>
+                          <Grid item xs={12}>
+                            <InputLabel>Song Link</InputLabel>
+                            <InputBase
+                              type="Text"
+                              value={bookingDetails.musicLink}
+                              onChange={(e) =>
+                                setBookingDetails({
+                                    musicLink: e.target.value,
+                                })
+                              }
+                              placeholder="Link"
+                              sx={{
+                                background: "#f4f5f4",
+                                borderRadius: 50,
+                                // width:'100%',
+
+                                padding: 2,
+                              }}
+                              // disabled={loading}
+                              // fullWidth
+                              width={"30px"}
+                              required
+                            />
+                          </Grid>
+                          <p style={{ color: "red" }}>
+                            Give any you tube video link
+                          </p>
+                        </>
+                      )}
                       <Typography
                         paddingLeft={"20%"}
                         paddingTop={"5px"}
                         variant="h6"
                       >
-                      Free
+                        Free
                       </Typography>
                     </span>
                   </label>
                 </Grid>
-               
-                
-             
               </Grid>
             </Container>
 
@@ -2637,8 +2240,15 @@ function DecorationDetails() {
                   <Container maxWidth="sm">
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
-                        <Typography variant="h4">Standard Theatre</Typography>
+                        <Typography variant="h4">{tName}</Typography>
                       </Grid>
+                      <Button
+                        onClick={handleBook}
+                        variant="contained"
+                        color="primary"
+                      >
+                        Book
+                      </Button>
                       <Grid item xs={6}>
                         <Typography variant="subtitle1">
                           <CalendarMonthIcon /> Date: 14/12/2023
@@ -2701,6 +2311,7 @@ function DecorationDetails() {
                             // required
                           />
                         </Grid>
+                        
                         <Grid item xs={12}>
                           <InputBase
                             placeholder="Whats App Number"
@@ -2722,7 +2333,120 @@ function DecorationDetails() {
                             disabled={loading}
                             fullWidth
                           />
+                          <Grid sx={{paddingLeft:"15px",color:'red'}}>
+
+                            <p>You will get a otp to this number</p>
+                          </Grid>
                         </Grid>
+                      
+                        <br />
+                        <br />
+                        <Container>
+                          <Grid
+                            container
+                            alignContent={"start"}
+                            justifyContent={"start"}
+                            display={"flex"}
+                          >
+                            {bookingDetails.type === "BirthDay" ? (
+                              <div>
+                                <Grid item xs={12}>
+                                  <InputLabel>
+                                    {bookingDetails.type === "BirthDay"
+                                      ? "Nick name of birthday person"
+                                      : "Baby Shower"}
+                                  </InputLabel>
+                                  <InputBase
+                                    type="Text"
+                                    value={
+                                      bookingDetails.namingDetails.singleName
+                                    }
+                                    onChange={(e) =>
+                                      setBookingDetails({
+                                        ...bookingDetails,
+                                        namingDetails: {
+                                          ...bookingDetails.namingDetails,
+                                          singleName: e.target.value,
+                                        },
+                                      })
+                                    }
+                                    placeholder="Name"
+                                    sx={{
+                                      background: "#f4f5f4",
+                                      borderRadius: 50,
+                                      padding: 2,
+                                    }}
+                                    // disabled={loading}
+                                    fullWidth
+                                    required
+                                  />
+                                </Grid>
+                              </div>
+                            ) : (
+                              <div>
+                                <Grid item xs={12}>
+                                  <InputLabel>Your NickName</InputLabel>
+                                  <InputBase
+                                    type="Text"
+                                    value={bookingDetails.namingDetails.name}
+                                    onChange={(e) =>
+                                      setBookingDetails({
+                                        ...bookingDetails,
+                                        namingDetails: {
+                                          ...bookingDetails.namingDetails,
+                                          name: e.target.value,
+                                        },
+                                      })
+                                    }
+                                    placeholder="Your NickName"
+                                    sx={{
+                                      background: "#f4f5f4",
+                                      borderRadius: 50,
+
+                                      padding: 2,
+                                    }}
+                                    // disabled={loading}
+                                    fullWidth
+                                    required
+                                  />
+                                </Grid>
+                                <Grid item xs={12}>
+                                  <InputLabel>Partner's NickName</InputLabel>
+                                  <InputBase
+                                    type="Text"
+                                    value={
+                                      bookingDetails.namingDetails.partnerName
+                                    }
+                                    onChange={(e) =>
+                                      setBookingDetails({
+                                        ...bookingDetails,
+                                        namingDetails: {
+                                          ...bookingDetails.namingDetails,
+                                          partnerName: e.target.value,
+                                        },
+                                      })
+                                    }
+                                    placeholder="Partner's NickName"
+                                    sx={{
+                                      background: "#f4f5f4",
+                                      borderRadius: 50,
+                                      padding: 2,
+                                    }}
+                                    // disabled={loading}
+                                    fullWidth
+                                    required
+                                  />
+                                  <br />
+                                  <br />
+                                </Grid>
+                              </div>
+                            )}
+                            <br />
+                            <br />
+                          </Grid>
+                          <br />
+                          <br />
+                        </Container>
                         {/* <Grid item xs={12}>
                           <InputBase
                             type="Email"
@@ -2744,7 +2468,7 @@ function DecorationDetails() {
                             // required
                           />
                         </Grid> */}
-                       
+
                         {/* <Grid item xs={12}>
                           <Autocomplete
                             options={decorationWant}
@@ -2903,19 +2627,19 @@ function DecorationDetails() {
                     onChange={(e) => {
                       setOTP(e.target.value);
                     }}
-                    placeholder="XXXX"
+                    placeholder="XXXXXX"
                     sx={{
                       background: "#f4f5f4",
                       borderRadius: 50,
                       padding: 1,
-                      paddingLeft: 4,
+                      paddingLeft: 2,
                       latterSpacing: 10,
                       textAlign: "center",
                       fontWeight: "bold",
                     }}
                     inputProps={{
                       maxLength: 4,
-                      style: { letterSpacing: 40, textAlign: "center" },
+                      style: { letterSpacing: 20, textAlign: "center" },
                     }}
                     disabled={loading}
                     fullWidth
@@ -2964,7 +2688,7 @@ function DecorationDetails() {
         ) : (
           <></>
         )}
-        {/* {user ? ( */}
+        {user ? (
           <Card
             sx={{
               background: "white",
@@ -3060,9 +2784,9 @@ function DecorationDetails() {
               </Button>
             </Grid>
           </Card>
-        {/* ) : (
+        ) : (
           <></>
-        )} */}
+        )}
       </div>
       <Footer />
     </>
